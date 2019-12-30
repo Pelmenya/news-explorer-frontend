@@ -1,0 +1,11 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts.css);
+@import url(../blocks/page/page.css);
+@import url(../blocks/page-top/page-top.css);
+@import url(../blocks/button/button.css);
+@import url(../blocks/header/header.css);
+
+
+body {
+  background-color: #1a1b22;
+}

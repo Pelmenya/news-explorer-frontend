@@ -1,0 +1,7 @@
+.page-top__glass {
+  background-color:rgba(0, 0, 0, 0.3);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+/* не работает в EDGE   background-blend-mode */
+}
