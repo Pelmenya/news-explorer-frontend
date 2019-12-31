@@ -1,0 +1,15 @@
+.button__color-shem-blue {
+  background: #2F71E5;
+  box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+  color: inherit;
+  border:1px;
+
+}
+
+.button__color-shem-blue:hover{
+  background: #347EFF;
+}
+
+.button__color-shem-blue:focus{
+  background: #2A65CC;
+}

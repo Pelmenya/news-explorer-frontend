@@ -1,0 +1,23 @@
+.search__keywords {
+  display: block;
+  box-sizing: border-box;
+  outline-style: none;
+  color: #1a1b22;
+  font-size: 16px;
+  line-height: 22px;
+  border: 0;
+  width: 608px;
+  height: 64px;
+  background: #fff;
+  border-radius: 100px;
+  padding-left: 24px;
+  padding-right: 192px;
+}
+
+.search__keywords:focus {
+  border: 2px solid #d1d2d6;
+}
+
+.search__keywords::placeholder {
+  color: #B6BCBF;
+}

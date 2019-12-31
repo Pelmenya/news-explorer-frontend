@@ -24,6 +24,8 @@
     "@babel/preset-env": "^7.6.3",
     "autoprefixer": "^9.6.5",
     "babel-loader": "^8.0.6",
+    "bem-tools-core": "0.0.3",
+    "bem-tools-create": "^2.3.0",
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
     "cssnano": "^4.1.10",

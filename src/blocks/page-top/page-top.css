@@ -5,7 +5,7 @@
 .page-top {
   display: flex;
   flex-direction: column;
-  background-image: url('../../images/bgimage.jpg');
+  background: url('../../images/bgimage.jpg') 50% 50% no-repeat; /* Добавляем фон */
   background-size: cover;
   width: inherit;
   height: 576px;
