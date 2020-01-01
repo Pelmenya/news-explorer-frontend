@@ -1,3 +1,16 @@
+@keyframes goway{
+  from{
+      stroke-dasharray: 0 1000;
+      stroke-dashoffset: 500;
+  }
+to{
+      stroke-dasharray: 1000 0;
+      stroke-dashoffset: 1000;
+}
+}
+
+
+
 .page {
   max-width: 1440px;
   display: flex;
@@ -11,9 +24,3 @@
 }
 
 
-
-/*{
-  border: 1px solid red;
-  box-sizing: border-box;
-};
-*/

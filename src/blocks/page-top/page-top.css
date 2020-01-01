@@ -1,7 +1,6 @@
 
 @import url(./__glass/page-top__glass.css);
 
-
 .page-top {
   display: flex;
   flex-direction: column;
@@ -9,4 +8,5 @@
   background-size: cover;
   width: inherit;
   height: 576px;
+  
 }
