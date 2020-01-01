@@ -1,0 +1,7 @@
+.card__description {
+  width: 352px;
+  height: 304px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}

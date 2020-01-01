@@ -1,0 +1,14 @@
+.card__sourse {
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #b6bcbf;
+  position: absolute;
+  margin-top: 0;
+  margin-bottom: 0;
+  left: 0;
+  bottom: 24px;
+}

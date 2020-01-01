@@ -1,0 +1,10 @@
+.card__pic {
+  background-color: #fff;
+  width: 400px;
+  height: 272px;
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+}
