@@ -1,3 +1,6 @@
+@import url('./_parks/card__pic_parks.css');
+
+
 .card__pic {
   background-color: #fff;
   width: 400px;

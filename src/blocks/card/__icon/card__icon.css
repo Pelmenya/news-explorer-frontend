@@ -1,0 +1,7 @@
+.card__icon {
+  position: absolute;
+  right: 24px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+}

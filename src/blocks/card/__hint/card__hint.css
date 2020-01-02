@@ -1,0 +1,13 @@
+.card__hint {
+  position: absolute;
+  font-size: 10px;
+  line-height: 12px;
+  right: 69px;
+  padding-left: 12px;
+  padding-right: 12px;
+  display: none;
+}
+
+.card__hint::before{
+  content: "Войдите, чтобы сохранять статьи";
+}
