@@ -1,0 +1,8 @@
+.card__icon_bookmark-marked {
+  background-image: url('../../../../images/bookmark_marked.svg');
+}
+
+
+.card__icon_bookmark-marked:hover{
+  background-image: url('../../../../images/bookmark_marked_hover.svg');
+}

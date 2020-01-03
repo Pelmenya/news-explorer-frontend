@@ -6,19 +6,17 @@
 @import url(../blocks/header/header.css);
 @import url(../blocks/search/search.css);
 @import url(../blocks/title/title.css);
-@import url('../blocks/search-results/search-results.css');
-@import url('../blocks/cards-list/cards-list.css');
-@import url('../blocks/card/card.css');
-
-
+@import url(../blocks/search-results/search-results.css);
+@import url(../blocks/cards-list/cards-list.css);
+@import url(../blocks/card/card.css);
 
 
 body {
   background-color: #1a1b22;
 }
 
-*{
+/*{
   border: 1px solid red;
   box-sizing: border-box;
 
-}
+}*/
