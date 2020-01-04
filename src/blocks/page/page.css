@@ -12,6 +12,7 @@ to{
 
 .page {
   max-width: 1440px;
+  min-width: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -5,6 +5,8 @@
   background-color: transparent;
   color: #fff;
   border: 1px solid #fff;
+  border-radius: 100px;
+  box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
 }
 
 .header__button:focus {
