@@ -5,21 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>NewsExplorer</title>
-  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css%>">
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.index.css%>">
   <link rel="icon" href="<%=require('./images/fav.png')%>" type="images/png">
 </head>
 <body>
   <div class="page">
     <div class="page-top">
       <div class="page-top__glass">
-        <header class="header">
+        <header class="header header__shadow-white">
           <div class="header__logo">News Explorer</div>
           <nav class="header__menu">
             <div class="header__change">
-              <a href=# class="header__change-ref">Главная</a>
+              <a href="./index.html" class="header__change-ref">Главная</a>
             </div>
             <div class="header__change header__change_is-close">
-              <a href=# class="header__change-ref">Сохранённые статьи</a>
+              <a href="./articles.html" class="header__change-ref">Сохранённые статьи</a>
             </div>
             <button class="button header__button">Авторизоваться</button>
           </nav>
@@ -44,14 +44,14 @@
     </div>
     <div class="page-top">
       <div class="page-top__glass">
-        <header class="header">
+        <header class="header header__shadow-white">
           <div class="header__logo">News Explorer</div>
           <nav class="header__menu">
             <div class="header__change">
-              <a href=# class="header__change-ref">Главная</a>
+              <a href="./index.html" class="header__change-ref">Главная</a>
             </div>
             <div class="header__change header__change_is-inactive">
-              <a href=# class="header__change-ref">Сохранённые статьи</a>
+              <a href="./articles.html" class="header__change-ref">Сохранённые статьи</a>
             </div>
             <button class="button header__button header__button_logout">
               <span class="header__button-caption">Грета</span>
@@ -136,7 +136,7 @@
       <img src="<%=require('./images/avatar.png')%>" class="author__avatar" alt="Разработчик сайта"></img>
       <div class="author__about">
         <h2 class="author__title">Об авторе</h2>
-        <p class="author__discription">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут,
+        <p class="author__description">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут,
            чем вы занимаетесь, какими технологиями разработки владеете.
          </p>
         <p class="author__description">Также можно рассказать о процессе обучения в Практикуме,
@@ -163,6 +163,6 @@
       </div>
     </footer>
   </div>
-    <script src="<%=htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+    <script src="<%=htmlWebpackPlugin.files.chunks.index.entry%>"></script>
 </body>
 </html>

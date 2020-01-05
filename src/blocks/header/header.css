@@ -9,9 +9,9 @@
 @import url(./__logout-pic/header__logout-pic.css);
 @import url(./__button-caption/header__button-caption.css);
 @import url(./__button/_logout/header__button_logout.css);
-
-
-
+@import url(./__shadow-grey/header__shadow-grey.css);
+@import url(./__shadow-white/header__shadow-white.css);
+@import url(./__change/_underline-black/header__change_underline-black.css);
 
 
 .header {
@@ -20,5 +20,4 @@
   align-items: center;
   justify-content: space-between;
   height: 80px;
-  box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
 }

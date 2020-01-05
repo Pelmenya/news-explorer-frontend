@@ -1,4 +1,10 @@
 .header__change_is-inactive {
   color: #B6BCBF;
   border-bottom: 0;
+  height: 80px;
+}
+
+.header__change_is-inactive .header__change-ref{
+  margin-top: 0px;
+
 }

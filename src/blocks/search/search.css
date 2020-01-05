@@ -4,7 +4,7 @@
 @import url(./__button/search__button.css);
 @import url(./__keywords/search__keywords.css);
 
-.search{
+.search {
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,12 +1,12 @@
 {
   "name": "news-explorer-frontend",
-  "version": "0.0.9",
+  "version": "0.1.1",
   "description": "Front-end part of the project News Explorer",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && webpack --mode production",
-    "dev": "webpack-dev-server --mode development --open --watch",
-    "deploy": "production gh-pages -d dist"
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --open --watch",
+    "build": "cross-env NODE_ENV=production rimraf dist && webpack --mode production",
+    "deploy": "cross-env NODE_ENV=production gh-pages -d dist"
   },
   "repository": {
     "type": "git",

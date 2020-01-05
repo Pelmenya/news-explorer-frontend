@@ -9,7 +9,10 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
-  entry: { main: './src/index.js' },
+  entry: {
+    index: './src/index.js',
+    articles: './src/articles.js',
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[chunkhash].js',
@@ -49,8 +52,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      //
-      filename: 'index.[contenthash].css',
+      filename: '[name].[contenthash].css',
     }),
     new HtmlWebpackPlugin({
       inject: false,
@@ -58,6 +60,13 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html',
     }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      hash: true,
+      template: './src/articles.html',
+      filename: 'articles.html',
+    }),
+
     new WebpackMd5Hash(),
     new webpack.DefinePlugin({
       NODE_ENV: JSON.stringify(process.env.NODE_ENV),
