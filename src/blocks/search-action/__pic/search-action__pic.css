@@ -1,0 +1,7 @@
+.search-action__pic {
+    margin-top: 80px;
+    height: 96px;
+    width: 96px;
+    background-position: center;
+    background-image: url(../../../images/not-found.svg);
+}

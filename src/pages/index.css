@@ -9,8 +9,10 @@
 @import url(../blocks/search-results/search-results.css);
 @import url(../blocks/cards-list/cards-list.css);
 @import url(../blocks/card/card.css);
+@import url(../blocks/search-action/search-action.css);
 @import url(../blocks/author/author.css);
 @import url(../blocks/footer/footer.css);
+
 
 
 body {
