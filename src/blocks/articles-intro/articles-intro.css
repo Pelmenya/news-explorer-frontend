@@ -1,0 +1,8 @@
+@import url(./__keyword/articles-intro__keyword.css);
+@import url(./__keywords/articles-intro__keywords.css);
+@import url(./__sub-title/articles-intro__sub-title.css);
+@import url(./__title/articles-intro__title.css);
+
+.articles-intro {
+  width: calc(100% - 208px);
+}

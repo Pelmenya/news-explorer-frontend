@@ -12,6 +12,9 @@
 @import url(./__shadow-grey/header__shadow-grey.css);
 @import url(./__shadow-white/header__shadow-white.css);
 @import url(./__change/_underline-black/header__change_underline-black.css);
+@import url(./__change/_is-inactive/header__change_is-inactive_color-black.css);
+@import url(./__button/_color-black/header__button_color-black.css);
+@import url(./__logout-pic/_black/header__logout-pic_black.css);
 
 
 .header {
@@ -20,4 +23,5 @@
   align-items: center;
   justify-content: space-between;
   height: 80px;
+  font-family: 'Roboto Med';
 }

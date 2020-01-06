@@ -1,0 +1,12 @@
+.header__change_is-inactive_color-black {
+  color: #1a1b22;
+}
+
+.header__change_is-inactive_color-black:hover{
+  opacity: 1;
+
+}
+
+.header__change_is-inactive_color-black:hover .header__change-ref{
+  opacity: 1;
+}

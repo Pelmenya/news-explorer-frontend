@@ -1,5 +1,7 @@
 .search-results__title {
   margin-top: 0;
   font-size: 40px;
-  margin-left: 108px;
+  text-align: left;
+  margin-bottom: 64px;
+  width: calc(100% - 208px);
 }
