@@ -1,9 +1,10 @@
 .card__icon_trash {
   background-image: url(../../../../images/trash.svg);
 }
-
+/*Подгрузка иконки без обращения на сервер, т.к. передергивает*/
 .card__icon_trash:hover {
-  background-image: url(../../../../images/trash_hover.svg);
+  background-image: url("data: image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'  %3E%3Cg%3E%3Cpath d='M15 3H9V5H3V7H21V5H15V3ZM5 9V20C5 21.1046 5.89543 22 7 22H17C18.1046 22 19 21.1046 19 20V9H17V20H7V9H5ZM9 9L9 18H11L11 9H9ZM13 9V18H15V9H13Z' /%3E%3C/g%3E%3C/svg%3E");
+  background-size: 24px;
 }
 
 .card__icon_trash:hover + .card__hint_trash {
