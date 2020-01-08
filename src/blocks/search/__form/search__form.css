@@ -4,6 +4,11 @@
   position: relative;
   margin-top: 64px;
   margin-bottom: 80px;
- }
+}
 
-
+@media screen and (max-width: 792px) {
+  .search__form {
+    margin-top: 48px;
+    margin-bottom: 48px;
+  }
+}

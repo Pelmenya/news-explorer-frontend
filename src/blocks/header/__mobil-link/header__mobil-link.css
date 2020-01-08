@@ -1,0 +1,9 @@
+.header__mobil-link {
+  margin-top: 19px;
+  margin-bottom: 38px;
+  padding: 0;
+}
+
+.header__mobil-link:last-of-type {
+  margin-bottom: 19px;
+}

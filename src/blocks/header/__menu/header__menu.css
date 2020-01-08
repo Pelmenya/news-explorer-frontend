@@ -3,3 +3,16 @@
   align-items: center;
   margin-right: 116px;
 }
+
+@media screen and (max-width: 768px) {
+  .header__menu {
+    margin-right: 40px;
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  .header__menu {
+    display: none;
+  }
+}

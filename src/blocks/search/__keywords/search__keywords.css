@@ -11,7 +11,6 @@
   background: #fff;
   border-radius: 100px;
   padding-left: 24px;
-  padding-right: 192px;
 }
 
 .search__keywords:focus {
@@ -19,5 +18,12 @@
 }
 
 .search__keywords::placeholder {
-  color: #B6BCBF;
+  color: #b6bcbf;
+}
+
+@media screen and (max-width: 792px) {
+  .search__keywords {
+    width: 458px;
+    height: 56px;
+  }
 }

@@ -2,7 +2,14 @@
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
-  width: 550px;
+  width: 545px;
   margin-top: 32px;
   margin-bottom: 0px;
+}
+
+@media screen and (max-width: 792px) {
+  .search__direction{
+    margin-top: 16px;
+    width: 452px;
+  }
 }
