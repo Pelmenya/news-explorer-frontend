@@ -1,6 +1,6 @@
 {
   "name": "news-explorer-frontend",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Front-end part of the project News Explorer",
   "main": "index.js",
   "scripts": {

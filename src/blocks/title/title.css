@@ -13,9 +13,19 @@
     padding-left: 3px;
     font-size: 36px;
     line-height: 40px;
-    width:  452px;
     margin-top: 38px;
     margin-bottom: 0px;
     width:  385px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+  .title {
+    padding-left: 3px;
+    font-size: 36px;
+    line-height: 40px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    width:  90%;
     }
 }
