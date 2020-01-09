@@ -1,13 +1,24 @@
 @import url('./_parks/card__pic_parks.css');
 
-
 .card__pic {
   background-color: #fff;
-  width: 400px;
+  width: 100%;
   height: 272px;
   background-size: cover;
   background-position: center;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   position: relative;
+}
+
+@media screen and (max-width: 1370px) {
+  .card__pic {
+    max-height: 150px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card__pic {
+    max-height: 196px;
+  }
 }

@@ -2,3 +2,9 @@
   right: 69px;
   display: none;
 }
+
+@media screen and (max-width: 1370px) {
+  .card__hint {
+    right: 60px;
+  }
+}

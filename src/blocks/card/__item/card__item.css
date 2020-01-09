@@ -10,3 +10,9 @@
   display: flex;
   align-items: center;
 }
+
+@media screen and (max-width: 1370px) {
+  .card__item {
+    top: 8px;
+  }
+}

@@ -5,3 +5,19 @@
   justify-content: center;
   width: calc(100% - 204px);
 }
+
+@media screen and (max-width: 1370px) {
+  .cards-list {
+    width: calc(100% - 80px);
+    grid-template-columns: repeat(auto-fill, 224px);
+    grid-gap: 8px 8px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cards-list {
+    width: calc(100% - 32px);
+    grid-template-columns: repeat(auto-fill, 288px);
+    grid-gap: 10px 10px;
+  }
+}

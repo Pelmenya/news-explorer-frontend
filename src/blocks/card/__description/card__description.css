@@ -5,3 +5,16 @@
   flex-direction: column;
   position: relative;
 }
+
+@media screen and (max-width: 1370px) {
+  .card__description {
+    width: calc(100% - 32px);
+    height: 222px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card__description {
+    height: 197px;
+  }
+}

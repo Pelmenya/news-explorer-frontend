@@ -16,3 +16,23 @@
   border-color: rgba(0, 0, 0, 0.1);
   box-shadow: 0px 1px 2px #000;
 }
+
+@media screen and (max-width: 1050px) {
+  .button__color-shem-white {
+    height: 56px;
+    margin-top: 22px;
+    margin-bottom: 40px;
+    width: 31%;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .button__color-shem-white {
+    margin-top: 15px;
+    margin-bottom: 32px;
+    width: calc(100% - 32px);
+  }
+}

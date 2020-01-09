@@ -5,3 +5,10 @@
   margin-top: 0px;
   margin-bottom: 0px;
 }
+
+@media screen and (max-width: 1050px) {
+  .author__title {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}

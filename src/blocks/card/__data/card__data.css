@@ -1,7 +1,14 @@
 .card__data {
-  color: #B6BCBF;
+  color: #b6bcbf;
   font-family: Source Sans Pro;
   font-weight: normal;
   font-size: 18px;
   margin-top: 20px;
 }
+
+@media screen and (max-width: 1370px) {
+  .card__data {
+    margin-top: 16px;
+  }
+}
+

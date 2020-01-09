@@ -5,3 +5,11 @@
   margin-bottom: 64px;
   width: calc(100% - 208px);
 }
+
+@media screen and (max-width: 1050px) {
+  .search-results__title {
+    font-size: 30px;
+    width: 90%;
+    margin-bottom: 32px;
+  }
+}
