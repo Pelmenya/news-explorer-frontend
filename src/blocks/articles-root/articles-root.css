@@ -1,4 +1,10 @@
 .articles-root {
-  color: #1A1B22;
-  background-color:#fff;
+  color: #1a1b22;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 480px) {
+  .articles-root {
+    padding-top: 80px;
+  }
 }
