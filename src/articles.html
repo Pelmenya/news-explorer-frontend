@@ -12,6 +12,25 @@
   <div class="page articles-root">
     <header class="header header__shadow-grey">
       <div class="header__logo">News Explorer</div>
+      <button class="header__gamburger header__gamburger_black"></button>
+      <nav class="header__mobil-menu header__mobil-menu_color-white">
+        <div class="header__mobil-container">
+          <header class="header header__shadow-white">
+            <div class="header__logo">News Explorer</div>
+            <button class="header__gamburger header__gamburger_cross"></button>
+          </header>
+          <ul class="header__mobil-links">
+            <a href="./index.html" class="header__change-ref"><li class="header__mobil-link">Главная</li></a>
+            <a href="./articles.html" class="header__change-ref"><li class="header__mobil-link">Сохранённые статьи</li></a>
+          </ul>
+          <button class="button header__button header__button_logout header__button_mobil">
+              <span class="header__button-caption">Грета </span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="header__logout-pic" d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z"/>
+              </svg>
+          </button>
+        </div>
+      </nav>
       <nav class="header__menu">
         <div class="header__change header__change_is-inactive header__change_is-inactive_color-black">
           <a href="./index.html" class="header__change-ref">Главная</a>
@@ -126,15 +145,17 @@
     </main>
     <footer class="footer">
       <div class="footer__container">
-        <div class="footer__copyright">&#169; 2020. Ляпин</div>
-        <div class="footer__link-container">
-          <a class="footer__link footer__link_head-page" href="#">Главная</a>
-          <a class="footer__link footer__link_yandex-praktikum" href="#">Яндекс.Практикум</a>
+        <div class="footer__container-column">
+          <div class="footer__copyright">&#169; 2020. Дмитрий Ляпин</div>
+          <div class="footer__link-container">
+            <a class="footer__link footer__link_head-page" href="./index.html">Главная</a>
+            <a class="footer__link footer__link_yandex-praktikum" href="https://praktikum.yandex.ru">Яндекс.Практикум</a>
+          </div>
         </div>
-      </div>
-      <div class="footer__social-networks">
-        <a class="footer__link footer__icon footer__icon_git" href="#"></a>
-        <a class="footer__link footer__icon footer__icon_facebook" href="#"></a>
+        <div class="footer__social-networks">
+          <a class="footer__link footer__icon footer__icon_git" href="https://github.com/Pelmenya"></a>
+          <a class="footer__link footer__icon footer__icon_facebook" href="https://www.facebook.com/lyapindm"></a>
+        </div>
       </div>
     </footer>
   </div>

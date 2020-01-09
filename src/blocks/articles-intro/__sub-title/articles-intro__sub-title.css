@@ -1,6 +1,23 @@
 .articles-intro__sub-title {
   margin-top: 28px;
+  margin-bottom: 0;
   font-size: 40px;
   line-height: 46px;
   width: 500px;
+}
+
+@media screen and (max-width: 780px) {
+  .articles-intro__sub-title {
+    margin-top: 16px;
+    margin-bottom: 0;
+    font-size: 30px;
+    width: 330px;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .articles-intro__sub-title {
+    width: 280px;
+  }
 }

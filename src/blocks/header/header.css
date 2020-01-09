@@ -22,6 +22,8 @@
 @import url(./__mobil-links/header__mobil-links.css);
 @import url(./__mobil-link/header__mobil-link.css);
 @import url(./__button/_mobil/header__button_mobil.css);
+@import url(./__mobil-menu/_color-white/header__mobil-menu_color-white.css);
+@import url(./__gamburger/_black/header__gamburger_black.css);
 
 .header {
   display: flex;

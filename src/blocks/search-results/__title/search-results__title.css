@@ -13,3 +13,9 @@
     margin-bottom: 32px;
   }
 }
+
+@media screen and (max-width: 700px) {
+  .search-results__title {
+    margin-bottom: 24px;
+  }
+}

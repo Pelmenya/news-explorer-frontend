@@ -21,7 +21,6 @@
 @media screen and (max-width: 792px) {
   .header__change {
     font-size: 16px;
-    height: 66px;
     margin-right: 16px;
   }
   .header__change:last-of-type {
