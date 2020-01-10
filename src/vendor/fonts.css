@@ -25,3 +25,13 @@
   font-weight: 500;
   src: url("./fonts/sourcesanspro.woff") format("woff");
 }
+
+@font-face {
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 400;
+  src: url("./fonts/Inter-Regular.woff") format("woff");
+}
+
+
+

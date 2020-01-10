@@ -1,0 +1,9 @@
+.popup__description-signup {
+  color: #000;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 28px;
+  margin-top: 43px;
+  margin-bottom: 14px;
+  width: calc(100% - 72px);
+}

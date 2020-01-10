@@ -1,0 +1,16 @@
+.popup__transition {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #2F71E5;
+  background: transparent;
+  background-color: transparent;
+  outline-style: none;
+  box-sizing: border-box;
+  cursor: url(../../../images/lapka.png), pointer;
+
+  padding: 0;
+  border: 0;
+}

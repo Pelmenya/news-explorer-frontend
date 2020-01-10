@@ -1,0 +1,6 @@
+.popup__transition_signup-is-ok {
+  width: calc(100%);
+  text-align: start;
+  box-sizing: border-box;
+  border-style: none;
+}
