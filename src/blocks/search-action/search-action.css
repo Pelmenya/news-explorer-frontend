@@ -1,6 +1,7 @@
 @import url(./__loader/search-action__loader.css);
 @import url(./__description/search-action__description.css);
 @import url(./__title/search-action__title.css);
+@import url(./__title/_is-close/search-action__title_is-close.css);
 @import url(./__pic/search-action__pic.css);
 
 

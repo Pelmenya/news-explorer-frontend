@@ -1,6 +1,7 @@
 .header__mobil-link {
   margin-top: 19px;
   margin-bottom: 38px;
+  display: block;
   padding: 0;
 }
 
