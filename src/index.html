@@ -10,7 +10,7 @@
 </head>
 <body>
   <div class="page">
-    <!--div class="page-top">
+    <div class="page-top">
       <div class="page-top__glass">
         <header class="header header__shadow-white">
           <div class="header__logo">News Explorer</div>
@@ -56,7 +56,7 @@
             </div>
           </section>
       </div>
-    </!--div>
+    </div>
     <section class="search-action">
       <div class="search-action__loader"></div>
       <p class="search-action__description">Идет поиск новостей...</p>
@@ -197,13 +197,55 @@
           <a class="footer__link footer__icon footer__icon_facebook" href="https://www.facebook.com/lyapindm"></a>
         </div>
       </div>
-    </footer-->
-    <div class="popup">
+    </footer>
+    <div class="popup popup-signup-is-ok">
       <div class="popup__content">
         <img src="<%=require('./images/close.svg')%>" alt="Кнопка закрытия формы" class="popup__close">
         <p class="popup__description-signup">Пользователь успешно зарегистрирован!</p>
-        <form class="popup__form" name="signup-is-ok">
+        <form class="popup__form" name="signupisok">
           <button class="popup__transition popup__transition_signup-is-ok">Выполнить вход</button>
+       </form>
+      </div>
+    </div>
+    <div class="popup popup-signup">
+      <div class="popup__content">
+        <img src="<%=require('./images/close.svg')%>" alt="Кнопка закрытия формы" class="popup__close">
+        <h3 class="popup__title">Регистрация</h3>
+        <form class="popup__form" name="signup">
+          <label class="popup__field">Email
+            <input type="email" name="emailup" class="popup__input popup__input_type_emailup" placeholder="Введите Email">
+            <span class="popup__error popup__error_emailup">Неправильный формат email</span>
+          </label>
+          <label class="popup__field">Пароль
+            <input type="password" name="passwordup" required minlength="6" maxlength="30" class="popup__input popup__input_type_passwordup" placeholder="Введите пароль">
+            <span class="popup__error popup__error_passwordup">Неправильный пароль</span>
+          </label>
+          <label class="popup__field">Имя
+            <input type="text" name="nameup" required minlength="2" maxlength="30" class="popup__input popup__input_type_nameup" placeholder="Введите своё имя">
+            <span class="popup__error popup__error_nameup"></span>
+          </label>
+          <span class="popup__error popup__error_server">Такой пользователь уже есть</span>
+          <button class="button button__color-shem-blue popup__button">Войти</button>
+          <button class="popup__transition popup__transition_signup"><span class="popup__insert">или </span>Войти</button>
+       </form>
+      </div>
+    </div>
+    <div class="popup popup-signin">
+      <div class="popup__content">
+        <img src="<%=require('./images/close.svg')%>" alt="Кнопка закрытия формы" class="popup__close">
+        <h3 class="popup__title">Вход</h3>
+        <form class="popup__form" name="signin">
+          <label class="popup__field">Email
+            <input type="email" name="emailin" class="popup__input popup__input_type_emailin" placeholder="Введите Email">
+            <span class="popup__error popup__error_emailin">Неправильный формат email</span>
+          </label>
+          <label class="popup__field">Пароль
+            <input type="password" name="passwordin" required minlength="6" maxlength="30" class="popup__input popup__input_type_passwordin" placeholder="Введите пароль">
+            <span class="popup__error popup__error_passwordin"></span>
+          </label>
+          <span class="popup__error popup__error_server"></span>
+          <button class="button button__color-shem-blue popup__button">Войти</button>
+          <button class="popup__transition popup__transition_signin"><span class="popup__insert">или </span>Зарегистрироваться</button>
        </form>
       </div>
     </div>

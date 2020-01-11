@@ -1,0 +1,15 @@
+.popup__error {
+  font-family: Inter;
+  color: #ff0000;
+  font-size: 12px;
+  height: 16px;
+  font-style: normal;
+  font-weight: normal;
+  margin-top: 3px;
+  margin-bottom: 13px;
+  display: block;
+};
+
+.popup__error:last-of-type {
+  margin-bottom: 0;
+}

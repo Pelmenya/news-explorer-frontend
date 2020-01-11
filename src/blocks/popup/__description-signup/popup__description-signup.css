@@ -7,3 +7,9 @@
   margin-bottom: 14px;
   width: calc(100% - 72px);
 }
+
+@media screen and (max-width: 540px) {
+  .popup__description-signup {
+    width: calc(100% - 32px);
+  }
+}
