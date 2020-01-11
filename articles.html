@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>NewsExplorer</title>
-  <link rel="stylesheet" href="articles.cd69116bda9ae9d9b40b.css?8d635d7b77f13e82145d">
+  <link rel="stylesheet" href="articles.cec9e60eeba109ae54ab.css?17e20134d2080d7470e3">
   <link rel="icon" href="./images/fav.png" type="images/png">
 </head>
 <body>
@@ -15,28 +15,28 @@
       <button class="header__gamburger header__gamburger_black"></button>
       <nav class="header__mobil-menu header__mobil-menu_color-white">
         <div class="header__mobil-container">
-          <header class="header header__shadow-white">
+          <div class="header header__shadow-white">
             <div class="header__logo">News Explorer</div>
             <button class="header__gamburger header__gamburger_cross"></button>
-          </header>
-          <ul class="header__mobil-links">
-            <a href="./index.html" class="header__change-ref"><li class="header__mobil-link">Главная</li></a>
-            <a href="./articles.html" class="header__change-ref"><li class="header__mobil-link">Сохранённые статьи</li></a>
-          </ul>
+          </div>
+          <div class="header__mobil-links">
+            <a href="index.html" class="header__change-ref header__mobil-link">Главная</a>
+            <a href="articles.html" class="header__change-ref header__mobil-link">Сохранённые статьи</a>
+          </div>
           <button class="button header__button header__button_logout header__button_mobil">
-              <span class="header__button-caption">Грета </span>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path class="header__logout-pic" d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z"/>
-              </svg>
+            <span class="header__button-caption">Грета </span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path class="header__logout-pic" d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z"/>
+            </svg>
           </button>
         </div>
       </nav>
       <nav class="header__menu">
         <div class="header__change header__change_is-inactive header__change_is-inactive_color-black">
-          <a href="./index.html" class="header__change-ref">Главная</a>
+          <a href="index.html" class="header__change-ref">Главная</a>
         </div>
         <div class="header__change header__change_underline-black">
-          <a href="./articles.html" class="header__change-ref">Сохранённые статьи</a>
+          <a href="articles.html" class="header__change-ref">Сохранённые статьи</a>
         </div>
         <button class="button header__button header__button_logout header__button_color-black">
           <span class="header__button-caption">Грета</span>
@@ -56,6 +56,7 @@
           </p>
         </section>
         <section class="search-results user-articles">
+          <h2 class="user-articles__title">Ваши новости</h2>
           <div class="cards-list">
             <div class="card">
               <div class="card__pic card__pic_06">
@@ -63,15 +64,15 @@
                 <div class="card__item card__icon card__icon_trash"></div>
                 <div class="card__item card__hint card__hint_trash"></div>
               </div>
-              <div class="card__description">
+              <article class="card__description">
                 <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
                 <h2 class="card__title">Национальное достояние – парки</h2>
-                <article class="card__info">
+                <p class="card__info">
                   В 2016 году Америка отмечала важный юбилей: сто лет назад
                   здесь начала складываться система национальных парков – охраняемых территорий,
                   где и сегодня каждый может приобщиться к природе.
-                </article>
-              </div>
+                </p>
+              </article>
               <h3 class="card__source">ДЗЕН</h3>
             </div>
             <div class="card">
@@ -80,14 +81,14 @@
                 <div class="card__item card__icon card__icon_trash"></div>
                 <div class="card__item card__hint card__hint_trash"></div>
               </div>
-              <div class="card__description">
+              <article class="card__description">
                 <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
                 <h2 class="card__title">Лесные огоньки: история одной фотографии</h2>
-                <article class="card__info">
+                <p class="card__info">
                   Фотограф отвлеклась от освещения суровой политической реальности Мексики,
                   чтобы запечатлеть ускользающую красоту одного из местных чудес природы.
-                </article>
-              </div>
+                </p>
+              </article>
               <h3 class="card__source">АФИША</h3>
             </div>
             <div class="card">
@@ -96,15 +97,15 @@
                 <div class="card__item card__icon card__icon_trash"></div>
                 <div class="card__item card__hint card__hint_trash"></div>
               </div>
-              <div class="card__description">
+              <article class="card__description">
                 <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
                 <h2 class="card__title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h2>
-                <article class="card__info">
+                <p class="card__info">
                   Знаменитый фотограф снимает первозданные леса России,
                   чтобы рассказать о необходимости их сохранения. В этот раз он отправился
                   в Двинско-Пинежскую тайгу, где...
-                </article>
-              </div>
+                </p>
+              </article>
               <h3 class="card__source">МЕДИАЗОНА</h3>
             </div>
             <div class="card">
@@ -113,15 +114,15 @@
                 <div class="card__item card__icon card__icon_trash"></div>
                 <div class="card__item card__hint card__hint_trash"></div>
               </div>
-              <div class="card__description">
+              <article class="card__description">
                 <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
                 <h2 class="card__title">Национальное достояние – парки</h2>
-                <article class="card__info">
+                <p class="card__info">
                   В 2016 году Америка отмечала важный юбилей: сто лет назад
                   здесь начала складываться система национальных парков – охраняемых территорий,
                   где и сегодня каждый может приобщиться к природе.
-                </article>
-              </div>
+                </p>
+              </article>
               <h3 class="card__source">ДЗЕН</h3>
             </div>
             <div class="card">
@@ -130,14 +131,14 @@
                 <div class="card__item card__icon card__icon_trash"></div>
                 <div class="card__item card__hint card__hint_trash"></div>
               </div>
-              <div class="card__description">
+              <article class="card__description">
                 <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
                 <h2 class="card__title">Лесные огоньки: история одной фотографии</h2>
-                <article class="card__info">
+                <p class="card__info">
                   Фотограф отвлеклась от освещения суровой политической реальности Мексики,
                   чтобы запечатлеть ускользающую красоту одного из местных чудес природы.
-                </article>
-              </div>
+                </p>
+              </article>
               <h3 class="card__source">АФИША</h3>
             </div>
           </div>
@@ -148,7 +149,7 @@
         <div class="footer__container-column">
           <div class="footer__copyright">&#169; 2020. Дмитрий Ляпин</div>
           <div class="footer__link-container">
-            <a class="footer__link footer__link_head-page" href="./index.html">Главная</a>
+            <a class="footer__link footer__link_head-page" href="index.html">Главная</a>
             <a class="footer__link footer__link_yandex-praktikum" href="https://praktikum.yandex.ru">Яндекс.Практикум</a>
           </div>
         </div>
@@ -159,6 +160,6 @@
       </div>
     </footer>
   </div>
-    <script src="articles.e0a68db9e3cbba517d67.js?8d635d7b77f13e82145d"></script>
+    <script src="articles.811638de60b0b948c92f.js?17e20134d2080d7470e3"></script>
 </body>
 </html>
