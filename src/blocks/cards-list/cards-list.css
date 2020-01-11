@@ -6,7 +6,13 @@
   width: calc(100% - 204px);
 }
 
-@media screen and (max-width: 1370px) {
+@media screen and (max-width: 1440px) {
+  .cards-list {
+    width: calc(100% - 16px);
+  }
+}
+
+@media screen and (max-width: 1264px) {
   .cards-list {
     width: calc(100% - 80px);
     grid-template-columns: repeat(auto-fill, 224px);

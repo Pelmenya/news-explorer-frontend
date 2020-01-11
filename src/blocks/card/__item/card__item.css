@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-@media screen and (max-width: 1370px) {
+@media screen and (max-width: 1264px) {
   .card__item {
     top: 8px;
   }

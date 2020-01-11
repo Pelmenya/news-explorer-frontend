@@ -11,7 +11,7 @@ const isDev = process.env.NODE_ENV === 'development';
 module.exports = {
   entry: {
     index: './src/index.js',
-    articles: './src/articles.js',
+    articles: './src/saved-articles/articles.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

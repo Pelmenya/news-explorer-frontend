@@ -1,4 +1,4 @@
-import './pages/articles.css';
+import '../pages/articles.css';
 
 function main() {
   /* Константы */

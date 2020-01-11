@@ -6,7 +6,7 @@
   margin-top: 20px;
 }
 
-@media screen and (max-width: 1370px) {
+@media screen and (max-width: 1264px) {
   .card__data {
     margin-top: 16px;
   }

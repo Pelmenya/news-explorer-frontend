@@ -11,13 +11,13 @@
   position: relative;
 }
 
-@media screen and (max-width: 1370px) {
+@media screen and (max-width: 1264px) {
   .card__pic {
     max-height: 150px;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
   .card__pic {
     max-height: 196px;
   }

@@ -29,7 +29,8 @@
   cursor: url(../../images/lapka.png), pointer;
 }
 
-@media screen and (max-width: 1370px) {
+
+@media screen and (max-width: 1264px) {
   .card {
     width: 224px;
     height: 420px;
