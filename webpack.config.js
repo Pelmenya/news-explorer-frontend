@@ -63,7 +63,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
-      template: './src/articles.html',
+      template: './src/saved-articles/articles.html',
       filename: 'articles.html',
     }),
 
