@@ -15,6 +15,7 @@
 @import url(./__error/_passwordin/popup__error_passwordin.css);
 @import url(./__error/_nameup/popup__error_nameup.css);
 @import url(./__insert/popup__insert.css);
+@import url(./_is-opened/popup_is-opened.css);
 
 
 
@@ -31,6 +32,7 @@
   align-items: center;
   justify-content: center;
   padding-top: 80px;
+  display: none;
 }
 
 
