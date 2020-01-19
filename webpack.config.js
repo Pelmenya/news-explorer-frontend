@@ -37,10 +37,28 @@ module.exports = {
       {
         test: /\.(png|jpg|gif|ico|svg)$/,
         use: [
-          'file-loader?name=./images/[name].[ext]', // указали папку, куда складывать изображения
+          'file-loader?name=./images/[name].[ext]',
           {
             loader: 'image-webpack-loader',
-            options: {},
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 85,
+              },
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: [
+                  0.9,
+                  0.9,
+                ],
+                speed: 4,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+            },
           },
         ],
       },
@@ -75,7 +93,9 @@ module.exports = {
       assetNameRegExp: /\.css$/g,
       cssProcessor: cssnano,
       cssProcessorPluginOptions: {
-        preset: ['default'],
+        preset: [
+          'default',
+        ],
       },
       canPrint: true,
     }),

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>NewsExplorer</title>
   <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.index.css%>">
-  <link rel="icon" href="<%=require('./images/fav.png')%>" type="images/png">
+  <link rel="icon" href="<%=require('./images/favicon.png')%>" type="images/png">
 </head>
 <body>
   <div class="page">
@@ -207,43 +207,43 @@
     <template class="popup form-signup-is-ok">
       <form class="popup__form popup__form-signup-is-ok" name="signupisok">
         <p class="popup__description-signup">Пользователь успешно зарегистрирован!</p>
-        <button class="popup__transition popup__transition_signup-is-ok">Выполнить вход</button>
+        <button type="button" class="popup__transition popup__transition_signup-is-ok">Выполнить вход</button>
       </form>
     </template>
     <template class="popup form-signup">
       <form class="popup__form popup__form-signup" name="signup">
         <h3 class="popup__title">Регистрация</h3>
         <label class="popup__field">Email
-          <input type="email" name="emailup" class="popup__input popup__input_type_emailup" pattern="^[A-Za-z]((\.|-)?[A-Za-z0-9]+)+@[A-Za-z0-9](-?[A-Za-z0-9]+)+(\.[A-Za-z]{2,})+$" placeholder="Введите Email">
+          <input type="email" name="emailup" class="popup__input popup__input_type_emailup" required  pattern="^[A-Za-z]((\.|-)?[A-Za-z0-9]+)+@[A-Za-z0-9](-?[A-Za-z0-9]+)+(\.[A-Za-z]{2,})+$" placeholder="Введите Email">
           <span class="popup__error popup__error_emailup"></span>
         </label>
         <label class="popup__field">Пароль
-          <input type="password" name="passwordup" minlength="6" class="popup__input popup__input_type_passwordup" placeholder="Введите пароль">
+          <input type="password" name="passwordup" required  minlength="6" class="popup__input popup__input_type_passwordup" placeholder="Введите пароль">
           <span class="popup__error popup__error_passwordup"></span>
         </label>
         <label class="popup__field">Имя
-          <input type="text" name="nameup" minlength="2" maxlength="30" class="popup__input popup__input_type_nameup" placeholder="Введите своё имя">
+          <input type="text" name="nameup" required minlength="2" maxlength="30" class="popup__input popup__input_type_nameup" placeholder="Введите своё имя">
           <span class="popup__error popup__error_nameup"></span>
         </label>
         <span class="popup__error popup__error_server"></span>
         <button class="button button__color-shem-blue popup__button popup__button">Зарегистрироваться</button>
-        <button class="popup__transition popup__transition_signup"><span class="popup__insert">или </span>Войти</button>
+        <button type="button" class="popup__transition popup__transition_signup"><span class="popup__insert">или </span>Войти</button>
       </form>
     </template>
     <template class="popup form-signin">
       <form class="popup__form popup__form-signin" name="signin">
         <h3 class="popup__title">Вход</h3>
         <label class="popup__field">Email
-          <input type="email" name="emailin" class="popup__input popup__input_type_emailin" pattern="^[A-Za-z]((\.|-)?[A-Za-z0-9]+)+@[A-Za-z0-9](-?[A-Za-z0-9]+)+(\.[A-Za-z]{2,})+$" placeholder="Введите Email">
+          <input type="email" name="emailin" class="popup__input popup__input_type_emailin" required pattern="^[A-Za-z]((\.|-)?[A-Za-z0-9]+)+@[A-Za-z0-9](-?[A-Za-z0-9]+)+(\.[A-Za-z]{2,})+$" placeholder="Введите Email">
           <span class="popup__error popup__error_emailin"></span>
         </label>
         <label class="popup__field">Пароль
-          <input type="password" name="passwordin" required minlength="6" class="popup__input popup__input_type_passwordin" placeholder="Введите пароль">
+          <input type="password" name="passwordin" required minlength="6" required class="popup__input popup__input_type_passwordin" placeholder="Введите пароль">
           <span class="popup__error popup__error_passwordin"></span>
         </label>
         <span class="popup__error popup__error_server"></span>
         <button class="button button__color-shem-blue popup__button">Войти</button>
-        <button class="popup__transition popup__transition_signin"><span class="popup__insert">или </span>Зарегистрироваться</button>
+        <button type="button" class="popup__transition popup__transition_signin"><span class="popup__insert">или </span>Зарегистрироваться</button>
       </form>
     </template>
   </div>

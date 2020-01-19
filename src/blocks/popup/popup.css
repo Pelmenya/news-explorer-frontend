@@ -12,8 +12,6 @@
 @import url(./__field/popup__field.css);
 @import url(./__button/popup__button.css);
 @import url(./__error/_server/popup__error_server.css);
-@import url(./__error/_passwordin/popup__error_passwordin.css);
-@import url(./__error/_nameup/popup__error_nameup.css);
 @import url(./__insert/popup__insert.css);
 @import url(./_is-opened/popup_is-opened.css);
 @import url(./__form/_is-opened/popup__form_is-opened.css);
