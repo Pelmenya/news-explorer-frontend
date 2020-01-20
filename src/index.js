@@ -4,10 +4,13 @@ import Form from './js/components/Form';
 import Popup from './js/components/Popup';
 import Header from './js/components/Header';
 import UserApi from './js/api/UserApi';
+import ButtonsListeners from './js/components/ButtonsListeners';
 
 function main() {
   /* Константы */
   const serverUrl = 'http://localhost:3000';
+
+  const popup = new Popup(document.querySelector('.popup'));
 
   const userApi = new UserApi(serverUrl, {
     headers: {
@@ -15,13 +18,33 @@ function main() {
     },
   });
   // Callback's
+
+  /**  Если регистрация успешна создается форма перехода на страницу в режиме
+  *  залогинен
+  */
+  function signUpIsOk() {
+    popup.close();
+    popup.open(
+      document.querySelector('.form-signup-is-ok').content.cloneNode(true),
+      'form-signup-is-ok'
+    );
+    const form = new Form(
+      [
+        {
+          button: document.querySelector('.popup .popup__transition'),
+          event: 'click',
+          callBack: () => {
+            popup.close();
+          },
+        },
+      ],
+      document.querySelector('.popup')
+    );
+  }
   // Логин
   function signInUser(item) {
     return userApi
-      .postSignIn({
-        email: item.email,
-        password: item.password,
-      })
+      .postSignIn(item)
       .then((data) => {
         console.log(data.message);
         // Здесь и записываем localStorage
@@ -33,32 +56,16 @@ function main() {
 
   // Регистрация
   function signUpUser(item) {
-    userApi
-      .postSignIn({
-        email: item.email,
-        password: item.password,
-      })
-      .then((key) => {
-        console.log(key);
+    return userApi
+      .postSignUp(item)
+      .then((data) => {
+        if (data._id) {
+          signUpIsOk();
+        } else return data.message;
       })
       .catch((err) => {});
   }
 
-  const popup = new Popup(document.querySelector('.popup'));
-
-  const registrtion = true;
-  /**  Если регистрация успешна создается форма перехода на страницу в режиме
-  *  залогинен
-  */
-  function registrationUser() {
-    if (registrtion) {
-      popup.close();
-      popup.open(
-        document.querySelector('.form-signup-is-ok').content.cloneNode(true),
-        'form-signup-is-ok'
-      );
-    }
-  }
   /** Callback открывает попап и клонирует в него форму Вход,
    * назначает обработчик(и) события(й) перехода на форме и вешает CallBack
    * на главную кнопку. Итак рекурсивно запускает переход из Вход-Регистрация-Вход
@@ -95,11 +102,11 @@ function main() {
         },
       ],
       document.querySelector('.popup'),
-      registrationUser
+      signUpUser
     );
   }
 
-  const header = new Header([
+  const headerButtons = new ButtonsListeners([
     {
       button: document.querySelector('.header__button_auth'),
       event: 'click',

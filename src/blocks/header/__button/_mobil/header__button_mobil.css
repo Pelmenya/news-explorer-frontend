@@ -3,15 +3,7 @@
   height: 56px;
   font-size: 18px;
   align-items: center;
-  padding-left: 36%;
-  padding-right: 36%;
   margin-top: 22px;
   margin-bottom: 24px;
 }
 
-@media screen and (max-width: 390px) {
-  .header__button_mobil {
-    padding-left: 33%;
-    padding-right: 33%;
-  }
-}

@@ -15,7 +15,6 @@ export default class Form extends ButtonsListeners {
     Object.keys(this.inputs).forEach((index) => {
       this.popupForm.querySelector(`.popup__error_${this.inputs[index].name}`).textContent = '';
     });
-    this._setServerError('');
   }
 
   // Валидация инпута с отображением ошибок
@@ -23,7 +22,7 @@ export default class Form extends ButtonsListeners {
     this.input = input;
     if (this.input.value.length === 0) {
       document.querySelector(errorLabel).textContent = 'Это обязательное поле';
-    } else if (!input.checkValidity()) {
+    } else if (!this.input.checkValidity()) {
       document.querySelector(errorLabel).textContent = ERROR_DESCRIPTION;
     } else {
       document.querySelector(errorLabel).textContent = '';
@@ -52,6 +51,7 @@ export default class Form extends ButtonsListeners {
     );
 
     if (valid) this.popupForm.querySelector('.popup__button').disabled = false;
+    this._setServerError('');
   }
 
   // Сброс в начальное состояние формы
@@ -109,6 +109,6 @@ export default class Form extends ButtonsListeners {
       .then((serverErr) => this._setServerError(serverErr))
       .catch((err) => alert(err));
     event.preventDefault();
-    this.popupForm.reset();
+    this._formReset();
   }
 }
