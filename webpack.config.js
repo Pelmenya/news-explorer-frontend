@@ -15,7 +15,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js',
+    filename: './js/[name].[chunkhash].js',
   },
   module: {
     rules: [
@@ -29,7 +29,14 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
-          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+          isDev
+            ? 'style-loader'
+            : {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                publicPath: '../',
+              },
+            },
           'css-loader',
           'postcss-loader',
         ],
@@ -50,7 +57,7 @@ module.exports = {
               },
               pngquant: {
                 quality: [
-                  0.9,
+                  0.7,
                   0.9,
                 ],
                 speed: 4,
@@ -70,19 +77,25 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css',
+      filename: './css/[name].[contenthash].css',
     }),
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
       template: './src/index.html',
       filename: 'index.html',
+      chunks: [
+        'index',
+      ],
     }),
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
       template: './src/saved-articles/articles.html',
       filename: 'articles.html',
+      chunks: [
+        'articles',
+      ],
     }),
 
     new WebpackMd5Hash(),

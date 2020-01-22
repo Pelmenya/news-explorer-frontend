@@ -7,12 +7,13 @@ export default class UserApi {
     this.signUpUrl = '/signup';
     this.profileUrl = '/users/me';
     this.articlesUrl = '/articles';
+    this.bearer = 'Bearer ';
   }
 
   postSignUp(item) {
     const objJSON = {};
     objJSON.method = 'POST';
-    objJSON.headers = this.headers.headers;
+    objJSON.headers = this.headers;
     objJSON.body = JSON.stringify(item);
     return fetch(this.baseUrl + this.signUpUrl, objJSON)
       .then((res) => res.json())
@@ -22,20 +23,21 @@ export default class UserApi {
   postSignIn(item) {
     const objJSON = {};
     objJSON.method = 'POST';
-    objJSON.headers = this.headers.headers;
+    objJSON.headers = this.headers;
     objJSON.body = JSON.stringify(item);
     return fetch(this.baseUrl + this.signInUrl, objJSON)
       .then((res) => res.json())
       .catch((err) => err);
   }
 
-  getUserMe() {
-    fetch(this.baseUrl + this.profileUrl)
+  getUserMe(key) {
+    const objJSON = {};
+    objJSON.headers = this.headers;
+    objJSON.headers.authorization = this.bearer + key;
+    return fetch(this.baseUrl + this.profileUrl, objJSON)
       .then((res) => res.json())
       .catch((err) => err);
   }
-
-
   /*
   getProfileOwner() {
 

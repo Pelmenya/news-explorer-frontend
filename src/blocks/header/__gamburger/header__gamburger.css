@@ -13,8 +13,4 @@
   .header__gamburger {
     display: block;
   }
-
-  .header__gamburger:active + .header__mobil-menu {
-    display: flex;
-  }
 }

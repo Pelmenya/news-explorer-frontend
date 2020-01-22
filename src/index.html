@@ -14,8 +14,8 @@
       <div class="page-top__glass">
         <header class="header header__shadow-white">
           <div class="header__logo">News Explorer</div>
-          <button class="header__gamburger"></button>
-            <nav class="header__mobil-menu">
+          <button class="header__gamburger header__gamburger_lines"></button>
+            <nav class="header__mobil-menu ">
               <div class="header__mobil-container">
                 <div class="header header__shadow-white">
                   <div class="header__logo">News Explorer</div>
@@ -25,15 +25,15 @@
                   <a href="index.html" class="header__change-ref header__mobil-link">Главная</a>
                   <a href="articles.html" class="header__change-ref header__mobil-link">Сохранённые статьи</a>
                 </div>
-                <button class="button header__button header__button_mobil header__button_auth-mobil">Авторизоваться</button>
                 <button class="button header__button header__button_logout header__button_mobil">
-                  <div class="button__container">
+                  <span class="button__container">
                     <span class="header__button-caption">Грета</span>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path class="header__logout-pic" d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z"/>
                     </svg>
-                  </div>
+                  </span>
                 </button>
+                <button class="button header__button header__button_mobil header__button_auth_mobil">Авторизоваться</button>
               </div>
             </nav>
           <nav class="header__menu">
@@ -71,7 +71,7 @@
       <div class="search-action__loader"></div>
       <p class="search-action__description">Идет поиск новостей...</p>
     </section>
-    <!--div class="page-top">
+    <div class="page-top">
       <div class="page-top__glass">
         <header class="header header__shadow-white">
           <div class="header__logo">News Explorer</div>
@@ -122,7 +122,7 @@
             </div>
           </section>
       </div>
-    </!--div-->
+    </div>
     <section class="search-results">
       <h2 class="title search-results__title">Результаты поиска</h2>
       <div class="cards-list">
@@ -247,7 +247,7 @@
           <span class="popup__error popup__error_emailin"></span>
         </label>
         <label class="popup__field">Пароль
-          <input type="password" name="passwordin" required minlength="6" required class="popup__input popup__input_type_passwordin" placeholder="Введите пароль">
+          <input type="password" name="passwordin" required minlength="6" class="popup__input popup__input_type_passwordin" placeholder="Введите пароль">
           <span class="popup__error popup__error_passwordin"></span>
         </label>
         <span class="popup__error popup__error_server"></span>

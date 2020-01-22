@@ -108,7 +108,7 @@ export default class Form extends ButtonsListeners {
     this.handlerSubmit(this._getInfo())
       .then((serverErr) => this._setServerError(serverErr))
       .catch((err) => alert(err));
-    event.preventDefault();
     this._formReset();
+    event.preventDefault();
   }
 }
