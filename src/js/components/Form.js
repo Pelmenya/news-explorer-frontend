@@ -44,13 +44,13 @@ export default class Form extends ButtonsListeners {
 
   // обработчик ввода в form
   _handlerInputForm() {
-    this.popupForm.querySelector('.popup__button').disabled = true;
+    this.popupForm.querySelector('.button__popup').disabled = true;
 
     const valid = !Object.keys(this.inputs).some(
       (index) => !this.inputs[index].checkValidity() || this.inputs[index].value === '',
     );
 
-    if (valid) this.popupForm.querySelector('.popup__button').disabled = false;
+    if (valid) this.popupForm.querySelector('.button__popup').disabled = false;
     this._setServerError('');
   }
 
@@ -58,7 +58,7 @@ export default class Form extends ButtonsListeners {
   _formReset() {
     this.popupForm.reset();
     this._clearErrorLabel();
-    this.popupForm.querySelector('.popup__button').setAttribute('disabled', true);
+    this.popupForm.querySelector('.button__popup').setAttribute('disabled', true);
   }
 
   // Возвращает объект из полей input
@@ -89,7 +89,7 @@ export default class Form extends ButtonsListeners {
 
     // форма попапа
     this.popupForm = this.popup.querySelector('.popup__form');
-    this.inputs = this.popupForm.querySelectorAll('.popup__input');
+    this.inputs = this.popupForm.querySelectorAll('.input');
 
     this.submitForm = this.submitForm.bind(this);
     this._handlerEntryInput = this._handlerEntryInput.bind(this);

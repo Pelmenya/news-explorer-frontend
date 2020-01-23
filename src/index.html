@@ -170,36 +170,36 @@
     <template class="popup form-signup">
       <form class="popup__form popup__form-signup" name="signup">
         <h3 class="popup__title">Регистрация</h3>
-        <label class="popup__field">Email
-          <input type="email" name="emailup" class="popup__input popup__input_type_emailup" required  pattern="^[A-Za-z]((\.|-)?[A-Za-z0-9]+)+@[A-Za-z0-9](-?[A-Za-z0-9]+)+(\.[A-Za-z]{2,})+$" placeholder="Введите Email">
-          <span class="popup__error popup__error_emailup"></span>
+        <label class="field">Email
+          <input type="email" name="emailup" class="input input_type_emailup" required  pattern="^[A-Za-z]((\.|-)?[A-Za-z0-9]+)+@[A-Za-z0-9](-?[A-Za-z0-9]+)+(\.[A-Za-z]{2,})+$" placeholder="Введите Email">
         </label>
-        <label class="popup__field">Пароль
-          <input type="password" name="passwordup" required  minlength="6" class="popup__input popup__input_type_passwordup" placeholder="Введите пароль">
-          <span class="popup__error popup__error_passwordup"></span>
+        <span class="popup__error popup__error_emailup"></span>
+        <label class="field">Пароль
+          <input type="password" name="passwordup" required  minlength="6" class="input input_type_passwordup" placeholder="Введите пароль">
         </label>
-        <label class="popup__field">Имя
-          <input type="text" name="nameup" required minlength="2" maxlength="30" class="popup__input popup__input_type_nameup" placeholder="Введите своё имя">
-          <span class="popup__error popup__error_nameup"></span>
+        <span class="popup__error popup__error_passwordup"></span>
+        <label class="field">Имя
+          <input type="text" name="nameup" required minlength="2" maxlength="30" class="input input_type_nameup" placeholder="Введите своё имя">
         </label>
+        <span class="popup__error popup__error_nameup"></span>
         <span class="popup__error popup__error_server"></span>
-        <button class="button button__color-shem-blue popup__button popup__button">Зарегистрироваться</button>
+        <button class="button button__color-shem-blue popup__button button__popup">Зарегистрироваться</button>
         <button type="button" class="popup__transition popup__transition_signup"><span class="popup__insert">или </span>Войти</button>
       </form>
     </template>
     <template class="popup form-signin">
       <form class="popup__form popup__form-signin" name="signin">
         <h3 class="popup__title">Вход</h3>
-        <label class="popup__field">Email
-          <input type="email" name="emailin" class="popup__input popup__input_type_emailin" required pattern="^[A-Za-z]((\.|-)?[A-Za-z0-9]+)+@[A-Za-z0-9](-?[A-Za-z0-9]+)+(\.[A-Za-z]{2,})+$" placeholder="Введите Email">
-          <span class="popup__error popup__error_emailin"></span>
+        <label class="field">Email
+          <input type="email" name="emailin" class="input input_type_emailin" required pattern="^[A-Za-z]((\.|-)?[A-Za-z0-9]+)+@[A-Za-z0-9](-?[A-Za-z0-9]+)+(\.[A-Za-z]{2,})+$" placeholder="Введите Email">
         </label>
-        <label class="popup__field">Пароль
-          <input type="password" name="passwordin" required minlength="6" class="popup__input popup__input_type_passwordin" placeholder="Введите пароль">
-          <span class="popup__error popup__error_passwordin"></span>
+        <span class="popup__error popup__error_emailin"></span>
+        <label class="field">Пароль
+          <input name="passwordin" required minlength="6" class="input input_type_passwordin" placeholder="Введите пароль">
         </label>
+        <span class="popup__error popup__error_passwordin"></span>
         <span class="popup__error popup__error_server"></span>
-        <button class="button button__color-shem-blue popup__button">Войти</button>
+        <button class="button button__color-shem-blue button__popup">Войти</button>
         <button type="button" class="popup__transition popup__transition_signin"><span class="popup__insert">или </span>Зарегистрироваться</button>
       </form>
     </template>
