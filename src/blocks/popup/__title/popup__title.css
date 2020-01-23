@@ -8,3 +8,12 @@
   margin-bottom: 22px;
   width: calc(100% - 72px);
 }
+
+@media screen and (max-width: 480px) {
+  .popup__title {
+    width: calc(100% - 34px);
+    margin-top: 16px;
+
+  }
+}
+

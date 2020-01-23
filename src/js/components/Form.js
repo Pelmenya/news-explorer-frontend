@@ -47,7 +47,7 @@ export default class Form extends ButtonsListeners {
     this.popupForm.querySelector('.popup__button').disabled = true;
 
     const valid = !Object.keys(this.inputs).some(
-      (index) => !this.inputs[index].checkValidity() || this.inputs[index].value === ''
+      (index) => !this.inputs[index].checkValidity() || this.inputs[index].value === '',
     );
 
     if (valid) this.popupForm.querySelector('.popup__button').disabled = false;

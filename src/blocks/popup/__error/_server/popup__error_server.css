@@ -3,3 +3,10 @@
   margin-bottom: 8px;
   text-align: center;
 }
+
+@media screen and (max-width: 480px) {
+  .popup__error_server {
+    margin-top: 4px;
+    margin-bottom: 5px;
+  }
+}

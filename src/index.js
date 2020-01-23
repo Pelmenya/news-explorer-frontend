@@ -6,12 +6,31 @@ import Header from './js/components/Header';
 import UserApi from './js/api/UserApi';
 
 function main() {
-  /** Константы
-  * Кнопки */
+  /* Константы */
+  const profileOwner = 'profileOwner';
+
+  const serverUrl = 'http://localhost:3000';
+
+  //localStorage.removeItem(profileOwner)
+  const loginProfile = JSON.parse(localStorage.getItem(profileOwner));
+  console.log(loginProfile)
+
+  /* Кнопки */
+
   const headerGamburgerLinesBtn = document.querySelector('.header .header__gamburger_lines');
   const headerGamburgerCrossBtn = document.querySelector('.header .header__gamburger_cross');
-  const headerAuthBtn = document.querySelector('.header__button_auth');
+  const headerAuthDesktopBtn = document.querySelector('.header__button_auth_desktop');
   const headerAuthMobilBtn = document.querySelector('.header__button_auth_mobil');
+  const headerLogoutDesktopBtn = document.querySelector('.header__button_logout_desktop');
+  const headerLogoutMobilBtn = document.querySelector('.header__button_logout_mobil');
+  const headerLogoutBtnCaptionDesktop = document.querySelector('.header__button-caption_desktop');
+  const headerLogoutBtnCaptionMobil = document.querySelector('.header__button-caption_mobil');
+
+  /* Ссылки */
+  const headerChangeHeadLink = document.querySelector('.header__change_head');
+  const headerChangeSaveLink = document.querySelector('.header__change_save');
+  const headerSaveMobilLink = document.querySelector('.header__mobil-link_save');
+
 
   /* Header menu */
   const headerMobilMenu = document.querySelector('.header__mobil-menu');
@@ -25,9 +44,6 @@ function main() {
   const signUpIsOkForm = document.querySelector('.form-signup-is-ok');
 
   /* Объекты */
-  const serverUrl = 'http://localhost:3000';
-
-  const profileOwner = 'profileOwner';
 
   const popup = new Popup(popUpContainer, headerGamburgerLinesBtn);
 
@@ -35,22 +51,48 @@ function main() {
     'Content-Type': 'application/json; charset=UTF-8',
   });
 
-  const header = new Header([
-    {
-      button: headerGamburgerLinesBtn,
-      event: 'click',
-      callBack: () => {
-        headerMobilMenu.classList.add('header__mobil-menu_is-opened');
+  function renderLoginHeader() {
+    headerLogoutDesktopBtn.classList.add('header__button_is-opened');
+    headerChangeSaveLink.classList.add('header__change_is-opened');
+    headerSaveMobilLink.classList.add('header__mobil-link_is-opened');
+    headerLogoutMobilBtn.classList.add('header__button_is-opened');
+
+    headerLogoutBtnCaptionDesktop.textContent = loginProfile.user.name;
+    headerLogoutBtnCaptionMobil.textContent = loginProfile.user.name;
+  }
+
+  function renderNotLoginHeader() {
+    headerLogoutDesktopBtn.classList.remove('header__button_is-opened');
+    headerChangeSaveLink.classList.remove('header__change_is-opened');
+    headerSaveMobilLink.classList.remove('header__mobil-link_is-opened');
+    headerLogoutMobilBtn.classList.remove('header__button_is-opened');
+
+
+    headerAuthMobilBtn.classList.add('header__button_is-opened');
+    headerAuthDesktopBtn.classList.add('header__button_is-opened');
+    headerChangeHeadLink.classList.add('header__change_is-opened');
+  }
+
+  const header = new Header(
+    [
+      {
+        button: headerGamburgerLinesBtn,
+        event: 'click',
+        callBack: () => {
+          headerMobilMenu.classList.add('header__mobil-menu_is-opened');
+        },
       },
-    },
-    {
-      button: headerGamburgerCrossBtn,
-      event: 'click',
-      callBack: () => {
-        headerMobilMenu.classList.remove('header__mobil-menu_is-opened');
+      {
+        button: headerGamburgerCrossBtn,
+        event: 'click',
+        callBack: () => {
+          headerMobilMenu.classList.remove('header__mobil-menu_is-opened');
+        },
       },
-    },
-  ]);
+    ],
+    loginProfile,
+    { renderLoginHeader, renderNotLoginHeader }
+  );
   // Callbacks
   // Регистрация
   /** Callback открывает попап и клонирует в него форму Регистрация,
@@ -155,12 +197,11 @@ function main() {
 
   header.addListeners([
     {
-      button: headerAuthBtn,
+      button: headerAuthDesktopBtn,
       event: 'click',
       callBack: () => {
         // если не снять фокус, клонирует форму несколько раз при нажатии Enter
-        headerAuthBtn.blur();
-
+        headerAuthDesktopBtn.blur();
         authUser();
       },
     },
