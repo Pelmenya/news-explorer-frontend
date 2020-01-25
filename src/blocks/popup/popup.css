@@ -8,15 +8,13 @@
 @import url(./__transition/_signup/popup__transition_signup.css);
 @import url(./__transition/_signin/popup__transition_signin.css);
 @import url(./__error/popup__error.css);
-@import url(./__input/popup__input.css);
-@import url(./__field/popup__field.css);
 @import url(./__button/popup__button.css);
-@import url(./__error/_server/popup__error_server.css);
-@import url(./__error/_passwordin/popup__error_passwordin.css);
 @import url(./__error/_nameup/popup__error_nameup.css);
+@import url(./__error/_passwordin/popup__error_passwordin.css);
+@import url(./__error/_server/popup__error_server.css);
 @import url(./__insert/popup__insert.css);
 @import url(./_is-opened/popup_is-opened.css);
-
+@import url(./__form/_is-opened/popup__form_is-opened.css);
 
 
 
@@ -38,8 +36,8 @@
 
 @media screen and (max-width: 1050px) {
   .popup {
-    height: calc(100vh - 264px);
-    padding-bottom: 264px;
+    height: calc(100vh - 290px);
+    padding-bottom: 290px;
   }
 }
 

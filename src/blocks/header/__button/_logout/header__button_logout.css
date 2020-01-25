@@ -1,16 +1,12 @@
 .header__button_logout {
-  width: 112px;
   display: flex;
-  padding-left:19px;
-  padding-right:19px;
   align-items: center;
+  display: none;
 }
 
 
-@media screen and (max-width: 792px) {
+@media screen and (max-width: 480px) {
   .header__button_logout {
-    width: 100px;
-    padding-left:15px;
-    padding-right:15px;
+    flex-direction: column;
   }
 }

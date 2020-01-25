@@ -1,3 +1,7 @@
-.popup__error_nameup {
-  display: initial;
+@media screen and (max-width: 480px) {
+  .popup__error_nameup {
+    display: initial;
+    margin-top: 3px;
+    margin-bottom: 0px;
+  }
 }
