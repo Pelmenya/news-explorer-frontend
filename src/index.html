@@ -4,9 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>NewsExplorer</title>
+  <meta name="keywords" content="Новости, поиск новостей, сервис для поиска"/>
+  <meta name="description" content="Сервис для поиска и хранения новостей"/>
+  <meta name="author" content="Dmitry Lyapin"/>
   <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.index.css%>">
+  <link rel="shortcut icon" href="<%=require('./images/favicon.png')%>" type="images/png">
   <link rel="icon" href="<%=require('./images/favicon.png')%>" type="images/png">
+  <title>NewsExplorer && Главная страница</title>
 </head>
 <body>
   <div class="page">
@@ -15,7 +19,7 @@
         <header class="header header__shadow-white">
           <div class="header__logo">News Explorer</div>
           <button class="header__gamburger header__gamburger_lines"></button>
-            <nav class="header__mobil-menu ">
+            <nav class="header__mobil-menu">
               <div class="header__mobil-container">
                 <div class="header header__shadow-white">
                   <div class="header__logo">News Explorer</div>
@@ -170,32 +174,32 @@
     <template class="popup form-signup">
       <form class="popup__form popup__form-signup" name="signup">
         <h3 class="popup__title">Регистрация</h3>
-        <label class="field">Email
+        <label class="popup__field">Email
           <input type="email" name="emailup" class="input input_type_emailup" required  pattern="^[A-Za-z]((\.|-)?[A-Za-z0-9]+)+@[A-Za-z0-9](-?[A-Za-z0-9]+)+(\.[A-Za-z]{2,})+$" placeholder="Введите Email">
         </label>
         <span class="popup__error popup__error_emailup"></span>
-        <label class="field">Пароль
+        <label class="popup__field">Пароль
           <input type="password" name="passwordup" required  minlength="6" class="input input_type_passwordup" placeholder="Введите пароль">
         </label>
         <span class="popup__error popup__error_passwordup"></span>
-        <label class="field">Имя
+        <label class="popup__field">Имя
           <input type="text" name="nameup" required minlength="2" maxlength="30" class="input input_type_nameup" placeholder="Введите своё имя">
         </label>
         <span class="popup__error popup__error_nameup"></span>
         <span class="popup__error popup__error_server"></span>
-        <button class="button button__color-shem-blue popup__button button__popup">Зарегистрироваться</button>
+        <button class="button button__color-shem-blue button__popup">Зарегистрироваться</button>
         <button type="button" class="popup__transition popup__transition_signup"><span class="popup__insert">или </span>Войти</button>
       </form>
     </template>
     <template class="popup form-signin">
       <form class="popup__form popup__form-signin" name="signin">
         <h3 class="popup__title">Вход</h3>
-        <label class="field">Email
+        <label class="popup__field">Email
           <input type="email" name="emailin" class="input input_type_emailin" required pattern="^[A-Za-z]((\.|-)?[A-Za-z0-9]+)+@[A-Za-z0-9](-?[A-Za-z0-9]+)+(\.[A-Za-z]{2,})+$" placeholder="Введите Email">
         </label>
         <span class="popup__error popup__error_emailin"></span>
-        <label class="field">Пароль
-          <input name="passwordin" required minlength="6" class="input input_type_passwordin" placeholder="Введите пароль">
+        <label class="popup__field">Пароль
+          <input type="password" name="passwordin" required minlength="6" class="input input_type_passwordin" placeholder="Введите пароль">
         </label>
         <span class="popup__error popup__error_passwordin"></span>
         <span class="popup__error popup__error_server"></span>

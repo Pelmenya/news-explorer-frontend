@@ -2,7 +2,6 @@ import ButtonsListeners from './ButtonsListeners';
 
 export default class Form extends ButtonsListeners {
   // Защищенные методы
-
   // Добавление слушателей для inputs
   _initalInputsListeners() {
     Object.keys(this.inputs).forEach((index) => {

@@ -5,8 +5,8 @@ export default class Header extends ButtonsListeners {
     super(props);
 
     this.isLoggedIn = isLoggedIn;
-    this._renderLoginHeader = callBacks.renderLoginHeader;
-    this._renderNotLoginHeader = callBacks.renderNotLoginHeader;
+    this.renderLoginHeader = callBacks.renderLoginHeader;
+    this.renderNotLoginHeader = callBacks.renderNotLoginHeader;
 
     this.render = this.render.bind(this);
 
@@ -17,7 +17,7 @@ export default class Header extends ButtonsListeners {
     if (props) {
       this.name = props.name;
       this.isLoggedIn = props.isLoggedIn;
-      this._renderLoginHeader();
-    } else this._renderNotLoginHeader();
+      this.renderLoginHeader();
+    } else this.renderNotLoginHeader();
   }
 }
