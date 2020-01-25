@@ -4,15 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>NewsExplorer</title>
-  <link rel="stylesheet" href="./css/articles.56b3ea94afcd114d9c16.css?e66dda4c159d670e9704">
+  <meta name="keywords" content="Новости, поиск новостей, сервис для поиска"/>
+  <meta name="description" content="Сервис для поиска и хранения нужных новостей"/>
+  <meta name="author" content="Dmitry Lyapin"/>
+  <link rel="stylesheet" href="./css/articles.b7b6bebe24be5d2e2b77.css?b8cfceb272de2059d679">
+  <link rel="shortcut icon" href="./images/favicon.png" type="images/png">
   <link rel="icon" href="./images/favicon.png" type="images/png">
+  <title>NewsExplorer && Страница Ваших избранных статей</title>
 </head>
 <body>
   <div class="page articles-root">
     <header class="header header__shadow-grey header__fixed">
       <div class="header__logo">News Explorer</div>
-      <button class="header__gamburger header__gamburger_black"></button>
+      <button class="header__gamburger header__gamburger_black header__gamburger_lines"></button>
       <nav class="header__mobil-menu header__mobil-menu_color-white">
         <div class="header__mobil-container">
           <div class="header header__shadow-white">
@@ -20,26 +24,28 @@
             <button class="header__gamburger header__gamburger_cross"></button>
           </div>
           <div class="header__mobil-links">
-            <a href="index.html" class="header__change-ref header__mobil-link">Главная</a>
-            <a href="articles.html" class="header__change-ref header__mobil-link">Сохранённые статьи</a>
+            <a href="index.html" class="header__change-ref header__mobil-link header__mobil-link_head header__mobil-link_is-opened">Главная</a>
+            <a href="articles.html" class="header__change-ref header__mobil-link header__mobil-link_save header__mobil-link_is-opened">Сохранённые статьи</a>
           </div>
-          <button class="button header__button header__button_logout header__button_mobil">
-            <span class="header__button-caption">Грета </span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path class="header__logout-pic" d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z"/>
-            </svg>
+          <button class="button header__button header__button_logout header__button_mobil header__button_logout_mobil">
+            <span class="button__container">
+              <span class="header__button-caption header__button-caption_mobil">Грета </span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="header__logout-pic" d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z"/>
+              </svg>
+            </span>
           </button>
         </div>
       </nav>
       <nav class="header__menu">
-        <div class="header__change header__change_is-inactive header__change_is-inactive_color-black">
+        <div class="header__change header__change_is-inactive header__change_is-inactive_color-black header__change_is-opened">
           <a href="index.html" class="header__change-ref">Главная</a>
         </div>
-        <div class="header__change header__change_underline-black">
+        <div class="header__change header__change_underline-black header__change_is-opened">
           <a href="articles.html" class="header__change-ref">Сохранённые статьи</a>
         </div>
-        <button class="button header__button header__button_logout header__button_color-black">
-          <span class="header__button-caption">Грета</span>
+        <button class="button header__button header__button_logout header__button_color-black header__button_logout_desktop header__button_is-opened">
+          <span class="header__button-caption header__button-caption_desktop">Грета</span>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path class="header__logout-pic header__logout-pic_black" d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z"/>
           </svg>
@@ -160,6 +166,6 @@
       </div>
     </footer>
   </div>
-    <script src="./js/articles.811638de60b0b948c92f.js?e66dda4c159d670e9704"></script>
+    <script src="./js/articles.a2cf6afe491d88b427ca.js?b8cfceb272de2059d679"></script>
 </body>
 </html>
