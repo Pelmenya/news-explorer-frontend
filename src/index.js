@@ -9,11 +9,12 @@ function main() {
   /* Константы */
   const profileOwner = 'profileOwner';
 
-  const serverUrl = 'http://localhost:3000';
+//  const serverUrl = 'http://localhost:3000';
 
-  //localStorage.removeItem(profileOwner)
-  const loginProfile = JSON.parse(localStorage.getItem(profileOwner));
-  console.log(loginProfile)
+  const serverUrl = 'https://api.news-service.pro';
+
+  //
+  let loginProfile = JSON.parse(localStorage.getItem(profileOwner));
 
   /* Кнопки */
 
@@ -30,7 +31,6 @@ function main() {
   const headerChangeHeadLink = document.querySelector('.header__change_head');
   const headerChangeSaveLink = document.querySelector('.header__change_save');
   const headerSaveMobilLink = document.querySelector('.header__mobil-link_save');
-
 
   /* Header menu */
   const headerMobilMenu = document.querySelector('.header__mobil-menu');
@@ -59,6 +59,9 @@ function main() {
 
     headerLogoutBtnCaptionDesktop.textContent = loginProfile.user.name;
     headerLogoutBtnCaptionMobil.textContent = loginProfile.user.name;
+
+    headerAuthMobilBtn.classList.remove('header__button_is-opened');
+    headerAuthDesktopBtn.classList.remove('header__button_is-opened');
   }
 
   function renderNotLoginHeader() {
@@ -66,7 +69,6 @@ function main() {
     headerChangeSaveLink.classList.remove('header__change_is-opened');
     headerSaveMobilLink.classList.remove('header__mobil-link_is-opened');
     headerLogoutMobilBtn.classList.remove('header__button_is-opened');
-
 
     headerAuthMobilBtn.classList.add('header__button_is-opened');
     headerAuthDesktopBtn.classList.add('header__button_is-opened');
@@ -87,6 +89,22 @@ function main() {
         event: 'click',
         callBack: () => {
           headerMobilMenu.classList.remove('header__mobil-menu_is-opened');
+        },
+      },
+      {
+        button: headerLogoutDesktopBtn,
+        event: 'click',
+        callBack: () => {
+          localStorage.removeItem(profileOwner);
+          renderNotLoginHeader();
+        },
+      },
+      {
+        button: headerLogoutMobilBtn,
+        event: 'click',
+        callBack: () => {
+          localStorage.removeItem(profileOwner);
+          renderNotLoginHeader();
         },
       },
     ],
@@ -118,10 +136,10 @@ function main() {
                   profileOwner,
                   JSON.stringify({ ...JSON.parse(localStorage.getItem(profileOwner)), user })
                 );
+                loginProfile = JSON.parse(localStorage.getItem(profileOwner));
               })
               .then(() => {
-                //header.render();
-
+                header.render(loginProfile);
                 popup.close();
               })
               .catch((err) => err);

@@ -2,10 +2,9 @@
 @import url(../vendor/fonts.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/page-top/page-top.css);
-@import url(../blocks/field/field.css);
 @import url(../blocks/input/input.css);
-@import url(../blocks/popup/popup.css);
 @import url(../blocks/button/button.css);
+@import url(../blocks/popup/popup.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/search/search.css);
 @import url(../blocks/title/title.css);
