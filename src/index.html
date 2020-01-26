@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.index.css%>">
   <link rel="shortcut icon" href="<%=require('./images/favicon.png')%>" type="images/png">
   <link rel="icon" href="<%=require('./images/favicon.png')%>" type="images/png">
-  <title>NewsExplorer && Главная страница</title>
+  <title>NewsExplorer ~ Главная страница</title>
 </head>
 <body>
   <div class="page">
@@ -129,7 +129,11 @@
       <button class="button button__color-shem-white">Показать еще</button>
     </section>
     <section class="author">
-      <img src="<%=require('./images/avatar.png')%>" class="author__avatar" alt="Разработчик сайта">
+      <picture>
+        <source media="(max-width: 400px)" srcset="<%=require('./images/avatar400.png')%>"/>
+        <source media="(max-width: 800px)" srcset="<%=require('./images/avatar800.png')%>"/>
+        <img src="<%=require('./images/avatar1200.png')%>" class="author__avatar" alt="Разработчик сайта">
+      </picture>
       <div class="author__about">
         <h2 class="author__title">Об авторе</h2>
         <p class="author__description">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут,

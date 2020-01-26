@@ -2,16 +2,16 @@ import '../pages/articles.css';
 
 import Header from '../js/components/Header';
 
+//
+const profileOwner = 'profileOwner';
+const loginProfile = JSON.parse(localStorage.getItem(profileOwner));
+
 
 function main() {
-
   /* Константы */
-  const profileOwner = 'profileOwner';
 
-  const serverUrl = 'http://localhost:3000';
+  // const serverUrl = 'http://localhost:3000';
 
-  //
-  const loginProfile = JSON.parse(localStorage.getItem(profileOwner));
 
   /* Кнопки */
 
@@ -40,7 +40,6 @@ function main() {
     headerLogoutMobilBtn.classList.remove('header__button_is-opened');
     headerChangeHeadLink.classList.add('header__change_is-opened');
   }
-
 
   const header = new Header(
     [
@@ -78,10 +77,10 @@ function main() {
       },
     ],
     loginProfile,
-    { renderLoginHeader, renderNotLoginHeader }
+    { renderLoginHeader, renderNotLoginHeader },
   );
-
-
 }
 
-main();
+if (loginProfile) {
+  main();
+} else window.location.href = 'index.html';

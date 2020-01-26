@@ -8,8 +8,7 @@ import UserApi from './js/api/UserApi';
 function main() {
   /* Константы */
   const profileOwner = 'profileOwner';
-
-//  const serverUrl = 'http://localhost:3000';
+  // const serverUrl = 'http://localhost:3000';
 
   const serverUrl = 'https://api.news-service.pro';
 
@@ -109,7 +108,7 @@ function main() {
       },
     ],
     loginProfile,
-    { renderLoginHeader, renderNotLoginHeader }
+    { renderLoginHeader, renderNotLoginHeader },
   );
   // Callbacks
   // Регистрация
@@ -134,7 +133,7 @@ function main() {
                 JSON.parse(localStorage.getItem(profileOwner));
                 localStorage.setItem(
                   profileOwner,
-                  JSON.stringify({ ...JSON.parse(localStorage.getItem(profileOwner)), user })
+                  JSON.stringify({ ...JSON.parse(localStorage.getItem(profileOwner)), user }),
                 );
                 loginProfile = JSON.parse(localStorage.getItem(profileOwner));
               })
@@ -164,7 +163,7 @@ function main() {
           },
         ],
         popUpContainer,
-        signInUser
+        signInUser,
       );
     }
 
@@ -179,7 +178,7 @@ function main() {
             callBack: openFormSignIn,
           },
         ],
-        popUpContainer
+        popUpContainer,
       );
     }
 
@@ -206,7 +205,7 @@ function main() {
           },
         ],
         popUpContainer,
-        signUpUser
+        signUpUser,
       );
     }
 

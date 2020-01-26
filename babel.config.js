@@ -4,7 +4,8 @@ const presets = [
     {
       targets: {
         esmodules: true,
-        ie: '11',
+        android: '67',
+        ios: '12',
         edge: '17',
         firefox: '60',
         chrome: '64',
