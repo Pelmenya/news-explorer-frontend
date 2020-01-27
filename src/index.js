@@ -4,13 +4,21 @@ import Form from './js/components/Form';
 import Popup from './js/components/Popup';
 import Header from './js/components/Header';
 import UserApi from './js/api/UserApi';
+import NewsApi from './js/api/NewsApi';
+import FormSearchNews from './js/components/FormSearchNews';
+import Section from './js/components/Section';
+
+const {
+  profileOwner,
+  serverUrlUsers,
+  serverUrlNews,
+  apiKeyNews,
+  pageSizeNews,
+  numberOfDays,
+} = require('./js/constants/constants');
 
 function main() {
   /* Константы */
-  const profileOwner = 'profileOwner';
-  // const serverUrl = 'http://localhost:3000';
-
-  const serverUrl = 'https://api.news-service.pro';
 
   //
   let loginProfile = JSON.parse(localStorage.getItem(profileOwner));
@@ -41,12 +49,50 @@ function main() {
   const signInForm = document.querySelector('.form-signin');
   const signUpForm = document.querySelector('.form-signup');
   const signUpIsOkForm = document.querySelector('.form-signup-is-ok');
+  const searchForm = document.querySelector('.search__form');
+
+  /* Action */
+  const searchNewsAct = new Section({
+    section: document.querySelector('.search-news'),
+    classOpened: 'search-action_is-opened',
+  });
+
+  const searchNothingAct = new Section({
+    section: document.querySelector('.search-nothing'),
+    classOpened: 'search-action_is-opened',
+  });
 
   /* Объекты */
 
   const popup = new Popup(popUpContainer, headerGamburgerLinesBtn);
 
-  const userApi = new UserApi(serverUrl, {
+  const newsApi = new NewsApi({
+    serverUrlNews,
+    apiKeyNews,
+    pageSizeNews,
+    numberOfDays,
+  });
+
+  function searchNews(keyword) {
+    searchNothingAct.close();
+    searchNewsAct.open();
+    newsApi
+      .getNews(keyword)
+      .then((data) => {
+        if (String(data.totalResults) === '0') {
+          searchNewsAct.close();
+          searchNothingAct.open();
+        } else {
+          searchNewsAct.close();
+          console.log(data);
+        }
+      })
+      .catch((err) => alert(err));
+  }
+
+  const search = new FormSearchNews(searchForm, searchNews);
+
+  const userApi = new UserApi(serverUrlUsers, {
     'Content-Type': 'application/json; charset=UTF-8',
   });
 
@@ -108,7 +154,7 @@ function main() {
       },
     ],
     loginProfile,
-    { renderLoginHeader, renderNotLoginHeader },
+    { renderLoginHeader, renderNotLoginHeader }
   );
   // Callbacks
   // Регистрация
@@ -133,7 +179,7 @@ function main() {
                 JSON.parse(localStorage.getItem(profileOwner));
                 localStorage.setItem(
                   profileOwner,
-                  JSON.stringify({ ...JSON.parse(localStorage.getItem(profileOwner)), user }),
+                  JSON.stringify({ ...JSON.parse(localStorage.getItem(profileOwner)), user })
                 );
                 loginProfile = JSON.parse(localStorage.getItem(profileOwner));
               })
@@ -163,7 +209,7 @@ function main() {
           },
         ],
         popUpContainer,
-        signInUser,
+        signInUser
       );
     }
 
@@ -178,7 +224,7 @@ function main() {
             callBack: openFormSignIn,
           },
         ],
-        popUpContainer,
+        popUpContainer
       );
     }
 
@@ -205,7 +251,7 @@ function main() {
           },
         ],
         popUpContainer,
-        signUpUser,
+        signUpUser
       );
     }
 
