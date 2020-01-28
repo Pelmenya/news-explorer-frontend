@@ -7,6 +7,8 @@ import UserApi from './js/api/UserApi';
 import NewsApi from './js/api/NewsApi';
 import FormSearchNews from './js/components/FormSearchNews';
 import Section from './js/components/Section';
+import CardList from './js/components/CardList';
+import Card from './js/components/Card';
 
 const {
   profileOwner,
@@ -74,7 +76,7 @@ function main() {
     classOpened: 'popup_is-opened',
   });
 
-  /** Объект контейнера для отображения поиска всех действий при поиске новостей */
+  /** Объект контейнера для отображения всех действий при поиске новостей */
   const searchAct = new Container({
     container: searchActionContainer,
     classOpened: 'search-action_is-opened',
@@ -124,6 +126,7 @@ function main() {
           if (String(data.totalResults) !== '0') {
             searchAct.close();
             searchResultsAct.open();
+            const cardList = new CardList(document.querySelector('.cards-list'), data.articles);
             return data;
           }
         }
@@ -213,7 +216,7 @@ function main() {
   /** Callback открывает попап и клонирует в него форму Регистрация,
    * назначает обработчик(и) события(й) перехода на форме и вешает CallBack
    * на главную кнопку. Итак рекурсивно запускает переход из Вход-Регистрация-Вход
-   * и т.д.
+   * и т.д. Сценарий аутентификации.
    * CallBack
   */
   function authUser() {
