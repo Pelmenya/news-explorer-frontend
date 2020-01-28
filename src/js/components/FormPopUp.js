@@ -1,6 +1,6 @@
 import ButtonsListeners from './ButtonsListeners';
 
-export default class Form extends ButtonsListeners {
+export default class FormPopUp extends ButtonsListeners {
   // Защищенные методы
   // Добавление слушателей для inputs
   _initalInputsListeners() {

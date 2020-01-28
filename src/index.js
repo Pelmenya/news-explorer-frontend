@@ -1,7 +1,7 @@
 import './pages/index.css';
 
-import Form from './js/components/Form';
-import Popup from './js/components/Popup';
+import FormPopUp from './js/components/FormPopUp';
+import Container from './js/components/Container';
 import Header from './js/components/Header';
 import UserApi from './js/api/UserApi';
 import NewsApi from './js/api/NewsApi';
@@ -15,6 +15,8 @@ const {
   apiKeyNews,
   pageSizeNews,
   numberOfDays,
+  ERROR_SERVER_NEWS,
+  ERROR_SERVER_NEWS_DESCRIPTION,
 } = require('./js/constants/constants');
 
 function main() {
@@ -42,30 +44,43 @@ function main() {
   /* Header menu */
   const headerMobilMenu = document.querySelector('.header__mobil-menu');
 
-  /* Popup */
+  /* Контейнеры */
   const popUpContainer = document.querySelector('.popup');
+  const searchActionContainer = document.querySelector('.search-action');
 
   /* Формы */
-  const signInForm = document.querySelector('.form-signin');
-  const signUpForm = document.querySelector('.form-signup');
-  const signUpIsOkForm = document.querySelector('.form-signup-is-ok');
+  const signInForm = document.querySelector('.form-signin'); // <template>
+  const signUpForm = document.querySelector('.form-signup'); // <template>
+  const signUpIsOkForm = document.querySelector('.form-signup-is-ok'); // <template>
   const searchForm = document.querySelector('.search__form');
 
   /* Action */
-  const searchNewsAct = new Section({
-    section: document.querySelector('.search-news'),
-    classOpened: 'search-action_is-opened',
-  });
+  const searchNewsTemplate = document.querySelector('.search-news'); // лоадер при поиске новостей
+  const searchNothingTemplate = document.querySelector('.search-nothing'); // ничего не найдено
 
-  const searchNothingAct = new Section({
-    section: document.querySelector('.search-nothing'),
-    classOpened: 'search-action_is-opened',
+  const searchResultsAct = new Section({
+    section: document.querySelector('.search-results'),
+    classOpened: 'search-results_is-opened',
   });
 
   /* Объекты */
 
-  const popup = new Popup(popUpContainer, headerGamburgerLinesBtn);
+  /* Объекты контейнеров */
 
+  /** Объект контейнера для отображения форм аутентификации */
+  const popup = new Container({
+    container: popUpContainer,
+    element: headerGamburgerLinesBtn,
+    classOpened: 'popup_is-opened',
+  });
+
+  /** Объект контейнера для отображения поиска всех действий при поиске новостей */
+  const searchAct = new Container({
+    container: searchActionContainer,
+    classOpened: 'search-action_is-opened',
+  });
+
+  /** Объект для работы с api News */
   const newsApi = new NewsApi({
     serverUrlNews,
     apiKeyNews,
@@ -73,29 +88,51 @@ function main() {
     numberOfDays,
   });
 
-  function searchNews(keyword) {
-    searchNothingAct.close();
-    searchNewsAct.open();
-    newsApi
-      .getNews(keyword)
-      .then((data) => {
-        if (String(data.totalResults) === '0') {
-          searchNewsAct.close();
-          searchNothingAct.open();
-        } else {
-          searchNewsAct.close();
-          console.log(data);
-        }
-      })
-      .catch((err) => alert(err));
-  }
-
-  const search = new FormSearchNews(searchForm, searchNews);
-
+  /** Объект для работы с api Users */
   const userApi = new UserApi(serverUrlUsers, {
     'Content-Type': 'application/json; charset=UTF-8',
   });
 
+  /** Функция для отображения ошибки с сервера News */
+  function errorNewsServer(error = '') {
+    if (searchAct.isFull) searchAct.close();
+    searchAct.open(searchNothingTemplate.content.cloneNode(true), 'search-nothing');
+    document.querySelector('.search-action__search-nothing .search-action__title').textContent =
+      error.message;
+    document.querySelector(
+      '.search-action__search-nothing .search-action__description'
+    ).textContent = ERROR_SERVER_NEWS_DESCRIPTION;
+  }
+
+  /** Callback для поиска новостей по ключевому слову */
+  function searchNews(keyword) {
+    if (searchAct.isFull) searchAct.close();
+    searchAct.open(searchNewsTemplate.content.cloneNode(true), 'search-news');
+    newsApi
+      .getNews(keyword)
+      .then((data) => {
+        if (data.status) {
+          if (String(data.status) === 'error') {
+            errorNewsServer();
+            return data;
+          }
+          if (String(data.totalResults) === '0') {
+            searchAct.close();
+            searchAct.open(searchNothingTemplate.content.cloneNode(true), 'search-nothing');
+            return data;
+          }
+          if (String(data.totalResults) !== '0') {
+            searchAct.close();
+            searchResultsAct.open();
+            return data;
+          }
+        }
+        return Promise.reject(new Error(ERROR_SERVER_NEWS));
+      })
+      .catch((err) => errorNewsServer(err));
+  }
+
+  /** CallBack отображения хёдера, если пользователь залогинен */
   function renderLoginHeader() {
     headerLogoutDesktopBtn.classList.add('header__button_is-opened');
     headerChangeSaveLink.classList.add('header__change_is-opened');
@@ -109,6 +146,7 @@ function main() {
     headerAuthDesktopBtn.classList.remove('header__button_is-opened');
   }
 
+  /** CallBack отображения хёдера, если пользователь не залогинен */
   function renderNotLoginHeader() {
     headerLogoutDesktopBtn.classList.remove('header__button_is-opened');
     headerChangeSaveLink.classList.remove('header__change_is-opened');
@@ -120,8 +158,21 @@ function main() {
     headerChangeHeadLink.classList.add('header__change_is-opened');
   }
 
+  /** Объект формы поиска новостей */
+  const searchFormObj = new FormSearchNews(searchForm, searchNews);
+
+  /** Объект хёдера, в основном управляет всей логикой приложения.
+  * Инициализирует начальную страницу.
+  * Отрисовывает шапки страниц и всплывающих меню
+  * */
+
   const header = new Header(
     [
+      {
+        button: document.querySelector('.popup__close'),
+        event: 'click',
+        callBack: () => popup.close(),
+      },
       {
         button: headerGamburgerLinesBtn,
         event: 'click',
@@ -156,15 +207,16 @@ function main() {
     loginProfile,
     { renderLoginHeader, renderNotLoginHeader }
   );
+
   // Callbacks
   // Регистрация
   /** Callback открывает попап и клонирует в него форму Регистрация,
    * назначает обработчик(и) события(й) перехода на форме и вешает CallBack
    * на главную кнопку. Итак рекурсивно запускает переход из Вход-Регистрация-Вход
    * и т.д.
+   * CallBack
   */
   function authUser() {
-    //
     localStorage.removeItem(profileOwner);
     function signInUser(item) {
       return userApi
@@ -197,7 +249,7 @@ function main() {
     function openFormSignIn() {
       popup.close();
       popup.open(signInForm.content.cloneNode(true), 'form-signin');
-      const formObj = new Form(
+      const formObj = new FormPopUp(
         [
           {
             button: document.querySelector('.popup .popup__transition'),
@@ -216,7 +268,7 @@ function main() {
     function openFormSignUpIsOk() {
       popup.close();
       popup.open(signUpIsOkForm.content.cloneNode(true), 'form-signup-is-ok');
-      const formObj = new Form(
+      const formObj = new FormPopUp(
         [
           {
             button: document.querySelector('.popup .popup__transition'),
@@ -242,7 +294,7 @@ function main() {
 
     function openFormSignUp() {
       popup.open(signUpForm.content.cloneNode(true), 'form-signup');
-      const formObj = new Form(
+      const formObj = new FormPopUp(
         [
           {
             button: document.querySelector('.popup .popup__transition'),

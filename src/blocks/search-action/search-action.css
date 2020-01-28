@@ -4,6 +4,7 @@
 @import url(./__title/_is-close/search-action__title_is-close.css);
 @import url(./__pic/search-action__pic.css);
 @import url(./_is-opened/search-action_is-opened.css);
+@import url(./__content/search-action__content.css);
 
 
 .search-action {
