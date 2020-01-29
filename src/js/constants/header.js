@@ -56,7 +56,7 @@ const header = new Header(
     },
   ],
   getProfile(profileOwner),
-  { renderLoginHeader, renderNotLoginHeader }
+  { renderLoginHeader, renderNotLoginHeader },
 );
 
 export default header;

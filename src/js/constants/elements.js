@@ -1,4 +1,5 @@
 /** Кнопки */
+const cardListBtn = document.querySelector('.card-list__button');
 const headerGamburgerLinesBtn = document.querySelector('.header .header__gamburger_lines');
 const headerGamburgerCrossBtn = document.querySelector('.header .header__gamburger_cross');
 const headerAuthDesktopBtn = document.querySelector('.header__button_auth_desktop');
@@ -32,6 +33,7 @@ const searchNothingTemplate = document.querySelector('.search-nothing'); // ни
 
 export {
   /** Кнопки */
+  cardListBtn,
   headerGamburgerLinesBtn,
   headerGamburgerCrossBtn,
   headerAuthDesktopBtn,

@@ -11,10 +11,9 @@ import { profileOwner } from './js/constants/constants';
 import { usersApi, newsApi } from './js/constants/api';
 import { popup, searchAct } from './js/constants/containers';
 import header from './js/constants/header';
-
 import { ERROR_SERVER_NEWS } from './js/constants/errors';
-
 import {
+  cardListBtn,
   headerAuthDesktopBtn,
   headerAuthMobilBtn,
   headerMobilMenu,
@@ -35,6 +34,24 @@ function main() {
     classOpened: 'search-results_is-opened',
   });
 
+  function viewCards(articles) {
+    searchResultsAct.open();
+    const cardList = new CardList(
+      [
+        {
+          button: cardListBtn,
+          event: 'click',
+          callBack: () => {
+
+
+          },
+        },
+      ],
+      document.querySelector('.cards-list'),
+      articles,
+    );
+  }
+
   /** Callback для поиска новостей по ключевому слову */
   function searchNews(keyword) {
     if (searchAct.isFull) searchAct.close();
@@ -54,8 +71,7 @@ function main() {
           }
           if (String(data.totalResults) !== '0') {
             searchAct.close();
-            searchResultsAct.open();
-            const cardList = new CardList(document.querySelector('.cards-list'), data.articles);
+            viewCards(data.articles);
             return data;
           }
         }
@@ -66,7 +82,7 @@ function main() {
 
   /** Объект формы поиска новостей */
   const searchFormObj = new FormSearchNews(searchForm, searchNews);
-  // Callbacks
+
   // Регистрация
   /** Callback открывает попап и клонирует в него форму Регистрация,
    * назначает обработчик(и) события(й) перехода на форме и вешает CallBack

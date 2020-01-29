@@ -1,7 +1,9 @@
 import Card from './Card';
+import ButtonsListeners from './ButtonsListeners';
 
-export default class CardList {
-  constructor(container, initialCards, callBacks = null) {
+export default class CardList extends ButtonsListeners {
+  constructor(props, container, initialCards, callBacks = null) {
+    super(props);
     this.cardListContainer = container;
     this.cards = initialCards;
     this.render();
