@@ -1,4 +1,7 @@
 import ButtonsListeners from './ButtonsListeners';
+import {
+  ERROR_TEXT, ERROR_EMAIL, ERROR_PASSWORD, ERROR_REQUIRED_FIELD,
+} from '../constants/errors';
 
 export default class FormPopUp extends ButtonsListeners {
   // Защищенные методы
@@ -20,7 +23,7 @@ export default class FormPopUp extends ButtonsListeners {
   _validInput(input, errorLabel, ERROR_DESCRIPTION) {
     this.input = input;
     if (this.input.value.length === 0) {
-      document.querySelector(errorLabel).textContent = 'Это обязательное поле';
+      document.querySelector(errorLabel).textContent = ERROR_REQUIRED_FIELD;
     } else if (!this.input.checkValidity()) {
       document.querySelector(errorLabel).textContent = ERROR_DESCRIPTION;
     } else {
@@ -82,9 +85,9 @@ export default class FormPopUp extends ButtonsListeners {
     this.handlerSubmit = handlerSubmit;
 
     // текст ошибок в input
-    this.ERROR_TEXT = 'Должно быть от 2 до 30 символов';
-    this.ERROR_EMAIL = 'Неправильный формат email';
-    this.ERROR_PASSWORD = 'Неправильный пароль. Должен быть не меньше 6 символов';
+    this.ERROR_TEXT = ERROR_TEXT;
+    this.ERROR_EMAIL = ERROR_EMAIL;
+    this.ERROR_PASSWORD = ERROR_PASSWORD;
 
     // форма попапа
     this.popupForm = this.popup.querySelector('.popup__form');
@@ -106,7 +109,7 @@ export default class FormPopUp extends ButtonsListeners {
   submitForm(event) {
     this.handlerSubmit(this._getInfo())
       .then((serverErr) => this._setServerError(serverErr))
-      .catch((err) => alert(err));
+      .catch((err) => err);
     this._formReset();
     event.preventDefault();
   }

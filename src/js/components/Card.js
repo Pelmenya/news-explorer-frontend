@@ -1,10 +1,9 @@
-import createElementDOM from '../utilits/functions';
+import { createElementDOM } from '../utilits/functions';
 
 export default class Card {
   constructor(item) {
     this.cardParametrs = Object.assign(item);
-    console.log(this.cardParametrs);
-
+    // console.log(this.cardParametrs);
     this.card = this.createCard();
   }
 
@@ -33,10 +32,12 @@ export default class Card {
         createElementDOM(
           'div',
           'card__pic',
-          false,
+          '',
           `background-image: url(${this.cardParametrs.urlToImage});`
-        )
+        ),
       );
+    } else {
+      articleCard.appendChild(createElementDOM('div', 'card__pic'));
     }
 
     return articleCard;

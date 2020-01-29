@@ -1,4 +1,4 @@
-export default class UserApi {
+export default class UsersApi {
   constructor(baseUrl, headers) {
     this.baseUrl = baseUrl;
     this.headers = headers;

@@ -1,110 +1,44 @@
 import './pages/index.css';
 
 import FormPopUp from './js/components/FormPopUp';
-import Container from './js/components/Container';
 import Header from './js/components/Header';
-import UserApi from './js/api/UserApi';
-import NewsApi from './js/api/NewsApi';
 import FormSearchNews from './js/components/FormSearchNews';
 import Section from './js/components/Section';
 import CardList from './js/components/CardList';
-import Card from './js/components/Card';
 
-const {
-  profileOwner,
-  serverUrlUsers,
-  serverUrlNews,
-  apiKeyNews,
-  pageSizeNews,
-  numberOfDays,
-  ERROR_SERVER_NEWS,
-  ERROR_SERVER_NEWS_DESCRIPTION,
-} = require('./js/constants/constants');
+import { getProfile, removeProfile, errorNewsServer } from './js/utilits/functions';
+import { renderLoginHeader, renderNotLoginHeader } from './js/utilits/callbacks';
+
+import { profileOwner } from './js/constants/constants';
+import { usersApi, newsApi } from './js/constants/api';
+import { popup, searchAct } from './js/constants/containers';
+
+import { ERROR_SERVER_NEWS } from './js/constants/errors';
+
+import {
+  headerGamburgerLinesBtn,
+  headerGamburgerCrossBtn,
+  headerAuthDesktopBtn,
+  headerAuthMobilBtn,
+  headerLogoutDesktopBtn,
+  headerLogoutMobilBtn,
+  headerMobilMenu,
+  popUpContainer,
+  signInForm,
+  signUpForm,
+  signUpIsOkForm,
+  searchForm,
+  searchNewsTemplate,
+  searchNothingTemplate,
+} from './js/constants/elements';
 
 function main() {
   /* Константы */
-
-  //
-  let loginProfile = JSON.parse(localStorage.getItem(profileOwner));
-
-  /* Кнопки */
-
-  const headerGamburgerLinesBtn = document.querySelector('.header .header__gamburger_lines');
-  const headerGamburgerCrossBtn = document.querySelector('.header .header__gamburger_cross');
-  const headerAuthDesktopBtn = document.querySelector('.header__button_auth_desktop');
-  const headerAuthMobilBtn = document.querySelector('.header__button_auth_mobil');
-  const headerLogoutDesktopBtn = document.querySelector('.header__button_logout_desktop');
-  const headerLogoutMobilBtn = document.querySelector('.header__button_logout_mobil');
-  const headerLogoutBtnCaptionDesktop = document.querySelector('.header__button-caption_desktop');
-  const headerLogoutBtnCaptionMobil = document.querySelector('.header__button-caption_mobil');
-
-  /* Ссылки */
-  const headerChangeHeadLink = document.querySelector('.header__change_head');
-  const headerChangeSaveLink = document.querySelector('.header__change_save');
-  const headerSaveMobilLink = document.querySelector('.header__mobil-link_save');
-
-  /* Header menu */
-  const headerMobilMenu = document.querySelector('.header__mobil-menu');
-
-  /* Контейнеры */
-  const popUpContainer = document.querySelector('.popup');
-  const searchActionContainer = document.querySelector('.search-action');
-
-  /* Формы */
-  const signInForm = document.querySelector('.form-signin'); // <template>
-  const signUpForm = document.querySelector('.form-signup'); // <template>
-  const signUpIsOkForm = document.querySelector('.form-signup-is-ok'); // <template>
-  const searchForm = document.querySelector('.search__form');
-
-  /* Action */
-  const searchNewsTemplate = document.querySelector('.search-news'); // лоадер при поиске новостей
-  const searchNothingTemplate = document.querySelector('.search-nothing'); // ничего не найдено
 
   const searchResultsAct = new Section({
     section: document.querySelector('.search-results'),
     classOpened: 'search-results_is-opened',
   });
-
-  /* Объекты */
-
-  /* Объекты контейнеров */
-
-  /** Объект контейнера для отображения форм аутентификации */
-  const popup = new Container({
-    container: popUpContainer,
-    element: headerGamburgerLinesBtn,
-    classOpened: 'popup_is-opened',
-  });
-
-  /** Объект контейнера для отображения всех действий при поиске новостей */
-  const searchAct = new Container({
-    container: searchActionContainer,
-    classOpened: 'search-action_is-opened',
-  });
-
-  /** Объект для работы с api News */
-  const newsApi = new NewsApi({
-    serverUrlNews,
-    apiKeyNews,
-    pageSizeNews,
-    numberOfDays,
-  });
-
-  /** Объект для работы с api Users */
-  const userApi = new UserApi(serverUrlUsers, {
-    'Content-Type': 'application/json; charset=UTF-8',
-  });
-
-  /** Функция для отображения ошибки с сервера News */
-  function errorNewsServer(error = '') {
-    if (searchAct.isFull) searchAct.close();
-    searchAct.open(searchNothingTemplate.content.cloneNode(true), 'search-nothing');
-    document.querySelector('.search-action__search-nothing .search-action__title').textContent =
-      error.message;
-    document.querySelector(
-      '.search-action__search-nothing .search-action__description'
-    ).textContent = ERROR_SERVER_NEWS_DESCRIPTION;
-  }
 
   /** Callback для поиска новостей по ключевому слову */
   function searchNews(keyword) {
@@ -133,32 +67,6 @@ function main() {
         return Promise.reject(new Error(ERROR_SERVER_NEWS));
       })
       .catch((err) => errorNewsServer(err));
-  }
-
-  /** CallBack отображения хёдера, если пользователь залогинен */
-  function renderLoginHeader() {
-    headerLogoutDesktopBtn.classList.add('header__button_is-opened');
-    headerChangeSaveLink.classList.add('header__change_is-opened');
-    headerSaveMobilLink.classList.add('header__mobil-link_is-opened');
-    headerLogoutMobilBtn.classList.add('header__button_is-opened');
-
-    headerLogoutBtnCaptionDesktop.textContent = loginProfile.user.name;
-    headerLogoutBtnCaptionMobil.textContent = loginProfile.user.name;
-
-    headerAuthMobilBtn.classList.remove('header__button_is-opened');
-    headerAuthDesktopBtn.classList.remove('header__button_is-opened');
-  }
-
-  /** CallBack отображения хёдера, если пользователь не залогинен */
-  function renderNotLoginHeader() {
-    headerLogoutDesktopBtn.classList.remove('header__button_is-opened');
-    headerChangeSaveLink.classList.remove('header__change_is-opened');
-    headerSaveMobilLink.classList.remove('header__mobil-link_is-opened');
-    headerLogoutMobilBtn.classList.remove('header__button_is-opened');
-
-    headerAuthMobilBtn.classList.add('header__button_is-opened');
-    headerAuthDesktopBtn.classList.add('header__button_is-opened');
-    headerChangeHeadLink.classList.add('header__change_is-opened');
   }
 
   /** Объект формы поиска новостей */
@@ -194,7 +102,7 @@ function main() {
         button: headerLogoutDesktopBtn,
         event: 'click',
         callBack: () => {
-          localStorage.removeItem(profileOwner);
+          removeProfile(profileOwner);
           renderNotLoginHeader();
         },
       },
@@ -202,12 +110,12 @@ function main() {
         button: headerLogoutMobilBtn,
         event: 'click',
         callBack: () => {
-          localStorage.removeItem(profileOwner);
+          removeProfile(profileOwner);
           renderNotLoginHeader();
         },
       },
     ],
-    loginProfile,
+    getProfile(profileOwner),
     { renderLoginHeader, renderNotLoginHeader }
   );
 
@@ -220,26 +128,26 @@ function main() {
    * CallBack
   */
   function authUser() {
-    localStorage.removeItem(profileOwner);
+    removeProfile(profileOwner);
     function signInUser(item) {
-      return userApi
+      return usersApi
         .postSignIn(item)
         .then((data) => {
           // Здесь и записываем localStorage
           if (data.key) {
             localStorage.setItem(profileOwner, JSON.stringify({ key: data.key }));
-            return userApi
+            return usersApi
               .getUserMe(data.key)
               .then((user) => {
-                JSON.parse(localStorage.getItem(profileOwner));
+                getProfile(profileOwner);
                 localStorage.setItem(
                   profileOwner,
-                  JSON.stringify({ ...JSON.parse(localStorage.getItem(profileOwner)), user })
+                  JSON.stringify({ ...getProfile(profileOwner), user })
                 );
-                loginProfile = JSON.parse(localStorage.getItem(profileOwner));
+                getProfile(profileOwner);
               })
               .then(() => {
-                header.render(loginProfile);
+                header.render(getProfile(profileOwner));
                 popup.close();
               })
               .catch((err) => err);
@@ -284,7 +192,7 @@ function main() {
     }
 
     function signUpUser(item) {
-      return userApi
+      return usersApi
         .postSignUp(item)
         .then((data) => {
           if (data._id) {
