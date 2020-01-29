@@ -1,27 +1,22 @@
 import './pages/index.css';
 
 import FormPopUp from './js/components/FormPopUp';
-import Header from './js/components/Header';
 import FormSearchNews from './js/components/FormSearchNews';
 import Section from './js/components/Section';
 import CardList from './js/components/CardList';
 
 import { getProfile, removeProfile, errorNewsServer } from './js/utilits/functions';
-import { renderLoginHeader, renderNotLoginHeader } from './js/utilits/callbacks';
 
 import { profileOwner } from './js/constants/constants';
 import { usersApi, newsApi } from './js/constants/api';
 import { popup, searchAct } from './js/constants/containers';
+import header from './js/constants/header';
 
 import { ERROR_SERVER_NEWS } from './js/constants/errors';
 
 import {
-  headerGamburgerLinesBtn,
-  headerGamburgerCrossBtn,
   headerAuthDesktopBtn,
   headerAuthMobilBtn,
-  headerLogoutDesktopBtn,
-  headerLogoutMobilBtn,
   headerMobilMenu,
   popUpContainer,
   signInForm,
@@ -71,54 +66,6 @@ function main() {
 
   /** Объект формы поиска новостей */
   const searchFormObj = new FormSearchNews(searchForm, searchNews);
-
-  /** Объект хёдера, в основном управляет всей логикой приложения.
-  * Инициализирует начальную страницу.
-  * Отрисовывает шапки страниц и всплывающих меню
-  * */
-
-  const header = new Header(
-    [
-      {
-        button: document.querySelector('.popup__close'),
-        event: 'click',
-        callBack: () => popup.close(),
-      },
-      {
-        button: headerGamburgerLinesBtn,
-        event: 'click',
-        callBack: () => {
-          headerMobilMenu.classList.add('header__mobil-menu_is-opened');
-        },
-      },
-      {
-        button: headerGamburgerCrossBtn,
-        event: 'click',
-        callBack: () => {
-          headerMobilMenu.classList.remove('header__mobil-menu_is-opened');
-        },
-      },
-      {
-        button: headerLogoutDesktopBtn,
-        event: 'click',
-        callBack: () => {
-          removeProfile(profileOwner);
-          renderNotLoginHeader();
-        },
-      },
-      {
-        button: headerLogoutMobilBtn,
-        event: 'click',
-        callBack: () => {
-          removeProfile(profileOwner);
-          renderNotLoginHeader();
-        },
-      },
-    ],
-    getProfile(profileOwner),
-    { renderLoginHeader, renderNotLoginHeader }
-  );
-
   // Callbacks
   // Регистрация
   /** Callback открывает попап и клонирует в него форму Регистрация,
