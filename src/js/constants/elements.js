@@ -1,5 +1,11 @@
+import Element from '../components/Element';
+
 /** Кнопки */
-const cardListBtn = document.querySelector('.card-list__button');
+const cardsListBtn = new Element({
+  element: document.querySelector('.cards-list__button'),
+  classOpened: 'cards-list__button_is-opened',
+});
+
 const headerGamburgerLinesBtn = document.querySelector('.header .header__gamburger_lines');
 const headerGamburgerCrossBtn = document.querySelector('.header .header__gamburger_cross');
 const headerAuthDesktopBtn = document.querySelector('.header__button_auth_desktop');
@@ -20,6 +26,7 @@ const headerMobilMenu = document.querySelector('.header__mobil-menu');
 /** Контейнеры */
 const popUpContainer = document.querySelector('.popup');
 const searchActionContainer = document.querySelector('.search-action');
+const cardsListContainer = document.querySelector('.cards-list');
 
 /** Формы */
 const signInForm = document.querySelector('.form-signin'); // <template>
@@ -33,7 +40,7 @@ const searchNothingTemplate = document.querySelector('.search-nothing'); // ни
 
 export {
   /** Кнопки */
-  cardListBtn,
+  cardsListBtn,
   headerGamburgerLinesBtn,
   headerGamburgerCrossBtn,
   headerAuthDesktopBtn,
@@ -51,6 +58,7 @@ export {
   /** Контейнеры */
   popUpContainer,
   searchActionContainer,
+  cardsListContainer,
   /** Формы */
   signInForm,
   signUpForm,

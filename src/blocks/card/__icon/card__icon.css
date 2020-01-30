@@ -5,7 +5,7 @@
   background-position: center;
 }
 
-@media screen and (max-width: 1264px) {
+@media screen and (max-width: 900px) {
   .card__icon {
     right: 8px;
     font-size: 14px;

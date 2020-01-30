@@ -36,6 +36,12 @@ function errorNewsServer(error = '') {
   ).textContent = ERROR_SERVER_NEWS_DESCRIPTION;
 }
 
+/** length div number в Паскале) */
+function getCounterOfIteration(length, number) {
+  return (length - (length % number)) / number;
+}
+
+
 export {
-  createElementDOM, getProfile, removeProfile, errorNewsServer,
+  createElementDOM, getProfile, removeProfile, errorNewsServer, getCounterOfIteration,
 };

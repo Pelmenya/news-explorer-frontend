@@ -2,22 +2,22 @@ import './pages/index.css';
 
 import FormPopUp from './js/components/FormPopUp';
 import FormSearchNews from './js/components/FormSearchNews';
-import Section from './js/components/Section';
-import CardList from './js/components/CardList';
+import Element from './js/components/Element';
+import CardsList from './js/components/CardsList';
 
 import { getProfile, removeProfile, errorNewsServer } from './js/utilits/functions';
-
-import { profileOwner } from './js/constants/constants';
+import { profileOwner, numberCardsInLine } from './js/constants/constants';
 import { usersApi, newsApi } from './js/constants/api';
 import { popup, searchAct } from './js/constants/containers';
 import header from './js/constants/header';
 import { ERROR_SERVER_NEWS } from './js/constants/errors';
 import {
-  cardListBtn,
+  cardsListBtn,
   headerAuthDesktopBtn,
   headerAuthMobilBtn,
   headerMobilMenu,
   popUpContainer,
+  cardsListContainer,
   signInForm,
   signUpForm,
   signUpIsOkForm,
@@ -29,31 +29,34 @@ import {
 function main() {
   /* Константы */
 
-  const searchResultsAct = new Section({
-    section: document.querySelector('.search-results'),
+  const searchResultsAct = new Element({
+    element: document.querySelector('.search-results'),
     classOpened: 'search-results_is-opened',
   });
 
+  searchResultsAct.open();
+
+  const cardsList = new CardsList([], cardsListContainer, cardsListBtn, numberCardsInLine);
+  cardsList.addListeners([
+    {
+      button: cardsListBtn.element,
+      event: 'click',
+      callBack: cardsList.render,
+    },
+  ]);
+
   function viewCards(articles) {
-    searchResultsAct.open();
-    const cardList = new CardList(
-      [
-        {
-          button: cardListBtn,
-          event: 'click',
-          callBack: () => {
-
-
-          },
-        },
-      ],
-      document.querySelector('.cards-list'),
-      articles,
-    );
+    cardsList.clear();
+    cardsList.stopRenderCards = articles.length;
+    cardsList.counterRenderCards = 0;
+    cardsList.cards = Object.assign(articles);
+    cardsList.render();
   }
 
   /** Callback для поиска новостей по ключевому слову */
   function searchNews(keyword) {
+    searchResultsAct.open();
+
     if (searchAct.isFull) searchAct.close();
     searchAct.open(searchNewsTemplate.content.cloneNode(true), 'search-news');
     newsApi

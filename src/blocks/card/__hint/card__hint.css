@@ -3,7 +3,7 @@
   display: none;
 }
 
-@media screen and (max-width: 1264px) {
+@media screen and (max-width: 900px) {
   .card__hint {
     right: 60px;
   }

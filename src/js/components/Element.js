@@ -1,6 +1,6 @@
-export default class Section {
+export default class Element {
   constructor(props) {
-    this.section = props.section;
+    this.element = props.element;
     this.classOpened = props.classOpened;
 
     this.open = this.open.bind(this);
@@ -8,10 +8,10 @@ export default class Section {
   }
 
   open() {
-    this.section.classList.add(this.classOpened);
+    this.element.classList.add(this.classOpened);
   }
 
   close() {
-    this.section.classList.remove(this.classOpened);
+    this.element.classList.remove(this.classOpened);
   }
 }

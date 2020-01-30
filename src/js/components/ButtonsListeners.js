@@ -14,4 +14,14 @@ export default class ButtonsListeners {
       );
     });
   }
+
+  removeListeners(props = this.props) {
+    this.newProps = props;
+    Object.keys(this.newProps).forEach((item) => {
+      this.newProps[item].button.removeEventListener(
+        this.newProps[item].event,
+        this.newProps[item].callBack,
+      );
+    });
+  }
 }

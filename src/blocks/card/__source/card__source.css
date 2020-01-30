@@ -13,7 +13,7 @@
   bottom: 24px;
 }
 
-@media screen and (max-width: 1264px) {
+@media screen and (max-width: 900px) {
   .card__source {
     left: 16px;
     bottom: 16px;

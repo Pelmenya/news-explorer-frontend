@@ -9,7 +9,7 @@
   margin-bottom: 0px;
 }
 
-@media screen and (max-width: 1264px) {
+@media screen and (max-width: 900px) {
   .card__title {
     font-size: 22px;
     line-height: 24px;
