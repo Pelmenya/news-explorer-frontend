@@ -6,6 +6,8 @@ import Element from './js/components/Element';
 import CardsList from './js/components/CardsList';
 
 import { getProfile, removeProfile, errorNewsServer } from './js/utilits/functions';
+import { addCardTrash, addCardBookMark } from './js/utilits/callbacks';
+
 import { profileOwner, numberCardsInLine } from './js/constants/constants';
 import { usersApi, newsApi } from './js/constants/api';
 import { popup, searchAct } from './js/constants/containers';
@@ -29,6 +31,16 @@ import {
 function main() {
   /* Константы */
 
+  document.querySelector('.card__icon_bookmark').addEventListener('mouseover', (event) => {
+    console.log(event);
+    document.querySelector('.card__hint').classList.add('card__hint_bookmark');
+  });
+
+  document.querySelector('.card__icon_bookmark').addEventListener('mouseout', (event) => {
+    console.log(event);
+    document.querySelector('.card__hint').classList.remove('card__hint_bookmark');
+  });
+
   const searchResultsAct = new Element({
     element: document.querySelector('.search-results'),
     classOpened: 'search-results_is-opened',
@@ -36,27 +48,11 @@ function main() {
 
   searchResultsAct.open();
 
-  const cardsList = new CardsList([], cardsListContainer, cardsListBtn, numberCardsInLine);
-  cardsList.addListeners([
-    {
-      button: cardsListBtn.element,
-      event: 'click',
-      callBack: cardsList.render,
-    },
-  ]);
-
-  function viewCards(articles) {
-    cardsList.clear();
-    cardsList.stopRenderCards = articles.length;
-    cardsList.counterRenderCards = 0;
-    cardsList.cards = Object.assign(articles);
-    cardsList.render();
-  }
+  const cardsList = new CardsList([], cardsListContainer, cardsListBtn, numberCardsInLine, addCardTrash);
 
   /** Callback для поиска новостей по ключевому слову */
   function searchNews(keyword) {
     searchResultsAct.open();
-
     if (searchAct.isFull) searchAct.close();
     searchAct.open(searchNewsTemplate.content.cloneNode(true), 'search-news');
     newsApi
@@ -74,7 +70,7 @@ function main() {
           }
           if (String(data.totalResults) !== '0') {
             searchAct.close();
-            viewCards(data.articles);
+            cardsList.viewCards(data.articles);
             return data;
           }
         }

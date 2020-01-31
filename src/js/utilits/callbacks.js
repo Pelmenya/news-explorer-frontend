@@ -1,3 +1,4 @@
+import Card from '../components/Card';
 import {
   headerAuthDesktopBtn,
   headerAuthMobilBtn,
@@ -39,4 +40,16 @@ function renderNotLoginHeader() {
   headerChangeHeadLink.classList.add('header__change_is-opened');
 }
 
-export { renderLoginHeader, renderNotLoginHeader };
+function addCardBookMark(item) {
+  const objCard = new Card(item, 'bookmark');
+  return objCard.card;
+}
+
+function addCardTrash(item) {
+  const objCard = new Card(item, 'trash');
+  return objCard.card;
+}
+
+export {
+  renderLoginHeader, renderNotLoginHeader, addCardBookMark, addCardTrash,
+};

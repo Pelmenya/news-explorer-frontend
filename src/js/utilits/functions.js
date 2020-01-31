@@ -3,7 +3,13 @@ import { searchAct } from '../constants/containers';
 import { ERROR_SERVER_NEWS_DESCRIPTION } from '../constants/errors';
 
 /** Функция для создания DOM элемента */
-function createElementDOM(element, classElement, textContent = '', styleElement = '') {
+function createElementDOM(
+  element,
+  classElement,
+  textContent = '',
+  styleElement = '',
+  datetime = ''
+) {
   const newElement = document.createElement(element);
   newElement.className = classElement;
   if (textContent !== '') {
@@ -11,6 +17,9 @@ function createElementDOM(element, classElement, textContent = '', styleElement 
   }
   if (styleElement !== '') {
     newElement.style = styleElement;
+  }
+  if (datetime !== '') {
+    newElement.datetime = datetime;
   }
   return newElement;
 }
@@ -29,19 +38,33 @@ function removeProfile(item) {
 function errorNewsServer(error = '') {
   if (searchAct.isFull) searchAct.close();
   searchAct.open(searchNothingTemplate.content.cloneNode(true), 'search-nothing');
-  document
-    .querySelector('.search-action__search-nothing .search-action__title').textContent = error.message;
+  document.querySelector('.search-action__search-nothing .search-action__title').textContent =
+    error.message;
   document.querySelector(
-    '.search-action__search-nothing .search-action__description',
+    '.search-action__search-nothing .search-action__description'
   ).textContent = ERROR_SERVER_NEWS_DESCRIPTION;
 }
 
-/** length div number в Паскале) */
-function getCounterOfIteration(length, number) {
-  return (length - (length % number)) / number;
+function dataToStrRus(str) {
+  const date = new Date(str.split('-'));
+  const year = date.getFullYear(date);
+  const month = date.getMonth(date);
+  const day = date.getDate(date);
+  const objMonth = [
+    'января',
+    'февраля',
+    'марта',
+    'апреля',
+    'мая',
+    'июня',
+    'июля',
+    'августа',
+    'сентября',
+    'октября',
+    'ноября',
+    'декабря',
+  ];
+  return `${day} ${objMonth[month]}, ${year}`;
 }
 
-
-export {
-  createElementDOM, getProfile, removeProfile, errorNewsServer, getCounterOfIteration,
-};
+export { createElementDOM, getProfile, removeProfile, errorNewsServer, dataToStrRus };

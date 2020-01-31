@@ -63,7 +63,7 @@
                 Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.
               </p>
               <form class="search__form">
-                <input class="search__keywords" type="text" placeholder="введите тему новости">
+                <input class="search__keywords" required type="text" minlength="1" oninvalid="setCustomValidity('Нужно ввести ключевое слово')" oninput="setCustomValidity('')" placeholder="введите тему новости">
                 <button class="button button__color-shem-blue search__button">Искать</button>
               </form>
             </div>
@@ -72,6 +72,7 @@
     </div>
     <section class="search-action">
       <div class="search-action__content">
+        <h2 class="title search-action__title search-action__title_is-close">Поиск новостей</h2>
       </div>
     </section>
     <div class="search-results">
@@ -80,7 +81,7 @@
         <div class="card">
           <div class="card__pic card__pic_01">
             <div class="card__item card__icon card__icon_bookmark card__icon_bookmark_logout"></div>
-            <div class="card__item card__hint card__hint_logout"></div>
+            <div class="card__item card__hint"></div>
           </div>
           <article class="card__description">
             <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
@@ -207,7 +208,6 @@
     </template>
     <template class ="search-action search-news">
       <div class = "search-action__content search-action__search-news">
-        <h2 class="title search-action__title search-action__title_is-close">Поиск новостей</h2>
         <div class="search-action__loader"></div>
         <p class="search-action__description">Идет поиск новостей...</p>
       </div>

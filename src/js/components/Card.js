@@ -1,10 +1,12 @@
-import { createElementDOM } from '../utilits/functions';
+import { createElementDOM, getProfile, dataToStrRus } from '../utilits/functions';
 
 export default class Card {
-  constructor(item) {
+  constructor(item, type) {
     this.cardParametrs = Object.assign(item);
+    this.type = type;
     // console.log(this.cardParametrs);
     this.card = this.createCard();
+    this.isLogged = getProfile();
   }
 
   /*
@@ -27,18 +29,42 @@ export default class Card {
 
   createCard() {
     const articleCard = createElementDOM('div', 'card');
+    let articleCardPic;
+
     if (this.cardParametrs.urlToImage !== null) {
-      articleCard.appendChild(
-        createElementDOM(
-          'div',
-          'card__pic',
-          '',
-          `background-image: url(${this.cardParametrs.urlToImage});`
-        ),
+      articleCardPic = createElementDOM(
+        'div',
+        'card__pic',
+        '',
+        `background-image: url(${this.cardParametrs.urlToImage});`
       );
+      articleCard.appendChild(articleCardPic);
     } else {
-      articleCard.appendChild(createElementDOM('div', 'card__pic'));
+      articleCardPic = createElementDOM('div', 'card__pic');
+      articleCard.appendChild(articleCardPic);
     }
+
+    if (this.cardParametrs.keyword) {
+      articleCardPic.appendChild(
+        createElementDOM('div', 'card__item card__keyword', `${this.cardParametrs.keyword}`)
+      );
+    }
+
+    articleCardPic.appendChild(
+      createElementDOM('div', `card__item card__icon card__icon_${this.type}`)
+    );
+    articleCardPic.appendChild(createElementDOM('div', 'card__item card__item card__hint'));
+    const articleCardDescription = createElementDOM('article', 'card__description');
+    articleCardDescription.appendChild(
+      createElementDOM(
+        'time',
+        'card__data',
+        `${dataToStrRus(this.cardParametrs.publishedAt.slice(0, 10))}`,
+        '',
+        `${this.cardParametrs.publishedAt.slice(0, 10)}`
+      )
+    );
+    articleCard.appendChild(articleCardDescription);
 
     return articleCard;
   }
