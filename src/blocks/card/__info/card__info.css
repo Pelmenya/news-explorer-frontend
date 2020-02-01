@@ -5,6 +5,13 @@
   color: #1a1b22;
   margin-top: 16px;
   margin-bottom: 0px;
+  max-height: 132px;
+  overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+
 }
 
 @media screen and (max-width: 900px) {
@@ -12,7 +19,5 @@
     font-size: 16px;
     line-height: 22x;
     margin-top: 10px;
-    height: 88px;
-    overflow: hidden;
   }
 }

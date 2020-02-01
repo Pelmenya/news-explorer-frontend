@@ -1,6 +1,28 @@
 import { createElementDOM, getProfile, dataToStrRus } from '../utilits/functions';
 
 export default class Card {
+  _dataToStrRus(str) {
+    const date = new Date(str.split('-'));
+    const year = date.getFullYear(date);
+    const month = date.getMonth(date);
+    const day = date.getDate(date);
+    const objMonth = [
+      'января',
+      'февраля',
+      'марта',
+      'апреля',
+      'мая',
+      'июня',
+      'июля',
+      'августа',
+      'сентября',
+      'октября',
+      'ноября',
+      'декабря',
+    ];
+    return `${day} ${objMonth[month]}, ${year}`;
+  }
+
   constructor(item, type) {
     this.cardParametrs = Object.assign(item);
     this.type = type;
@@ -59,13 +81,26 @@ export default class Card {
       createElementDOM(
         'time',
         'card__data',
-        `${dataToStrRus(this.cardParametrs.publishedAt.slice(0, 10))}`,
+        `${this._dataToStrRus(this.cardParametrs.publishedAt.slice(0, 10))}`,
         '',
         `${this.cardParametrs.publishedAt.slice(0, 10)}`
       )
     );
+    const articleCardDescriptionWraper = createElementDOM('div', 'card__description-wraper');
+    const articleCardDescriptionContainer = createElementDOM('div', 'card__description-container');
+    articleCardDescriptionContainer.appendChild(
+      createElementDOM('h2', 'card__title', `${this.cardParametrs.title}`)
+    );
+    articleCardDescriptionContainer.appendChild(
+      createElementDOM('p', 'card__info', `${this.cardParametrs.description}`)
+    );
+    articleCardDescriptionWraper.appendChild(articleCardDescriptionContainer);
+    articleCardDescription.appendChild(articleCardDescriptionWraper);
     articleCard.appendChild(articleCardDescription);
-
+    articleCard.appendChild(articleCardDescription);
+    articleCard.appendChild(
+      createElementDOM('h3', 'card__source', `${this.cardParametrs.source.name}`)
+    );
     return articleCard;
   }
 }

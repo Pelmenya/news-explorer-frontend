@@ -19,7 +19,7 @@ function createElementDOM(
     newElement.style = styleElement;
   }
   if (datetime !== '') {
-    newElement.datetime = datetime;
+    newElement.dateTime = datetime;
   }
   return newElement;
 }
@@ -47,9 +47,9 @@ function errorNewsServer(error = '') {
 
 function dataToStrRus(str) {
   const date = new Date(str.split('-'));
-  const year = date.getFullYear(date);
-  const month = date.getMonth(date);
-  const day = date.getDate(date);
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  const day = date.getDate();
   const objMonth = [
     'января',
     'февраля',
@@ -64,7 +64,8 @@ function dataToStrRus(str) {
     'ноября',
     'декабря',
   ];
-  return `${day} ${objMonth[month]}, ${year}`;
+
+  return `${String(day)} ${objMonth[month]}, ${year}`;
 }
 
 export { createElementDOM, getProfile, removeProfile, errorNewsServer, dataToStrRus };
