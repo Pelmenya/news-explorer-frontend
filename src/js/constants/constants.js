@@ -1,7 +1,7 @@
 /** Профиль в localStorage */
 const profileOwner = 'profileOwner';
 
-/** Профиль в localStorage */
+/** Кол-во карточек, выводимых в одну иттерацию */
 const numberCardsInLine = 3;
 
 export { profileOwner, numberCardsInLine };

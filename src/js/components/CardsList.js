@@ -1,6 +1,6 @@
-import ButtonsListeners from './ButtonsListeners';
+import ElementsListeners from './ElementsListeners';
 
-export default class CardsList extends ButtonsListeners {
+export default class CardsList extends ElementsListeners {
   _clear() {
     while (this.cardListContainer.firstChild) {
       this.cardListContainer.removeChild(this.cardListContainer.firstChild);
@@ -13,11 +13,10 @@ export default class CardsList extends ButtonsListeners {
     this.cardsListBtn = cardsListBtn;
     this.numberRenderCards = numberRenderCards;
     this.callBack = callBack;
-    console.log(container);
     this.cardListContainer = container;
     this.addListeners([
       {
-        button: this.cardsListBtn.element,
+        element: this.cardsListBtn.element,
         event: 'click',
         callBack: this.render,
       },
@@ -48,18 +47,17 @@ export default class CardsList extends ButtonsListeners {
     const img = new Image();
 
     img.onload = () => {
-      //const objCard = new Card(obj);
-      this.cardListContainer.appendChild(this.callBack(obj));
+      this.cardListContainer.appendChild(this.callBack({ ...obj, keyWordForSave: this.keyword }));
     };
     img.onerror = () => {
       obj.urlToImage = null;
-      //const objCard = new Card(obj);
-      this.cardListContainer.appendChild(this.callBack(obj));
+      this.cardListContainer.appendChild(this.callBack({ ...obj, keyWordForSave: this.keyword }));
     };
     img.src = item.urlToImage;
   }
 
-  viewCards(articles) {
+  viewCards(articles, keyword) {
+    this.keyword = keyword;
     this._clear();
     this.stopRenderCards = articles.length;
     this.cards = Object.assign(articles);

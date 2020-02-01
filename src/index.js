@@ -26,25 +26,17 @@ import {
   searchForm,
   searchNewsTemplate,
   searchNothingTemplate,
+  searchResultsAct,
 } from './js/constants/elements';
 
 function main() {
   /* Константы */
 
-  
-
-  const searchResultsAct = new Element({
-    element: document.querySelector('.search-results'),
-    classOpened: 'search-results_is-opened',
-  });
-
-  searchResultsAct.open();
 
   const cardsList = new CardsList([], cardsListContainer, cardsListBtn, numberCardsInLine, addCardBookMark);
-
   /** Callback для поиска новостей по ключевому слову */
   function searchNews(keyword) {
-    searchResultsAct.open();
+    searchResultsAct.close();
     if (searchAct.isFull) searchAct.close();
     searchAct.open(searchNewsTemplate.content.cloneNode(true), 'search-news');
     newsApi
@@ -62,7 +54,8 @@ function main() {
           }
           if (String(data.totalResults) !== '0') {
             searchAct.close();
-            cardsList.viewCards(data.articles);
+            searchResultsAct.open();
+            cardsList.viewCards(data.articles, keyword);
             return data;
           }
         }
@@ -117,7 +110,7 @@ function main() {
       const formObj = new FormPopUp(
         [
           {
-            button: document.querySelector('.popup .popup__transition'),
+            element: document.querySelector('.popup .popup__transition'),
             event: 'click',
             callBack: () => {
               popup.close();
@@ -136,7 +129,7 @@ function main() {
       const formObj = new FormPopUp(
         [
           {
-            button: document.querySelector('.popup .popup__transition'),
+            element: document.querySelector('.popup .popup__transition'),
             event: 'click',
             callBack: openFormSignIn,
           },
@@ -162,7 +155,7 @@ function main() {
       const formObj = new FormPopUp(
         [
           {
-            button: document.querySelector('.popup .popup__transition'),
+            element: document.querySelector('.popup .popup__transition'),
             event: 'click',
             callBack: openFormSignIn,
           },
@@ -177,7 +170,7 @@ function main() {
 
   header.addListeners([
     {
-      button: headerAuthDesktopBtn,
+      element: headerAuthDesktopBtn,
       event: 'click',
       callBack: () => {
         // если не снять фокус, клонирует форму несколько раз при нажатии Enter
@@ -186,7 +179,7 @@ function main() {
       },
     },
     {
-      button: headerAuthMobilBtn,
+      element: headerAuthMobilBtn,
       event: 'click',
       callBack: () => {
         headerMobilMenu.classList.remove('header__mobil-menu_is-opened');

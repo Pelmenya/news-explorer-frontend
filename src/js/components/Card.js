@@ -1,43 +1,58 @@
 import { createElementDOM, getProfile, dataToStrRus } from '../utilits/functions';
-import ButtonsListeners from './ButtonsListeners';
+import ElementsListeners from './ElementsListeners';
 import { profileOwner } from '../constants/constants';
 
-export default class Card extends ButtonsListeners {
-  _toDoOnMouseMove() {
+export default class Card extends ElementsListeners {
+  _toDoMouseMoveTopRightBtn() {
     if (getProfile(profileOwner)) {
-      if (this.type === 'trash') this.buttonTopRightHint.classList.add(`card__hint_${this.type}`);
-    } else this.buttonTopRightHint.classList.add(`card__hint_${this.type}`);
+      this.buttonTopRightHint.classList.add(`card__hint_${this.type}`);
+    } else {
+      this.buttonTopRightHint.classList.add(`card__hint_${this.type}`);
+      this.buttonTopRightHint.classList.add(`card__hint_${this.type}_logout`);
+    }
   }
 
-  _toDoOnMouseOut() {
+  _toDoMouseOutTopRightBtn() {
     this.buttonTopRightHint.classList.remove(`card__hint_${this.type}`);
+    this.buttonTopRightHint.classList.remove(`card__hint_${this.type}_logout`);
   }
 
-  constructor(props, item, type, toDoOnClickType) {
+  _cardOnclick(event) {
+    if (!event.target.classList.contains(`card__icon_${this.type}`)) {
+      this.callBacks.toDoOnClickCard(this.cardParametrs.url);
+    }
+  }
+
+  constructor(props, item, type, callBacks) {
     super(props);
     this.cardParametrs = Object.assign(item);
     this.type = type;
-    // console.log(this.cardParametrs);
+    this.callBacks = callBacks;
+    console.log(this.cardParametrs);
     // DOM элемент карточки
     this.card = this.createCard();
     this.buttonTopRight = this.card.querySelector(`.card__icon_${this.type}`);
     this.buttonTopRightHint = this.card.querySelector('.card__hint');
-
     this.addListeners([
       {
-        button: this.buttonTopRight,
+        element: this.buttonTopRight,
         event: 'mouseover',
-        callBack: this._toDoOnMouseMove,
+        callBack: this._toDoMouseMoveTopRightBtn,
       },
       {
-        button: this.buttonTopRight,
+        element: this.buttonTopRight,
         event: 'mouseout',
-        callBack: this._toDoOnMouseOut,
+        callBack: this._toDoMouseOutTopRightBtn,
       },
       {
-        button: this.buttonTopRight,
+        element: this.buttonTopRight,
         event: 'click',
-        callBack: toDoOnClickType,
+        callBack: this.callBacks.toDoOnClickTopRightBtn,
+      },
+      {
+        element: this.card,
+        event: 'click',
+        callBack: this._cardOnclick,
       },
     ]);
   }

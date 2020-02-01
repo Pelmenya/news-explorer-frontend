@@ -40,12 +40,16 @@ function renderNotLoginHeader() {
   headerChangeHeadLink.classList.add('header__change_is-opened');
 }
 
-function toDoOnClickBookMark() {
+function toDoOnClickTopRightBtn() {
   console.log('Hellow World ');
 }
 
+function toDoOnClickCard(url) {
+  window.location.href = url;
+}
+
 function addCardBookMark(item) {
-  const objCard = new Card([], item, 'bookmark', toDoOnClickBookMark);
+  const objCard = new Card([], item, 'bookmark', { toDoOnClickTopRightBtn, toDoOnClickCard });
   return objCard.card;
 }
 

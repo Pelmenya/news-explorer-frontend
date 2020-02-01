@@ -8,13 +8,12 @@ function createElementDOM(
   classElement,
   textContent = '',
   styleElement = '',
-  datetime = ''
+  datetime = '',
 ) {
   const newElement = document.createElement(element);
   newElement.className = classElement;
   if (textContent !== '') {
     newElement.textContent = textContent;
-    console.log(textContent);
   }
   if (styleElement !== '') {
     newElement.style = styleElement;

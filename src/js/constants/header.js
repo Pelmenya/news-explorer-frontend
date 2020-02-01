@@ -16,30 +16,29 @@ import {
   * Инициализирует начальную страницу.
   * Отрисовывает шапки страниц и всплывающих меню
   * */
-
 const header = new Header(
   [
     {
-      button: document.querySelector('.popup__close'),
+      element: document.querySelector('.popup__close'),
       event: 'click',
       callBack: () => popup.close(),
     },
     {
-      button: headerGamburgerLinesBtn,
+      element: headerGamburgerLinesBtn,
       event: 'click',
       callBack: () => {
         headerMobilMenu.classList.add('header__mobil-menu_is-opened');
       },
     },
     {
-      button: headerGamburgerCrossBtn,
+      element: headerGamburgerCrossBtn,
       event: 'click',
       callBack: () => {
         headerMobilMenu.classList.remove('header__mobil-menu_is-opened');
       },
     },
     {
-      button: headerLogoutDesktopBtn,
+      element: headerLogoutDesktopBtn,
       event: 'click',
       callBack: () => {
         removeProfile(profileOwner);
@@ -47,7 +46,7 @@ const header = new Header(
       },
     },
     {
-      button: headerLogoutMobilBtn,
+      element: headerLogoutMobilBtn,
       event: 'click',
       callBack: () => {
         removeProfile(profileOwner);

@@ -38,6 +38,14 @@ const searchForm = document.querySelector('.search__form');
 const searchNewsTemplate = document.querySelector('.search-news'); // лоадер при поиске новостей
 const searchNothingTemplate = document.querySelector('.search-nothing'); // ничего не найдено
 
+/** Блок отображения результатов поиска карточек */
+const searchResultsAct = new Element({
+  element: document.querySelector('.search-results'),
+  classOpened: 'search-results_is-opened',
+});
+
+
+
 export {
   /** Кнопки */
   cardsListBtn,
@@ -67,4 +75,5 @@ export {
   /* Action */
   searchNewsTemplate,
   searchNothingTemplate,
+  searchResultsAct,
 };

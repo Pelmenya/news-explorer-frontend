@@ -1,9 +1,9 @@
-import ButtonsListeners from './ButtonsListeners';
+import ElementsListeners from './ElementsListeners';
 import {
   ERROR_TEXT, ERROR_EMAIL, ERROR_PASSWORD, ERROR_REQUIRED_FIELD,
 } from '../constants/errors';
 
-export default class FormPopUp extends ButtonsListeners {
+export default class FormPopUp extends ElementsListeners {
   // Защищенные методы
   // Добавление слушателей для inputs
   _initalInputsListeners() {

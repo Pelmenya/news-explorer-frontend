@@ -1,6 +1,6 @@
-import ButtonsListeners from './ButtonsListeners';
+import ElementsListeners from './ElementsListeners';
 
-export default class Header extends ButtonsListeners {
+export default class Header extends ElementsListeners {
   constructor(props, isLoggedIn, callBacks) {
     super(props);
 

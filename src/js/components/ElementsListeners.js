@@ -1,4 +1,4 @@
-export default class ButtonsListeners {
+export default class ElementsListeners {
   constructor(props) {
     this.props = props;
     this.addListeners();
@@ -8,7 +8,7 @@ export default class ButtonsListeners {
     this.newProps = props;
     Object.keys(this.newProps).forEach((item) => {
       this.newProps[item].callBack = this.newProps[item].callBack.bind(this);
-      this.newProps[item].button.addEventListener(
+      this.newProps[item].element.addEventListener(
         this.newProps[item].event,
         this.newProps[item].callBack,
       );
@@ -18,7 +18,7 @@ export default class ButtonsListeners {
   removeListeners(props = this.props) {
     this.newProps = props;
     Object.keys(this.newProps).forEach((item) => {
-      this.newProps[item].button.removeEventListener(
+      this.newProps[item].element.removeEventListener(
         this.newProps[item].event,
         this.newProps[item].callBack,
       );

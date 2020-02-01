@@ -3,9 +3,4 @@
   line-height: 12px;
   padding-left: 13px;
   padding-right: 13px;
-  display: flex;
-}
-
-.card__hint_bookmark::before{
-  content:"Войдите, чтобы сохранять статьи";
 }
