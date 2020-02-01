@@ -48,7 +48,7 @@ function main() {
 
   searchResultsAct.open();
 
-  const cardsList = new CardsList([], cardsListContainer, cardsListBtn, numberCardsInLine, addCardTrash);
+  const cardsList = new CardsList([], cardsListContainer, cardsListBtn, numberCardsInLine, addCardBookMark);
 
   /** Callback для поиска новостей по ключевому слову */
   function searchNews(keyword) {

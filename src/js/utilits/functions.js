@@ -14,6 +14,7 @@ function createElementDOM(
   newElement.className = classElement;
   if (textContent !== '') {
     newElement.textContent = textContent;
+    console.log(textContent);
   }
   if (styleElement !== '') {
     newElement.style = styleElement;
@@ -46,10 +47,17 @@ function errorNewsServer(error = '') {
 }
 
 function dataToStrRus(str) {
-  const date = new Date(str.split('-'));
-  const year = date.getFullYear();
-  const month = date.getMonth();
-  const day = date.getDate();
+  const strObj = str.split('-');
+  /* const date = new Date(str.split('-'))
+     const year = date.getFullYear(date);
+     const month = date.getMonth(date);
+     const day = date.getDate(date);
+  срабатывает в браузерах  Google, Opera, FireFox и в других,
+  но не работает в Safari, EDGE.
+   */
+  const year = strObj[0];
+  const month = strObj[1];
+  const day = strObj[2];
   const objMonth = [
     'января',
     'февраля',
@@ -64,8 +72,7 @@ function dataToStrRus(str) {
     'ноября',
     'декабря',
   ];
-
-  return `${String(day)} ${objMonth[month]}, ${year}`;
+  return `${day} ${objMonth[Number(month) - 1]}, ${year}`;
 }
 
 export { createElementDOM, getProfile, removeProfile, errorNewsServer, dataToStrRus };

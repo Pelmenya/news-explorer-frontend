@@ -7,12 +7,12 @@
 
 @media screen and (max-width: 900px) {
   .card__description-wraper {
-    height: 208px;
+    height: 185px;
   }
 }
 
 @media screen and (max-width: 600px) {
   .card__description-wraper {
-    height: 177px;
+    height: 176px;
   }
 }

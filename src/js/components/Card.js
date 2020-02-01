@@ -1,28 +1,6 @@
 import { createElementDOM, getProfile, dataToStrRus } from '../utilits/functions';
 
 export default class Card {
-  _dataToStrRus(str) {
-    const date = new Date(str.split('-'));
-    const year = date.getFullYear(date);
-    const month = date.getMonth(date);
-    const day = date.getDate(date);
-    const objMonth = [
-      'января',
-      'февраля',
-      'марта',
-      'апреля',
-      'мая',
-      'июня',
-      'июля',
-      'августа',
-      'сентября',
-      'октября',
-      'ноября',
-      'декабря',
-    ];
-    return `${day} ${objMonth[month]}, ${year}`;
-  }
-
   constructor(item, type) {
     this.cardParametrs = Object.assign(item);
     this.type = type;
@@ -81,7 +59,7 @@ export default class Card {
       createElementDOM(
         'time',
         'card__data',
-        `${this._dataToStrRus(this.cardParametrs.publishedAt.slice(0, 10))}`,
+        `${dataToStrRus(this.cardParametrs.publishedAt.slice(0, 10))}`,
         '',
         `${this.cardParametrs.publishedAt.slice(0, 10)}`
       )
