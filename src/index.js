@@ -31,15 +31,7 @@ import {
 function main() {
   /* Константы */
 
-  document.querySelector('.card__icon_bookmark').addEventListener('mouseover', (event) => {
-    console.log(event);
-    document.querySelector('.card__hint').classList.add('card__hint_bookmark');
-  });
-
-  document.querySelector('.card__icon_bookmark').addEventListener('mouseout', (event) => {
-    console.log(event);
-    document.querySelector('.card__hint').classList.remove('card__hint_bookmark');
-  });
+  
 
   const searchResultsAct = new Element({
     element: document.querySelector('.search-results'),

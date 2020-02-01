@@ -1,31 +1,49 @@
 import { createElementDOM, getProfile, dataToStrRus } from '../utilits/functions';
+import ButtonsListeners from './ButtonsListeners';
 
-export default class Card {
-  constructor(item, type) {
+export default class Card extends ButtonsListeners {
+  _toDoOnMouseMove() {
+    if (!getProfile() && this.type === 'bookmark') {
+      this.buttonTopRightHint.classList.add(`card__hint_${this.type}`);
+    }
+    if (getProfile() && this.type === 'trash') {
+      this.buttonTopRightHint.classList.add(`card__hint_${this.type}`);
+    }
+  }
+
+  _toDoOnMouseOut() {
+    this.buttonTopRightHint.classList.remove(`card__hint_${this.type}`);
+  }
+
+  constructor(props, item, type, toDoOnClickType) {
+    super(props);
     this.cardParametrs = Object.assign(item);
     this.type = type;
     // console.log(this.cardParametrs);
+    // DOM элемент карточки
     this.card = this.createCard();
-    this.isLogged = getProfile();
-  }
+    this.buttonTopRight = this.card.querySelector(`.card__icon_${this.type}`);
+    this.buttonTopRightHint = this.card.querySelector('.card__hint');
+    console.log(this.buttonTopRight);
 
-  /*
-    <div class="card">
-          <div class="card__pic card__pic_01">
-            <div class="card__item card__icon card__icon_bookmark card__icon_bookmark_logout"></div>
-            <div class="card__item card__hint card__hint_logout"></div>
-          </div>
-          <article class="card__description">
-            <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
-            <h2 class="card__title">Национальное достояние – парки</h2>
-            <p class="card__info">
-              В 2016 году Америка отмечала важный юбилей: сто лет назад
-              здесь начала складываться система национальных парков – охраняемых территорий,
-              где и сегодня каждый может приобщиться к природе.
-            </p>
-          </article>
-          <h3 class="card__source">ЛЕНТА.РУ</h3>
-        </div> */
+    this.addListeners([
+      {
+        button: this.buttonTopRight,
+        event: 'mouseover',
+        callBack: this._toDoOnMouseMove,
+      },
+      {
+        button: this.buttonTopRight,
+        event: 'mouseout',
+        callBack: this._toDoOnMouseOut,
+      },
+      {
+        button: this.buttonTopRight,
+        event: 'click',
+        callBack: toDoOnClickType,
+      },
+    ]);
+  }
 
   createCard() {
     const articleCard = createElementDOM('div', 'card');
@@ -53,7 +71,7 @@ export default class Card {
     articleCardPic.appendChild(
       createElementDOM('div', `card__item card__icon card__icon_${this.type}`)
     );
-    articleCardPic.appendChild(createElementDOM('div', 'card__item card__item card__hint'));
+    articleCardPic.appendChild(createElementDOM('div', 'card__item card__hint'));
     const articleCardDescription = createElementDOM('article', 'card__description');
     articleCardDescription.appendChild(
       createElementDOM(

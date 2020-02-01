@@ -11,3 +11,10 @@
     font-size: 14px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .card__icon {
+    right: 16px;
+  }
+}
+

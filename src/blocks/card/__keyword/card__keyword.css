@@ -13,3 +13,9 @@
     padding-right: 15px;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .card__keyword {
+    left: 16px;
+  }
+}

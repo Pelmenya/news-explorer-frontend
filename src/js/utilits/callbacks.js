@@ -40,16 +40,18 @@ function renderNotLoginHeader() {
   headerChangeHeadLink.classList.add('header__change_is-opened');
 }
 
+function toDoOnClickBookMark() {
+  console.log('Hellow World ');
+}
+
 function addCardBookMark(item) {
-  const objCard = new Card(item, 'bookmark');
+  const objCard = new Card([], item, 'bookmark', toDoOnClickBookMark);
   return objCard.card;
 }
 
 function addCardTrash(item) {
-  const objCard = new Card(item, 'trash');
+  const objCard = new Card([], item, 'trash');
   return objCard.card;
 }
 
-export {
-  renderLoginHeader, renderNotLoginHeader, addCardBookMark, addCardTrash,
-};
+export { renderLoginHeader, renderNotLoginHeader, addCardBookMark, addCardTrash };
