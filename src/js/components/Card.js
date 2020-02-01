@@ -1,14 +1,12 @@
 import { createElementDOM, getProfile, dataToStrRus } from '../utilits/functions';
 import ButtonsListeners from './ButtonsListeners';
+import { profileOwner } from '../constants/constants';
 
 export default class Card extends ButtonsListeners {
   _toDoOnMouseMove() {
-    if (!getProfile() && this.type === 'bookmark') {
-      this.buttonTopRightHint.classList.add(`card__hint_${this.type}`);
-    }
-    if (getProfile() && this.type === 'trash') {
-      this.buttonTopRightHint.classList.add(`card__hint_${this.type}`);
-    }
+    if (getProfile(profileOwner)) {
+      if (this.type === 'trash') this.buttonTopRightHint.classList.add(`card__hint_${this.type}`);
+    } else this.buttonTopRightHint.classList.add(`card__hint_${this.type}`);
   }
 
   _toDoOnMouseOut() {
@@ -24,7 +22,6 @@ export default class Card extends ButtonsListeners {
     this.card = this.createCard();
     this.buttonTopRight = this.card.querySelector(`.card__icon_${this.type}`);
     this.buttonTopRightHint = this.card.querySelector('.card__hint');
-    console.log(this.buttonTopRight);
 
     this.addListeners([
       {
