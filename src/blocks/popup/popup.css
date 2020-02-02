@@ -1,0 +1,51 @@
+@import url(./__content/popup__content.css);
+@import url(./__close/popup__close.css);
+@import url(./__title/popup__title.css);
+@import url(./__description-signup/popup__description-signup.css);
+@import url(./__form/popup__form.css);
+@import url(./__transition/popup__transition.css);
+@import url(./__transition/_signup-is-ok/popup__transition_signup-is-ok.css);
+@import url(./__transition/_signup/popup__transition_signup.css);
+@import url(./__transition/_signin/popup__transition_signin.css);
+@import url(./__error/popup__error.css);
+@import url(./__button/popup__button.css);
+@import url(./__field/popup__field.css);
+@import url(./__error/_nameup/popup__error_nameup.css);
+@import url(./__error/_passwordin/popup__error_passwordin.css);
+@import url(./__error/_server/popup__error_server.css);
+@import url(./__insert/popup__insert.css);
+@import url(./_is-opened/popup_is-opened.css);
+@import url(./__form/_is-opened/popup__form_is-opened.css);
+
+
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 80px);
+  background-color: rgba(0, 0, 0, .5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+  display: none;
+}
+
+
+@media screen and (max-width: 1050px) {
+  .popup {
+    height: calc(100vh - 290px);
+    padding-bottom: 290px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .popup {
+    height: calc(100% - 56px);
+    padding-top: 56px;
+    background-color: initial;
+  }
+}

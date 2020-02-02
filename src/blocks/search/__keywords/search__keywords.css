@@ -1,0 +1,37 @@
+.search__keywords {
+  display: block;
+  box-sizing: border-box;
+  outline-style: none;
+  color: #1a1b22;
+  font-size: 16px;
+  line-height: 22px;
+  border: 0;
+  width: 608px;
+  height: 64px;
+  background: #fff;
+  border-radius: 100px;
+  padding-left: 24px;
+}
+
+.search__keywords:focus {
+  border: 2px solid #d1d2d6;
+}
+
+.search__keywords::placeholder {
+  color: #b6bcbf;
+}
+
+@media screen and (max-width: 792px) {
+  .search__keywords {
+    width: 458px;
+    height: 56px;
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  .search__keywords {
+    width: 100%;
+    height: 56px;
+  }
+}

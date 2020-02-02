@@ -1,0 +1,9 @@
+.header__logout-pic {
+ fill: #fff;
+}
+
+.header__button:hover .header__logout-pic{
+  fill:#347EFF;
+  stroke:#347EFF;
+  stroke-width: 1px;
+}

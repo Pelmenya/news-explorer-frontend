@@ -1,0 +1,13 @@
+.header__change_underline-black {
+  border-bottom: 3px solid #1A1B22;
+  margin-top: 1px;
+}
+
+.header__change_underline-black:hover {
+  opacity: 1;
+}
+
+.header__change_underline-black:hover .header__change-ref {
+  opacity: 1;
+}
+

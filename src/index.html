@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="Новости, поиск новостей, сервис для поиска"/>
+  <meta name="description" content="Сервис для поиска и хранения новостей"/>
+  <meta name="author" content="Dmitry Lyapin"/>
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.index.css%>">
+  <link rel="shortcut icon" href="<%=require('./images/favicon.png')%>" type="images/png">
+  <link rel="icon" href="<%=require('./images/favicon.png')%>" type="images/png">
+  <title>NewsExplorer ~ Главная страница</title>
+</head>
+<body>
+  <div class="page">
+    <div class="page-top">
+      <div class="page-top__glass">
+        <header class="header header__shadow-white">
+          <div class="header__logo">News Explorer</div>
+          <button class="header__gamburger header__gamburger_lines"></button>
+            <nav class="header__mobil-menu">
+              <div class="header__mobil-container">
+                <div class="header header__shadow-white">
+                  <div class="header__logo">News Explorer</div>
+                  <button class="header__gamburger header__gamburger_cross"></button>
+                </div>
+                <div class="header__mobil-links">
+                  <a href="index.html" class="header__change-ref header__mobil-link header__mobil-link_head header__mobil-link_is-opened">Главная</a>
+                  <a href="articles.html" class="header__change-ref header__mobil-link header__mobil-link_save">Сохранённые статьи</a>
+                </div>
+                <button class="button header__button header__button_mobil header__button_logout header__button_logout_mobil">
+                  <span class="button__container">
+                    <span class="header__button-caption header__button-caption_mobil">Грета</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path class="header__logout-pic" d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z"/>
+                    </svg>
+                  </span>
+                </button>
+                <button class="button header__button header__button_mobil header__button_auth_mobil">Авторизоваться</button>
+              </div>
+            </nav>
+          <nav class="header__menu">
+            <div class="header__change header__change_head header__change_is-opened">
+              <a href="index.html" class="header__change-ref">Главная</a>
+            </div>
+            <div class="header__change header__change_save header__change_is-inactive">
+              <a href="articles.html" class="header__change-ref">Сохранённые статьи</a>
+            </div>
+            <button class="button header__button header__button_auth_desktop">Авторизоваться</button>
+            <button class="button header__button header__button_logout header__button_logout_desktop">
+              <span class="header__button-caption header__button-caption_desktop">Грета</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="header__logout-pic" d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z"/>
+              </svg>
+            </button>
+          </nav>
+        </header>
+          <section class="search">
+            <div class="search__container">
+              <h1 class="title">Что в мире творится?</h1>
+              <p class="search__direction">
+                Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.
+              </p>
+              <form class="search__form">
+                <input class="search__keywords" required type="text" minlength="1" oninvalid="setCustomValidity('Нужно ввести ключевое слово')" oninput="setCustomValidity('')" placeholder="введите тему новости">
+                <button class="button button__color-shem-blue search__button">Искать</button>
+              </form>
+            </div>
+          </section>
+      </div>
+    </div>
+    <section class="search-action">
+      <h2 class="title search-action__title search-action__title_is-close">Поиск новостей</h2>
+      <div class="search-action__loader"></div>
+      <p class="search-action__description">Идет поиск новостей...</p>
+    </section>
+    <section class="search-results">
+      <h2 class="title search-results__title">Результаты поиска</h2>
+      <div class="cards-list">
+        <div class="card">
+          <div class="card__pic card__pic_01">
+            <div class="card__item card__icon card__icon_bookmark card__icon_bookmark_logout"></div>
+            <div class="card__item card__hint card__hint_logout"></div>
+          </div>
+          <article class="card__description">
+            <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
+            <h2 class="card__title">Национальное достояние – парки</h2>
+            <p class="card__info">
+              В 2016 году Америка отмечала важный юбилей: сто лет назад
+              здесь начала складываться система национальных парков – охраняемых территорий,
+              где и сегодня каждый может приобщиться к природе.
+            </p>
+          </article>
+          <h3 class="card__source">ЛЕНТА.РУ</h3>
+        </div>
+        <div class="card">
+          <div class="card__pic card__pic_02">
+            <div class="card__item card__icon card__icon_bookmark"></div>
+            <div class="card__item card__hint"></div>
+          </div>
+          <article class="card__description">
+            <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
+            <h2 class="card__title">Лесные огоньки: история одной фотографии</h2>
+            <p class="card__info">
+              Фотограф отвлеклась от освещения суровой политической реальности Мексики,
+              чтобы запечатлеть ускользающую красоту одного из местных чудес природы.
+            </p>
+          </article>
+          <h3 class="card__source">МЕДУЗА</h3>
+        </div>
+        <div class="card">
+          <div class="card__pic card__pic_03">
+            <div class="card__item card__icon card__icon_bookmark-marked"></div>
+            <div class="card__item card__hint"></div>
+          </div>
+          <article class="card__description">
+            <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
+            <h2 class="card__title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h2>
+            <p class="card__info">
+              Знаменитый фотограф снимает первозданные леса России,
+              чтобы рассказать о необходимости их сохранения. В этот раз он отправился
+              в Двинско-Пинежскую тайгу, где...
+            </p>
+          </article>
+          <h3 class="card__source">РИА</h3>
+        </div>
+      </div>
+      <button class="button button__color-shem-white">Показать еще</button>
+    </section>
+    <section class="author">
+      <picture>
+        <source media="(max-width: 400px)" srcset="<%=require('./images/avatar400.png')%>"/>
+        <source media="(max-width: 800px)" srcset="<%=require('./images/avatar800.png')%>"/>
+        <img src="<%=require('./images/avatar1200.png')%>" class="author__avatar" alt="Разработчик сайта">
+      </picture>
+      <div class="author__about">
+        <h2 class="author__title">Об авторе</h2>
+        <p class="author__description">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут,
+           чем вы занимаетесь, какими технологиями разработки владеете.
+        </p>
+        <p class="author__description">Также можно рассказать о процессе обучения в Практикуме,
+           чему вы тут научились, и чем можете помочь потенциальным заказчикам.
+        </p>
+      </div>
+    </section>
+    <section class="search-action">
+      <div class="search-action__pic"></div>
+      <h2 class="title search-action__title">Ничего не найдено</h2>
+      <p class="search-action__description">К сожалению по вашему запросу ничего не найдено.</p>
+    </section>
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__container-column">
+          <div class="footer__copyright">&#169; 2020. Дмитрий Ляпин</div>
+          <div class="footer__link-container">
+            <a class="footer__link footer__link_head-page" href="index.html">Главная</a>
+            <a class="footer__link footer__link_yandex-praktikum" href="https://praktikum.yandex.ru">Яндекс.Практикум</a>
+          </div>
+        </div>
+        <div class="footer__social-networks">
+          <a class="footer__link footer__icon footer__icon_git" href="https://github.com/Pelmenya"></a>
+          <a class="footer__link footer__icon footer__icon_facebook" href="https://www.facebook.com/lyapindm"></a>
+        </div>
+      </div>
+    </footer>
+    <div class="popup">
+      <div class="popup__content">
+        <img src="<%=require('./images/close.svg')%>" alt="Кнопка закрытия формы" class="popup__close">
+      </div>
+    </div>
+    <template class="popup form-signup-is-ok">
+      <form class="popup__form popup__form-signup-is-ok" name="signupisok">
+        <p class="popup__description-signup">Пользователь успешно зарегистрирован!</p>
+        <button type="button" class="popup__transition popup__transition_signup-is-ok">Выполнить вход</button>
+      </form>
+    </template>
+    <template class="popup form-signup">
+      <form class="popup__form popup__form-signup" name="signup">
+        <h3 class="popup__title">Регистрация</h3>
+        <label class="popup__field">Email
+          <input type="email" name="emailup" class="input input_type_emailup" required  pattern="^[A-Za-z]((\.|-)?[A-Za-z0-9]+)+@[A-Za-z0-9](-?[A-Za-z0-9]+)+(\.[A-Za-z]{2,})+$" placeholder="Введите Email">
+        </label>
+        <span class="popup__error popup__error_emailup"></span>
+        <label class="popup__field">Пароль
+          <input type="password" name="passwordup" required  minlength="6" class="input input_type_passwordup" placeholder="Введите пароль">
+        </label>
+        <span class="popup__error popup__error_passwordup"></span>
+        <label class="popup__field">Имя
+          <input type="text" name="nameup" required minlength="2" maxlength="30" class="input input_type_nameup" placeholder="Введите своё имя">
+        </label>
+        <span class="popup__error popup__error_nameup"></span>
+        <span class="popup__error popup__error_server"></span>
+        <button class="button button__color-shem-blue button__popup">Зарегистрироваться</button>
+        <button type="button" class="popup__transition popup__transition_signup"><span class="popup__insert">или </span>Войти</button>
+      </form>
+    </template>
+    <template class="popup form-signin">
+      <form class="popup__form popup__form-signin" name="signin">
+        <h3 class="popup__title">Вход</h3>
+        <label class="popup__field">Email
+          <input type="email" name="emailin" class="input input_type_emailin" required pattern="^[A-Za-z]((\.|-)?[A-Za-z0-9]+)+@[A-Za-z0-9](-?[A-Za-z0-9]+)+(\.[A-Za-z]{2,})+$" placeholder="Введите Email">
+        </label>
+        <span class="popup__error popup__error_emailin"></span>
+        <label class="popup__field">Пароль
+          <input type="password" name="passwordin" required minlength="6" class="input input_type_passwordin" placeholder="Введите пароль">
+        </label>
+        <span class="popup__error popup__error_passwordin"></span>
+        <span class="popup__error popup__error_server"></span>
+        <button class="button button__color-shem-blue button__popup">Войти</button>
+        <button type="button" class="popup__transition popup__transition_signin"><span class="popup__insert">или </span>Зарегистрироваться</button>
+      </form>
+    </template>
+  </div>
+    <script src="<%=htmlWebpackPlugin.files.chunks.index.entry%>"></script>
+</body>
+</html>

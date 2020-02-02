@@ -1,0 +1,10 @@
+.card__hint_logout {
+  font-size: 10px;
+  line-height: 12px;
+  padding-left: 13px;
+  padding-right: 13px;
+}
+
+.card__hint_logout::before{
+  content:"Войдите, чтобы сохранять статьи";
+}

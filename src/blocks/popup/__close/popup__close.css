@@ -1,0 +1,18 @@
+.popup__close {
+  width: 40px;
+  position: absolute;
+  top: -46px;
+  right: -46px;
+  cursor: url(../../../images/lapka.png), pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .popup__close {
+    background-image: url(../../../images/cross.svg);
+    background-position: center;
+    width: 24px;
+    height: 24px;
+    top: 16px;
+    right: 16px;
+  }
+}

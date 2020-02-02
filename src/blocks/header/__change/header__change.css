@@ -1,0 +1,32 @@
+.header__change {
+  font-weight: 500;
+  font-size: 18px;
+  margin-right: 32px;
+  cursor: url('../../../images/lapka.png'), pointer;
+  border-bottom: 3px solid #fff;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  display:none;
+}
+
+.header__change:hover {
+  opacity: 0.7;
+}
+
+.header__change:last-of-type {
+  margin-left: 2px;
+}
+
+
+@media screen and (max-width: 792px) {
+  .header__change {
+    font-size: 16px;
+    margin-right: 16px;
+    height: 64px;
+  }
+  .header__change:last-of-type {
+    margin-left: 0px;
+  }
+
+}

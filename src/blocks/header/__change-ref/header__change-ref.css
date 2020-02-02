@@ -1,0 +1,11 @@
+.header__change-ref{
+  margin-top: 2px;
+  text-decoration: none;
+  color:inherit;
+  cursor: url('../../../images/lapka.png'), pointer;
+}
+
+.header__change-ref:hover {
+  opacity: 0.7;
+}
+

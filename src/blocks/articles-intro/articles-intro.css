@@ -1,0 +1,20 @@
+@import url(./__keyword/articles-intro__keyword.css);
+@import url(./__keywords/articles-intro__keywords.css);
+@import url(./__sub-title/articles-intro__sub-title.css);
+@import url(./__title/articles-intro__title.css);
+
+.articles-intro {
+  width: calc(100% - 208px);
+}
+
+@media screen and (max-width: 780px) {
+  .articles-intro {
+    width: calc(100% - 80px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .articles-intro {
+    width: calc(100% - 32px);
+  }
+}

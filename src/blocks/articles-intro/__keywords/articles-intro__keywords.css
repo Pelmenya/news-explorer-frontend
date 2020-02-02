@@ -1,0 +1,21 @@
+.articles-intro__keywords {
+  margin-top: 30px;
+  margin-bottom: 56px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+@media screen and (max-width: 780px) {
+  .articles-intro__keywords {
+    margin-top: 16px;
+    margin-bottom: 32px;
+    font-size: 14px;
+
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .articles-intro__keywords {
+    font-size: 18px;
+  }
+}

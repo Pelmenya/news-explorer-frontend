@@ -1,0 +1,24 @@
+.articles-intro__title {
+  margin-top: 40px;
+  margin-bottom: 0;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(26, 27, 34, 0.5);
+}
+
+@media screen and (max-width: 780px) {
+  .articles-intro__title {
+    margin-top: 24px;
+    margin-bottom: 0;
+    font-size: 14px;
+
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .articles-intro__title {
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-size: 12px;
+  }
+}

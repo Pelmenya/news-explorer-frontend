@@ -1,0 +1,18 @@
+.card__info {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1a1b22;
+  margin-top: 16px;
+  margin-bottom: 0px;
+}
+
+@media screen and (max-width: 1264px) {
+  .card__info {
+    font-size: 16px;
+    line-height: 22x;
+    margin-top: 10px;
+    height: 88px;
+    overflow: hidden;
+  }
+}

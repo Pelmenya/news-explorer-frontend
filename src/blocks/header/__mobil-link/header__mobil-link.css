@@ -1,0 +1,11 @@
+.header__mobil-link {
+  margin-top: 19px;
+  margin-bottom: 38px;
+  display: block;
+  padding: 0;
+  display: none;
+}
+
+.header__mobil-link:last-of-type {
+  margin-bottom: 19px;
+}

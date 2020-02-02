@@ -1,0 +1,17 @@
+.search-action__loader {
+  display: block;
+	width: 74px;
+  height: 74px;
+  border: 1px solid #555;
+	border-bottom-color: #bbb;
+  margin-top: 80px;
+  margin-bottom: 24px;
+	border-radius: 50%;
+	animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}

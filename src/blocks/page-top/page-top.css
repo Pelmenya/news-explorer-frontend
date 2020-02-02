@@ -1,0 +1,9 @@
+@import url(./__glass/page-top__glass.css);
+
+.page-top {
+  display: flex;
+  flex-direction: column;
+  background: url('../../images/bgimage.jpg') 50% 50% no-repeat; /* Добавляем фон */
+  background-size: cover;
+  width: inherit;
+}

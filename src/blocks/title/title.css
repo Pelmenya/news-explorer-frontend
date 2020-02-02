@@ -1,0 +1,31 @@
+.title {
+  font-family: Roboto Slab, arial, sans-serif;;
+  text-align: left;
+  font-size: 60px;
+  line-height: 62px;
+  width:  608px;
+  margin-top: 80px;
+  margin-bottom: 0px;
+}
+
+@media screen and (max-width: 792px) {
+  .title {
+    padding-left: 3px;
+    font-size: 36px;
+    line-height: 40px;
+    margin-top: 38px;
+    margin-bottom: 0px;
+    width:  385px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+  .title {
+    padding-left: 3px;
+    font-size: 36px;
+    line-height: 40px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    width:  90%;
+    }
+}

@@ -1,0 +1,28 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts.css);
+@import url(../blocks/page/page.css);
+@import url(../blocks/root/root.css);
+@import url(../blocks/button/button.css);
+@import url(../blocks/header/header.css);
+@import url(../blocks/title/title.css);
+@import url(../blocks/search-results/search-results.css);
+@import url(../blocks/cards-list/cards-list.css);
+@import url(../blocks/card/card.css);
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/articles-intro/articles-intro.css);
+@import url(../blocks/articles-root/articles-root.css);
+@import url(../blocks/user-articles/user-articles.css);
+
+
+
+
+body {
+  background-color: #1a1b22;
+  position: relative;
+}
+
+/*{
+  border: 1px solid red;
+  box-sizing: border-box;
+
+}*/

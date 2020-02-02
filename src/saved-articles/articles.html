@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="Новости, поиск новостей, сервис для поиска"/>
+  <meta name="description" content="Сервис для поиска и хранения новостей"/>
+  <meta name="author" content="Dmitry Lyapin"/>
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.articles.css%>">
+  <link rel="shortcut icon" href="<%=require('../images/favicon.png')%>" type="images/png">
+  <link rel="icon" href="<%=require('../images/favicon.png')%>" type="images/png">
+  <title>NewsExplorer ~ Страница Ваших избранных статей</title>
+</head>
+<body>
+  <div class="page articles-root">
+    <header class="header header__shadow-grey header__fixed">
+      <div class="header__logo">News Explorer</div>
+      <button class="header__gamburger header__gamburger_black header__gamburger_lines"></button>
+      <nav class="header__mobil-menu header__mobil-menu_color-white">
+        <div class="header__mobil-container">
+          <div class="header header__shadow-white">
+            <div class="header__logo">News Explorer</div>
+            <button class="header__gamburger header__gamburger_cross"></button>
+          </div>
+          <div class="header__mobil-links">
+            <a href="index.html" class="header__change-ref header__mobil-link header__mobil-link_head header__mobil-link_is-opened">Главная</a>
+            <a href="articles.html" class="header__change-ref header__mobil-link header__mobil-link_save header__mobil-link_is-opened">Сохранённые статьи</a>
+          </div>
+          <button class="button header__button header__button_logout header__button_mobil header__button_logout_mobil">
+            <span class="button__container">
+              <span class="header__button-caption header__button-caption_mobil">Грета </span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="header__logout-pic" d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z"/>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </nav>
+      <nav class="header__menu">
+        <div class="header__change header__change_is-inactive header__change_is-inactive_color-black header__change_is-opened">
+          <a href="index.html" class="header__change-ref">Главная</a>
+        </div>
+        <div class="header__change header__change_underline-black header__change_is-opened">
+          <a href="articles.html" class="header__change-ref">Сохранённые статьи</a>
+        </div>
+        <button class="button header__button header__button_logout header__button_color-black header__button_logout_desktop header__button_is-opened">
+          <span class="header__button-caption header__button-caption_desktop">Грета</span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="header__logout-pic header__logout-pic_black" d="M10 6L6 6L6 18H10V20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H10V6ZM17.5856 13L13.2927 17.1339L14.707 18.4958L21.4141 12.0371L14.707 5.57837L13.2927 6.9402L17.5856 11.0741H8V13H17.5856Z"/>
+          </svg>
+        </button>
+      </nav>
+    </header>
+    <main class="root">
+        <section class="articles-intro">
+          <h2 class="articles-intro__title">Сохранённые статьи</h2>
+          <h3 class="title articles-intro__sub-title">Грета, у вас 5 сохранённых статей</h3>
+          <p class="articles-intro__keywords">По ключевым словам:
+            <span class="articles-intro__keyword">Природа, Тайга</span> и
+            <span class="articles-intro__keyword">2 другим</span>
+          </p>
+        </section>
+        <section class="search-results user-articles">
+          <h2 class="user-articles__title">Ваши новости</h2>
+          <div class="cards-list">
+            <div class="card">
+              <div class="card__pic card__pic_06">
+                <div class="card__item card__keyword">Природа</div>
+                <div class="card__item card__icon card__icon_trash"></div>
+                <div class="card__item card__hint card__hint_trash"></div>
+              </div>
+              <article class="card__description">
+                <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
+                <h2 class="card__title">Национальное достояние – парки</h2>
+                <p class="card__info">
+                  В 2016 году Америка отмечала важный юбилей: сто лет назад
+                  здесь начала складываться система национальных парков – охраняемых территорий,
+                  где и сегодня каждый может приобщиться к природе.
+                </p>
+              </article>
+              <h3 class="card__source">ДЗЕН</h3>
+            </div>
+            <div class="card">
+              <div class="card__pic card__pic_04">
+                <div class="card__item card__keyword">Природа</div>
+                <div class="card__item card__icon card__icon_trash"></div>
+                <div class="card__item card__hint card__hint_trash"></div>
+              </div>
+              <article class="card__description">
+                <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
+                <h2 class="card__title">Лесные огоньки: история одной фотографии</h2>
+                <p class="card__info">
+                  Фотограф отвлеклась от освещения суровой политической реальности Мексики,
+                  чтобы запечатлеть ускользающую красоту одного из местных чудес природы.
+                </p>
+              </article>
+              <h3 class="card__source">АФИША</h3>
+            </div>
+            <div class="card">
+              <div class="card__pic card__pic_05">
+                <div class="card__item card__keyword">Тайга</div>
+                <div class="card__item card__icon card__icon_trash"></div>
+                <div class="card__item card__hint card__hint_trash"></div>
+              </div>
+              <article class="card__description">
+                <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
+                <h2 class="card__title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h2>
+                <p class="card__info">
+                  Знаменитый фотограф снимает первозданные леса России,
+                  чтобы рассказать о необходимости их сохранения. В этот раз он отправился
+                  в Двинско-Пинежскую тайгу, где...
+                </p>
+              </article>
+              <h3 class="card__source">МЕДИАЗОНА</h3>
+            </div>
+            <div class="card">
+              <div class="card__pic card__pic_06">
+                <div class="card__item card__keyword">Природа</div>
+                <div class="card__item card__icon card__icon_trash"></div>
+                <div class="card__item card__hint card__hint_trash"></div>
+              </div>
+              <article class="card__description">
+                <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
+                <h2 class="card__title">Национальное достояние – парки</h2>
+                <p class="card__info">
+                  В 2016 году Америка отмечала важный юбилей: сто лет назад
+                  здесь начала складываться система национальных парков – охраняемых территорий,
+                  где и сегодня каждый может приобщиться к природе.
+                </p>
+              </article>
+              <h3 class="card__source">ДЗЕН</h3>
+            </div>
+            <div class="card">
+              <div class="card__pic card__pic_04">
+                <div class="card__item card__keyword">Природа</div>
+                <div class="card__item card__icon card__icon_trash"></div>
+                <div class="card__item card__hint card__hint_trash"></div>
+              </div>
+              <article class="card__description">
+                <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
+                <h2 class="card__title">Лесные огоньки: история одной фотографии</h2>
+                <p class="card__info">
+                  Фотограф отвлеклась от освещения суровой политической реальности Мексики,
+                  чтобы запечатлеть ускользающую красоту одного из местных чудес природы.
+                </p>
+              </article>
+              <h3 class="card__source">АФИША</h3>
+            </div>
+          </div>
+        </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__container-column">
+          <div class="footer__copyright">&#169; 2020. Дмитрий Ляпин</div>
+          <div class="footer__link-container">
+            <a class="footer__link footer__link_head-page" href="index.html">Главная</a>
+            <a class="footer__link footer__link_yandex-praktikum" href="https://praktikum.yandex.ru">Яндекс.Практикум</a>
+          </div>
+        </div>
+        <div class="footer__social-networks">
+          <a class="footer__link footer__icon footer__icon_git" href="https://github.com/Pelmenya"></a>
+          <a class="footer__link footer__icon footer__icon_facebook" href="https://www.facebook.com/lyapindm"></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+    <script src="<%=htmlWebpackPlugin.files.chunks.articles.entry%>"></script>
+</body>
+</html>

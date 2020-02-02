@@ -1,0 +1,22 @@
+.search__form {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  margin-top: 64px;
+  margin-bottom: 80px;
+}
+
+@media screen and (max-width: 792px) {
+  .search__form {
+    margin-top: 122px;
+    margin-bottom: 32px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .search__form {
+    margin-top: 48px;
+    margin-bottom: 48px;
+    width: 90%;
+  }
+}

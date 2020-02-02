@@ -1,0 +1,10 @@
+.footer__link_head-page {
+  width: 120px;
+}
+
+@media screen and (max-width: 550px) {
+  .footer__link_head-page {
+  width: initial;
+  margin-bottom: 38px;
+  }
+ }
