@@ -63,7 +63,7 @@
                 Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.
               </p>
               <form class="search__form">
-                <input class="search__keywords" type="text" placeholder="введите тему новости">
+                <input class="search__keywords" required type="text" minlength="1" oninvalid="setCustomValidity('Нужно ввести ключевое слово')" oninput="setCustomValidity('')" placeholder="введите тему новости">
                 <button class="button button__color-shem-blue search__button">Искать</button>
               </form>
             </div>
