@@ -7,7 +7,7 @@
   <meta name="keywords" content="Новости, поиск новостей, сервис для поиска"/>
   <meta name="description" content="Сервис для поиска и хранения новостей"/>
   <meta name="author" content="Dmitry Lyapin"/>
-  <link rel="stylesheet" href="./css/index.a0f78e643a3a89bb05e5.css?77abca3e5a3bceb14876">
+  <link rel="stylesheet" href="./css/index.a18e6f7ceb1be23c134d.css?279a0240798999346464">
   <link rel="shortcut icon" href="./images/favicon.png" type="images/png">
   <link rel="icon" href="./images/favicon.png" type="images/png">
   <title>NewsExplorer ~ Главная страница</title>
@@ -63,7 +63,7 @@
                 Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.
               </p>
               <form class="search__form">
-                <input class="search__keywords" type="text" placeholder="введите тему новости">
+                <input class="search__keywords" required type="text" minlength="1" oninvalid="setCustomValidity('Нужно ввести ключевое слово')" oninput="setCustomValidity('')" placeholder="введите тему новости">
                 <button class="button button__color-shem-blue search__button">Искать</button>
               </form>
             </div>
@@ -212,6 +212,6 @@
       </form>
     </template>
   </div>
-    <script src="./js/index.ef96ef026996730a17e3.js?77abca3e5a3bceb14876"></script>
+    <script src="./js/index.ef96ef026996730a17e3.js?279a0240798999346464"></script>
 </body>
 </html>
