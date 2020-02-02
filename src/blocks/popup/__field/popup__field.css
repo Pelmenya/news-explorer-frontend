@@ -1,6 +1,6 @@
 .popup__field {
   color: #2f71e5;
-  font-family: Inter;
+  font-family: Inter, arial, sans-serif;
   font-size: 12px;
   cursor: url(../../../images/lapka.png), pointer;
 }
