@@ -23,11 +23,23 @@ export default class Card extends ElementsListeners {
     }
   }
 
-  constructor(props, item, type, callBacks) {
+  _toDoOnClickTopRightBtn() {
+    if (this.cardParametrs._id) {
+      this.toDoOnClickTopRightBtn(this.cardParametrs._id, 'DELETE');
+    } else {
+      this.toDoOnClickTopRightBtn(this.cardParametrs, 'POST').then((_id) => {
+        this.cardParametrs._id = _id;
+      });
+      console.log(this.cardParametrs)
+    }
+  }
+
+  constructor(props, item, type, toDoOnClickTopRightBtn, callBacks) {
     super(props);
     this.cardParametrs = Object.assign(item);
     this.type = type;
     this.callBacks = callBacks;
+    this.toDoOnClickTopRightBtn = toDoOnClickTopRightBtn;
     console.log(this.cardParametrs);
     // DOM элемент карточки
     this.card = this.createCard();
@@ -47,7 +59,7 @@ export default class Card extends ElementsListeners {
       {
         element: this.buttonTopRight,
         event: 'click',
-        callBack: this.callBacks.toDoOnClickTopRightBtn,
+        callBack: this._toDoOnClickTopRightBtn,
       },
       {
         element: this.card,

@@ -8,7 +8,7 @@ function createElementDOM(
   classElement,
   textContent = '',
   styleElement = '',
-  datetime = '',
+  datetime = ''
 ) {
   const newElement = document.createElement(element);
   newElement.className = classElement;
@@ -74,4 +74,38 @@ function dataToStrRus(str) {
   return `${day} ${objMonth[Number(month) - 1]}, ${year}`;
 }
 
-export { createElementDOM, getProfile, removeProfile, errorNewsServer, dataToStrRus };
+function translateCardParametrsToUserApiParametrs(cardParametrs) {
+  return {
+    keyword: cardParametrs.keyWordForSave,
+    title: cardParametrs.title,
+    text: cardParametrs.description,
+    date: cardParametrs.publishedAt,
+    source: cardParametrs.source.name,
+    link: cardParametrs.url,
+    image: cardParametrs.urlToImage,
+  };
+}
+
+function translateUsersApiParametrsToCardParametrs(userApiParametrs) {
+  return {
+    keyword: userApiParametrs.keyword,
+    title: userApiParametrs.title,
+    description: userApiParametrs.text,
+    publishedAt: userApiParametrs.date,
+    source: {
+      name: userApiParametrs.source,
+    },
+    url: userApiParametrs.link,
+    urlToImage: userApiParametrs.image,
+  };
+}
+
+export {
+  createElementDOM,
+  getProfile,
+  removeProfile,
+  errorNewsServer,
+  dataToStrRus,
+  translateCardParametrsToUserApiParametrs,
+  translateUsersApiParametrsToCardParametrs,
+};

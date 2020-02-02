@@ -10,8 +10,8 @@ import {
   headerChangeSaveLink,
   headerSaveMobilLink,
 } from '../constants/elements';
-
-import { getProfile } from './functions';
+import { usersApi } from '../constants/api';
+import { getProfile, translateCardParametrsToUserApiParametrs } from './functions';
 import { profileOwner } from '../constants/constants';
 
 /** CallBack отображения хёдера, если пользователь залогинен */
@@ -40,16 +40,31 @@ function renderNotLoginHeader() {
   headerChangeHeadLink.classList.add('header__change_is-opened');
 }
 
-function toDoOnClickTopRightBtn() {
-  console.log('Hellow World ');
+function toDoOnClickBookMark(cardParametrs, method) {
+  if (method === 'POST') {
+    return usersApi
+      .postArticle(
+        translateCardParametrsToUserApiParametrs(cardParametrs),
+        getProfile(profileOwner).key,
+      )
+      .then((card) => card.data._id)
+      .catch((err) => err);
+  }
+  if (method === 'DELETE') {
+    return usersApi
+      .deleteArticle(cardParametrs._id, getProfile(profileOwner).key)
+      .then((card) => card.data._id)
+      .catch((err) => err);
+  }
+  return method;
 }
 
 function toDoOnClickCard(url) {
-  window.location.href = url;
+  window.open(url);
 }
 
 function addCardBookMark(item) {
-  const objCard = new Card([], item, 'bookmark', { toDoOnClickTopRightBtn, toDoOnClickCard });
+  const objCard = new Card([], item, 'bookmark', toDoOnClickBookMark, { toDoOnClickCard });
   return objCard.card;
 }
 

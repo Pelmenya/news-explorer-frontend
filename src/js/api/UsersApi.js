@@ -38,6 +38,17 @@ export default class UsersApi {
       .then((res) => res.json())
       .catch((err) => err);
   }
+
+  postArticle(item, key) {
+    const objJSON = {};
+    objJSON.method = 'POST';
+    objJSON.headers = this.headers;
+    objJSON.body = JSON.stringify(item);
+    objJSON.headers.authorization = this.bearer + key;
+    return fetch(this.baseUrl + this.articlesUrl, objJSON)
+      .then((res) => res.json())
+      .catch((err) => err);
+  }
   /*
   getProfileOwner() {
 
