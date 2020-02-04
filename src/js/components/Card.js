@@ -1,8 +1,7 @@
 import { createElementDOM, getProfile, dataToStrRus } from '../utilits/functions';
-import ElementsListeners from './ElementsListeners';
 import { profileOwner } from '../constants/constants';
 
-export default class Card extends ElementsListeners {
+export default class Card {
   _toDoMouseMoveTopRightBtn() {
     if (getProfile(profileOwner)) {
       this.buttonTopRightHint.classList.add(`card__hint_${this.cardParametrs.type}`);
@@ -26,7 +25,7 @@ export default class Card extends ElementsListeners {
   _toDoOnClickTopRightBtn() {
     if (getProfile(profileOwner)) {
       if (this.cardParametrs._id) {
-        this.toDoOnClickTopRightBtn(this.cardParametrs, 'DELETE')
+        this.callBacks.toDoOnClickTopRightBtn(this.cardParametrs, 'DELETE')
           .then((_id) => {
             if (_id === null) {
               this.buttonTopRight.classList.remove(`card__icon_${this.cardParametrs.type}-marked`);
@@ -35,7 +34,7 @@ export default class Card extends ElementsListeners {
           })
           .catch((err) => alert(err));
       } else {
-        this.toDoOnClickTopRightBtn(this.cardParametrs, 'POST')
+        this.callBacks.toDoOnClickTopRightBtn(this.cardParametrs, 'POST')
           .then((_id) => {
             if (_id) {
               this.buttonTopRight.classList.add(`card__icon_${this.cardParametrs.type}-marked`);
@@ -44,47 +43,34 @@ export default class Card extends ElementsListeners {
           })
           .catch((err) => alert(err));
       }
-      console.log(this.cardParametrs);
     }
   }
 
-  constructor(props, item, toDoOnClickTopRightBtn, callBacks) {
-    super(props);
+  constructor(item, callBacks) {
     this.cardParametrs = Object.assign(item);
     this.callBacks = callBacks;
-    this.toDoOnClickTopRightBtn = toDoOnClickTopRightBtn;
-    //console.log(this.cardParametrs);
-    // DOM элемент карточки
-    this.cardParametrs.card = this.createCard();
-    this.buttonTopRight = this.cardParametrs.card.querySelector(
-      `.card__icon_${this.cardParametrs.type}`
-    );
-    this.buttonTopRightHint = this.cardParametrs.card.querySelector('.card__hint');
-    this.addListeners([
-      {
-        element: this.buttonTopRight,
-        event: 'mouseover',
-        callBack: this._toDoMouseMoveTopRightBtn,
-      },
-      {
-        element: this.buttonTopRight,
-        event: 'mouseout',
-        callBack: this._toDoMouseOutTopRightBtn,
-      },
-      {
-        element: this.buttonTopRight,
-        event: 'click',
-        callBack: this._toDoOnClickTopRightBtn,
-      },
-      {
-        element: this.cardParametrs.card,
-        event: 'click',
-        callBack: this._cardOnclick,
-      },
-    ]);
   }
 
-  createCard() {
+  addEventListeners() {
+    Object.keys(this.elements).forEach((item) => {
+      this.elements[item].callBack = this.elements[item].callBack.bind(this);
+      this.elements[item].element.addEventListener(
+        this.elements[item].event,
+        this.elements[item].callBack,
+      );
+    });
+  }
+
+  removeEventListeners() {
+    Object.keys(this.elements).forEach((item) => {
+      this.elements[item].element.removeEventListener(
+        this.elements[item].event,
+        this.elements[item].callBack,
+      );
+    });
+  }
+
+  create() {
     const articleCard = createElementDOM('div', 'card');
     let articleCardPic;
 
@@ -107,10 +93,15 @@ export default class Card extends ElementsListeners {
       );
     }
 
-    articleCardPic.appendChild(
-      createElementDOM('div', `card__item card__icon card__icon_${this.cardParametrs.type}`)
+    this.buttonTopRight = createElementDOM(
+      'div',
+      `card__item card__icon card__icon_${this.cardParametrs.type}`
     );
-    articleCardPic.appendChild(createElementDOM('div', 'card__item card__hint'));
+    articleCardPic.appendChild(this.buttonTopRight);
+
+    this.buttonTopRightHint = createElementDOM('div', 'card__item card__hint');
+    articleCardPic.appendChild(this.buttonTopRightHint);
+
     const articleCardDescription = createElementDOM('article', 'card__description');
     articleCardDescription.appendChild(
       createElementDOM(
@@ -121,7 +112,9 @@ export default class Card extends ElementsListeners {
         `${this.cardParametrs.publishedAt.slice(0, 10)}`
       )
     );
+
     const articleCardDescriptionWraper = createElementDOM('div', 'card__description-wraper');
+
     const articleCardDescriptionContainer = createElementDOM('div', 'card__description-container');
     articleCardDescriptionContainer.appendChild(
       createElementDOM('h2', 'card__title', `${this.cardParametrs.title}`)
@@ -136,6 +129,28 @@ export default class Card extends ElementsListeners {
     articleCard.appendChild(
       createElementDOM('h3', 'card__source', `${this.cardParametrs.source.name}`)
     );
-    return articleCard;
+    this.cardParametrs.card = articleCard;
+    this.elements = [
+      {
+        element: this.buttonTopRight,
+        event: 'mouseover',
+        callBack: this._toDoMouseMoveTopRightBtn,
+      },
+      {
+        element: this.buttonTopRight,
+        event: 'mouseout',
+        callBack: this._toDoMouseOutTopRightBtn,
+      },
+      {
+        element: this.buttonTopRight,
+        event: 'click',
+        callBack: this._toDoOnClickTopRightBtn,
+      },
+      {
+        element: this.cardParametrs.card,
+        event: 'click',
+        callBack: this._cardOnclick,
+      },
+    ];
   }
 }

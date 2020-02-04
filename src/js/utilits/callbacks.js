@@ -45,7 +45,7 @@ function renderNotLoginHeader() {
   headerChangeHeadLink.classList.add('header__change_is-opened');
 }
 
-function toDoOnClickBookMark(item, method) {
+function toDoOnClickTopRightBtn(item, method) {
   const cardParametrs = Object.assign(item);
   if (method === 'POST') {
     return usersApi
@@ -63,7 +63,13 @@ function toDoOnClickBookMark(item, method) {
     return usersApi
       .deleteArticle(cardParametrs._id, getProfile(profileOwner).key)
       .then((data) => {
-        if (String(data.remove._id) === String(cardParametrs._id)) return null;
+        if (String(data.remove._id) === String(cardParametrs._id)) {
+          if (cardParametrs.type === 'bookmark') return null;
+          if (cardParametrs.type === 'trash') {
+            cardParametrs.parentNode.removeChild(cardParametrs.card);
+            return method;
+          }
+        }
         return Promise.reject(new Error(ERROR_DELETE_CARD));
       })
       .catch(() => alert(ERROR_DELETE_CARD));
@@ -76,14 +82,27 @@ function toDoOnClickCard(url) {
 }
 
 function addCardBookMark(item) {
-  const objCard = new Card([], { ...item, type: 'bookmark' }, toDoOnClickBookMark, {
-    toDoOnClickCard,
-  });
-  return objCard.cardParametrs.card;
+  const card = new Card(
+    { ...item, type: 'bookmark' },
+    {
+      toDoOnClickTopRightBtn,
+      toDoOnClickCard,
+    },
+  );
+  card.create();
+  card.addEventListeners();
+  return card.cardParametrs.card;
 }
 
 function addCardTrash(item) {
-  const objCard = new Card([], item, { ...item, type: 'trash' });
+  const objCard = new Card(
+    item,
+    { ...item, type: 'trash' },
+    {
+      toDoOnClickTopRightBtn,
+      toDoOnClickCard,
+    },
+  );
   return objCard.card;
 }
 

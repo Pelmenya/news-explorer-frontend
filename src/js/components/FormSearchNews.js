@@ -21,6 +21,7 @@ export default class FormSearchNews {
     this.handlerSubmit = handlerSubmit;
   }
 
+
   submitForm(event) {
     if (this._getInfo()) {
       this.handlerSubmit(this._getInfo());

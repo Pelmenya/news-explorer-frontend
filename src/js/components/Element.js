@@ -8,10 +8,18 @@ export default class Element {
   }
 
   open() {
-    this.element.classList.add(this.classOpened);
+    if (this.classOpened) this.element.classList.add(this.classOpened);
   }
 
   close() {
-    this.element.classList.remove(this.classOpened);
+    if (this.classOpened) this.element.classList.remove(this.classOpened);
+  }
+
+  addEventListener(event, callBack) {
+    this.element.addEventListener(event, callBack);
+  }
+
+  removeEventListeners(event, callBack) {
+    this.element.removeEventListener(event, callBack);
   }
 }

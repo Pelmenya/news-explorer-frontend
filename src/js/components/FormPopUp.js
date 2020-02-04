@@ -77,7 +77,7 @@ export default class FormPopUp extends ElementsListeners {
     this.popupForm.querySelector('.popup__error_server').textContent = serverErr;
   }
 
-  constructor(props = [], popup, handlerSubmit = null) {
+  constructor(props, popup, handlerSubmit = null) {
     super(props);
 
     this.popup = popup;

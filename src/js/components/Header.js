@@ -7,9 +7,6 @@ export default class Header extends ElementsListeners {
     this.isLoggedIn = isLoggedIn;
     this.renderLoginHeader = callBacks.renderLoginHeader;
     this.renderNotLoginHeader = callBacks.renderNotLoginHeader;
-
-    this.render = this.render.bind(this);
-
     this.render(this.isLoggedIn);
   }
 

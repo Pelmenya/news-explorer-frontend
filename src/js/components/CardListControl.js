@@ -8,8 +8,7 @@ export default class CardsListControl extends CardsList {
     this.numberRenderCards = numberRenderCards;
     this.createObject = createObject;
     this.cardListContainer = container;
-
-    this.cardsListBtn.element.addEventListener('click', this.render);
+    this.cardsListBtn.addEventListener('click', this.render);
   }
 
   render() {
