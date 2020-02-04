@@ -5,46 +5,61 @@ import { profileOwner } from '../constants/constants';
 export default class Card extends ElementsListeners {
   _toDoMouseMoveTopRightBtn() {
     if (getProfile(profileOwner)) {
-      this.buttonTopRightHint.classList.add(`card__hint_${this.type}`);
+      this.buttonTopRightHint.classList.add(`card__hint_${this.cardParametrs.type}`);
     } else {
-      this.buttonTopRightHint.classList.add(`card__hint_${this.type}`);
-      this.buttonTopRightHint.classList.add(`card__hint_${this.type}_logout`);
+      this.buttonTopRightHint.classList.add(`card__hint_${this.cardParametrs.type}`);
+      this.buttonTopRightHint.classList.add(`card__hint_${this.cardParametrs.type}_logout`);
     }
   }
 
   _toDoMouseOutTopRightBtn() {
-    this.buttonTopRightHint.classList.remove(`card__hint_${this.type}`);
-    this.buttonTopRightHint.classList.remove(`card__hint_${this.type}_logout`);
+    this.buttonTopRightHint.classList.remove(`card__hint_${this.cardParametrs.type}`);
+    this.buttonTopRightHint.classList.remove(`card__hint_${this.cardParametrs.type}_logout`);
   }
 
   _cardOnclick(event) {
-    if (!event.target.classList.contains(`card__icon_${this.type}`)) {
+    if (!event.target.classList.contains(`card__icon_${this.cardParametrs.type}`)) {
       this.callBacks.toDoOnClickCard(this.cardParametrs.url);
     }
   }
 
   _toDoOnClickTopRightBtn() {
-    if (this.cardParametrs._id) {
-      this.toDoOnClickTopRightBtn(this.cardParametrs._id, 'DELETE');
-    } else {
-      this.toDoOnClickTopRightBtn(this.cardParametrs, 'POST').then((_id) => {
-        this.cardParametrs._id = _id;
-      });
-      console.log(this.cardParametrs)
+    if (getProfile(profileOwner)) {
+      if (this.cardParametrs._id) {
+        this.toDoOnClickTopRightBtn(this.cardParametrs, 'DELETE')
+          .then((_id) => {
+            if (_id === null) {
+              this.buttonTopRight.classList.remove(`card__icon_${this.cardParametrs.type}-marked`);
+              this.cardParametrs._id = _id;
+            }
+          })
+          .catch((err) => alert(err));
+      } else {
+        this.toDoOnClickTopRightBtn(this.cardParametrs, 'POST')
+          .then((_id) => {
+            if (_id) {
+              this.buttonTopRight.classList.add(`card__icon_${this.cardParametrs.type}-marked`);
+              this.cardParametrs._id = _id;
+            }
+          })
+          .catch((err) => alert(err));
+      }
+      console.log(this.cardParametrs);
     }
   }
 
-  constructor(props, item, type, toDoOnClickTopRightBtn, callBacks) {
+  constructor(props, item, toDoOnClickTopRightBtn, callBacks) {
     super(props);
     this.cardParametrs = Object.assign(item);
-    this.type = type;
     this.callBacks = callBacks;
     this.toDoOnClickTopRightBtn = toDoOnClickTopRightBtn;
-    console.log(this.cardParametrs);
+    //console.log(this.cardParametrs);
     // DOM элемент карточки
-    this.card = this.createCard();
-    this.buttonTopRight = this.card.querySelector(`.card__icon_${this.type}`);
-    this.buttonTopRightHint = this.card.querySelector('.card__hint');
+    this.cardParametrs.card = this.createCard();
+    this.buttonTopRight = this.cardParametrs.card.querySelector(
+      `.card__icon_${this.cardParametrs.type}`
+    );
+    this.buttonTopRightHint = this.cardParametrs.card.querySelector('.card__hint');
     this.addListeners([
       {
         element: this.buttonTopRight,
@@ -62,7 +77,7 @@ export default class Card extends ElementsListeners {
         callBack: this._toDoOnClickTopRightBtn,
       },
       {
-        element: this.card,
+        element: this.cardParametrs.card,
         event: 'click',
         callBack: this._cardOnclick,
       },
@@ -93,7 +108,7 @@ export default class Card extends ElementsListeners {
     }
 
     articleCardPic.appendChild(
-      createElementDOM('div', `card__item card__icon card__icon_${this.type}`)
+      createElementDOM('div', `card__item card__icon card__icon_${this.cardParametrs.type}`)
     );
     articleCardPic.appendChild(createElementDOM('div', 'card__item card__hint'));
     const articleCardDescription = createElementDOM('article', 'card__description');

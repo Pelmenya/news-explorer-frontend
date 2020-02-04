@@ -2,7 +2,6 @@ import './pages/index.css';
 
 import FormPopUp from './js/components/FormPopUp';
 import FormSearchNews from './js/components/FormSearchNews';
-import Element from './js/components/Element';
 import CardsList from './js/components/CardsList';
 
 import { profileOwner, numberCardsInLine } from './js/constants/constants';
@@ -27,11 +26,19 @@ import {
 } from './js/constants/elements';
 
 import { getProfile, removeProfile, errorNewsServer } from './js/utilits/functions';
-import { addCardTrash, addCardBookMark } from './js/utilits/callbacks';
+import { addCardBookMark } from './js/utilits/callbacks';
 
 function main() {
   /* Константы */
-  const cardsList = new CardsList([], cardsListContainer, cardsListBtn, numberCardsInLine, addCardBookMark);
+  console.log(window.location.href);
+
+  const cardsList = new CardsList(
+    [],
+    cardsListContainer,
+    cardsListBtn,
+    numberCardsInLine,
+    addCardBookMark
+  );
   /** Callback для поиска новостей по ключевому слову */
   function searchNews(keyword) {
     searchResultsAct.close();
@@ -99,7 +106,7 @@ function main() {
           }
           return data.message;
         })
-        .catch((err) => err);
+        .catch((err) => alert(err));
     }
 
     function openFormSignIn() {
@@ -145,7 +152,7 @@ function main() {
           }
           return data.message;
         })
-        .catch((err) => err);
+        .catch((err) => alert(err));
     }
 
     function openFormSignUp() {

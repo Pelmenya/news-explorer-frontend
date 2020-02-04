@@ -21,7 +21,7 @@ const header = new Header(
     {
       element: document.querySelector('.popup__close'),
       event: 'click',
-      callBack: () => popup.close(),
+      callBack: popup.close,
     },
     {
       element: headerGamburgerLinesBtn,
@@ -42,7 +42,7 @@ const header = new Header(
       event: 'click',
       callBack: () => {
         removeProfile(profileOwner);
-        renderNotLoginHeader();
+        window.location.href = 'index.html';
       },
     },
     {
@@ -50,7 +50,7 @@ const header = new Header(
       event: 'click',
       callBack: () => {
         removeProfile(profileOwner);
-        renderNotLoginHeader();
+        window.location.href = 'index.html';
       },
     },
   ],

@@ -1,4 +1,5 @@
 import Card from '../components/Card';
+// Константы
 import {
   headerAuthDesktopBtn,
   headerAuthMobilBtn,
@@ -11,9 +12,13 @@ import {
   headerSaveMobilLink,
 } from '../constants/elements';
 import { usersApi } from '../constants/api';
-import { getProfile, translateCardParametrsToUserApiParametrs } from './functions';
 import { profileOwner } from '../constants/constants';
+import { ERROR_DELETE_CARD, ERROR_SAVE_CARD } from '../constants/errors';
 
+// Функции
+import { getProfile, translateCardParametrsToUserApiParametrs } from './functions';
+
+// CallBacks
 /** CallBack отображения хёдера, если пользователь залогинен */
 function renderLoginHeader() {
   headerLogoutDesktopBtn.classList.add('header__button_is-opened');
@@ -40,21 +45,28 @@ function renderNotLoginHeader() {
   headerChangeHeadLink.classList.add('header__change_is-opened');
 }
 
-function toDoOnClickBookMark(cardParametrs, method) {
+function toDoOnClickBookMark(item, method) {
+  const cardParametrs = Object.assign(item);
   if (method === 'POST') {
     return usersApi
       .postArticle(
         translateCardParametrsToUserApiParametrs(cardParametrs),
-        getProfile(profileOwner).key,
+        getProfile(profileOwner).key
       )
-      .then((card) => card.data._id)
-      .catch((err) => err);
+      .then((card) => {
+        if (card.data._id) return card.data._id;
+        return Promise.reject(new Error(ERROR_SAVE_CARD));
+      })
+      .catch(() => alert(ERROR_SAVE_CARD));
   }
   if (method === 'DELETE') {
     return usersApi
       .deleteArticle(cardParametrs._id, getProfile(profileOwner).key)
-      .then((card) => card.data._id)
-      .catch((err) => err);
+      .then((data) => {
+        if (String(data.remove._id) === String(cardParametrs._id)) return null;
+        return Promise.reject(new Error(ERROR_DELETE_CARD));
+      })
+      .catch(() => alert(ERROR_DELETE_CARD));
   }
   return method;
 }
@@ -64,12 +76,14 @@ function toDoOnClickCard(url) {
 }
 
 function addCardBookMark(item) {
-  const objCard = new Card([], item, 'bookmark', toDoOnClickBookMark, { toDoOnClickCard });
-  return objCard.card;
+  const objCard = new Card([], { ...item, type: 'bookmark' }, toDoOnClickBookMark, {
+    toDoOnClickCard,
+  });
+  return objCard.cardParametrs.card;
 }
 
 function addCardTrash(item) {
-  const objCard = new Card([], item, 'trash');
+  const objCard = new Card([], item, { ...item, type: 'trash' });
   return objCard.card;
 }
 

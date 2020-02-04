@@ -60,7 +60,6 @@ export default class FormPopUp extends ElementsListeners {
   _formReset() {
     this.popupForm.reset();
     this._clearErrorLabel();
-    this.popupForm.querySelector('.button__popup').setAttribute('disabled', true);
   }
 
   // Возвращает объект из полей input

@@ -45,7 +45,6 @@ const searchResultsAct = new Element({
 });
 
 
-
 export {
   /** Кнопки */
   cardsListBtn,

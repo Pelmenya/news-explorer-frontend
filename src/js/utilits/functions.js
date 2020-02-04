@@ -1,6 +1,7 @@
 import { searchNothingTemplate } from '../constants/elements';
 import { searchAct } from '../constants/containers';
 import { ERROR_SERVER_NEWS_DESCRIPTION } from '../constants/errors';
+import { BAD_URL_FOR_USER_LINKS } from '../constants/constants';
 
 /** Функция для создания DOM элемента */
 function createElementDOM(
@@ -75,15 +76,33 @@ function dataToStrRus(str) {
 }
 
 function translateCardParametrsToUserApiParametrs(cardParametrs) {
-  return {
-    keyword: cardParametrs.keyWordForSave,
-    title: cardParametrs.title,
-    text: cardParametrs.description,
-    date: cardParametrs.publishedAt,
-    source: cardParametrs.source.name,
-    link: cardParametrs.url,
-    image: cardParametrs.urlToImage,
+  const item = {
+    keyword: String(cardParametrs.keyWordForSave),
+    title: String(cardParametrs.title),
+    text: String(cardParametrs.description),
+    source: String(cardParametrs.source.name),
   };
+
+  if (cardParametrs.publishedAt) {
+    item.date = cardParametrs.publishedAt;
+  } else {
+    item.date = new Date().toISOString().slice(0, 19);
+  }
+
+  if (cardParametrs.url) {
+    item.link = cardParametrs.url;
+  } else {
+    item.link = BAD_URL_FOR_USER_LINKS;
+  }
+
+  if (cardParametrs.urlToImage) {
+    item.image = cardParametrs.urlToImage;
+  } else {
+    item.image = BAD_URL_FOR_USER_LINKS;
+  }
+
+  console.log(item)
+  return item;
 }
 
 function translateUsersApiParametrsToCardParametrs(userApiParametrs) {

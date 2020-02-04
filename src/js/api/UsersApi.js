@@ -25,6 +25,7 @@ export default class UsersApi {
     objJSON.method = 'POST';
     objJSON.headers = this.headers;
     objJSON.body = JSON.stringify(item);
+
     return fetch(this.baseUrl + this.signInUrl, objJSON)
       .then((res) => res.json())
       .catch((err) => err);
@@ -34,7 +35,18 @@ export default class UsersApi {
     const objJSON = {};
     objJSON.headers = this.headers;
     objJSON.headers.authorization = this.bearer + key;
+
     return fetch(this.baseUrl + this.profileUrl, objJSON)
+      .then((res) => res.json())
+      .catch((err) => err);
+  }
+
+  getUserArticles(key) {
+    const objJSON = {};
+    objJSON.headers = this.headers;
+    objJSON.headers.authorization = this.bearer + key;
+
+    return fetch(this.baseUrl + this.articlesUrl, objJSON)
       .then((res) => res.json())
       .catch((err) => err);
   }
@@ -45,80 +57,20 @@ export default class UsersApi {
     objJSON.headers = this.headers;
     objJSON.body = JSON.stringify(item);
     objJSON.headers.authorization = this.bearer + key;
+
     return fetch(this.baseUrl + this.articlesUrl, objJSON)
       .then((res) => res.json())
       .catch((err) => err);
   }
-  /*
-  getProfileOwner() {
 
-    return fetch(this.baseUrl + this.profileUrl, this.headers)
-      .then((res) => res.json())
-      .catch((err) => {
-        alert('Ошибка: ' + err);
-      });
-  }
-
-  getInitialCards() {
-    return fetch(this.baseUrl + this.cardsUrl, this.headers)
-      .then((res) => res.json())
-      .catch((err) => {
-        alert('Ошибка: ' + err);
-      });
-  }
-
-  patchProfileOwner(item, path) {
-    const objJSON = {};
-    objJSON.method = 'PATCH';
-    objJSON.headers = this.headers.headers;
-    objJSON.body = JSON.stringify(item);
-    return fetch(this.baseUrl + this.profileUrl + path, objJSON)
-      .then((data) => {
-        if (data.ok) return data;
-      })
-      .catch((err) => {
-        alert('Ошибка: ' + err);
-      });
-  }
-
-  deleteCardFromServer(cardId) {
+  deleteArticle(item, key) {
     const objJSON = {};
     objJSON.method = 'DELETE';
-    objJSON.headers = this.headers.headers;
-    return fetch(this.baseUrl + this.cardsUrl + `/${cardId}`, objJSON)
-      .then((data) => {
-        if (data.ok) return data;
-      })
-      .catch((err) => {
-        alert('Ошибка: ' + err);
-      });
-  }
+    objJSON.headers = this.headers;
+    objJSON.headers.authorization = this.bearer + key;
 
-  postCardOnServer(item) {
-    const objJSON = {};
-    objJSON.method = 'POST';
-    objJSON.headers = this.headers.headers;
-    objJSON.body = JSON.stringify(item);
-    return fetch(this.baseUrl + this.cardsUrl, objJSON)
-      .then((res) => {
-        if (res.ok) return res.json();
-      })
-      .catch((err) => {
-        alert('Ошибка: ' + err);
-      });
+    return fetch(`${this.baseUrl}${this.articlesUrl}/${item}`, objJSON)
+      .then((res) => res.json())
+      .catch((err) => err);
   }
-
-  likeCardOnServer(cardId, queryMethod) {
-    const objJSON = {};
-    objJSON.method = queryMethod;
-    objJSON.headers = this.headers.headers;
-    return fetch(this.baseUrl + this.cardsUrl + this.cardsLikeUrl + `/${cardId}`, objJSON)
-      .then((res) => {
-        if (res.ok) return res.json();
-      })
-      .catch((err) => {
-        alert('Ошибка: ' + err);
-      });
-  }
-*/
 }
