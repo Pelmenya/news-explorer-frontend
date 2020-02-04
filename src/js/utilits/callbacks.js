@@ -95,15 +95,16 @@ function addCardBookMark(item) {
 }
 
 function addCardTrash(item) {
-  const objCard = new Card(
-    item,
+  const card = new Card(
     { ...item, type: 'trash' },
     {
       toDoOnClickTopRightBtn,
       toDoOnClickCard,
     },
   );
-  return objCard.card;
+  card.create();
+  card.addEventListeners();
+  return card.cardParametrs.card;
 }
 
 export { renderLoginHeader, renderNotLoginHeader, addCardBookMark, addCardTrash };

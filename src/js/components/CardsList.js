@@ -22,19 +22,19 @@ export default class CardsList {
 
     img.onload = () => {
       this.cardListContainer.appendChild(
-        this.createObject({ ...obj, keyWordForSave: this.keyword }),
+        this.createObject({ ...obj, keyWordForSave: this.keyword })
       );
     };
     img.onerror = () => {
       obj.urlToImage = null;
       this.cardListContainer.appendChild(
-        this.createObject({ ...obj, keyWordForSave: this.keyword }),
+        this.createObject({ ...obj, keyWordForSave: this.keyword })
       );
     };
     img.src = item.urlToImage;
   }
 
-  viewCards(articles, keyword) {
+  viewCards(articles, keyword = null) {
     this.keyword = keyword;
     this._clear();
     this.stopRenderCards = articles.length;

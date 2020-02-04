@@ -1,10 +1,13 @@
 import '../pages/articles.css';
 
 import Header from '../js/components/Header';
-import { getProfile } from '../js/utilits/functions';
+import { getProfile, translateUsersApiParametrsToCardParametrs } from '../js/utilits/functions';
 
 import { profileOwner } from '../js/constants/constants';
 import { usersApi } from '../js/constants/api';
+import CardsList from '../js/components/CardsList';
+import { cardsListContainer } from '../js/constants/elements';
+import { addCardTrash } from '../js/utilits/callbacks';
 
 //
 
@@ -76,12 +79,16 @@ const header = new Header(
   { renderLoginHeader, renderNotLoginHeader }
 );
 
+const cardsList = new CardsList(cardsListContainer, addCardTrash);
+
 function main() {
   usersApi
     .getUserArticles(getProfile(profileOwner).key)
     .then((articles) => {
-
-      
+      const cardsParametrs = articles.myArticles.map((item) => {
+        return translateUsersApiParametrsToCardParametrs(item);
+      });
+      cardsList.viewCards(cardsParametrs);
     })
     .catch((err) => alert(err));
 }
