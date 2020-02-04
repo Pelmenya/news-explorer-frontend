@@ -2,7 +2,7 @@ import './pages/index.css';
 
 import FormPopUp from './js/components/FormPopUp';
 import FormSearchNews from './js/components/FormSearchNews';
-import CardsList from './js/components/CardsList';
+import CardsListControl from './js/components/CardListControl';
 
 import { profileOwner, numberCardsInLine } from './js/constants/constants';
 import { usersApi, newsApi } from './js/constants/api';
@@ -31,13 +31,11 @@ import { addCardBookMark } from './js/utilits/callbacks';
 function main() {
   /* Константы */
   console.log(window.location.href);
-
-  const cardsList = new CardsList(
-    [],
+  const cardsListControl = new CardsListControl(
     cardsListContainer,
+    addCardBookMark,
     cardsListBtn,
     numberCardsInLine,
-    addCardBookMark
   );
   /** Callback для поиска новостей по ключевому слову */
   function searchNews(keyword) {
@@ -60,7 +58,7 @@ function main() {
           if (String(data.totalResults) !== '0') {
             searchAct.close();
             searchResultsAct.open();
-            cardsList.viewCards(data.articles, keyword);
+            cardsListControl.viewCards(data.articles, keyword);
             return data;
           }
         }

@@ -1,6 +1,4 @@
-import ElementsListeners from './ElementsListeners';
-
-export default class CardsList extends ElementsListeners {
+export default class CardsList {
   _clear() {
     while (this.cardListContainer.firstChild) {
       this.cardListContainer.removeChild(this.cardListContainer.firstChild);
@@ -8,38 +6,14 @@ export default class CardsList extends ElementsListeners {
     this.counterRenderCards = 0;
   }
 
-  constructor(props, container, cardsListBtn, numberRenderCards = 3, callBack = null) {
-    super(props);
-    this.cardsListBtn = cardsListBtn;
-    this.numberRenderCards = numberRenderCards;
-    this.callBack = callBack;
+  constructor(container, createObject) {
+    this.createObject = createObject;
     this.cardListContainer = container;
-    this.addListeners([
-      {
-        element: this.cardsListBtn.element,
-        event: 'click',
-        callBack: this.render,
-      },
-    ]);
+    this.render = this.render.bind(this);
   }
 
   render() {
-    this.cardsListBtn.open();
-    if (this.counterRenderCards + this.numberRenderCards < this.stopRenderCards) {
-      for (
-        let i = this.counterRenderCards;
-        i < this.counterRenderCards + this.numberRenderCards;
-        i += 1
-      ) {
-        this.addCard(this.cards[i]);
-      }
-      this.counterRenderCards += this.numberRenderCards;
-    } else {
-      for (let i = this.counterRenderCards; i < this.stopRenderCards; i += 1) {
-        this.addCard(this.cards[i]);
-      }
-      this.cardsListBtn.close();
-    }
+    this.cards.forEach((item) => this.addCard(item));
   }
 
   addCard(item) {
@@ -47,11 +21,15 @@ export default class CardsList extends ElementsListeners {
     const img = new Image();
 
     img.onload = () => {
-      this.cardListContainer.appendChild(this.callBack({ ...obj, keyWordForSave: this.keyword }));
+      this.cardListContainer.appendChild(
+        this.createObject({ ...obj, keyWordForSave: this.keyword }),
+      );
     };
     img.onerror = () => {
       obj.urlToImage = null;
-      this.cardListContainer.appendChild(this.callBack({ ...obj, keyWordForSave: this.keyword }));
+      this.cardListContainer.appendChild(
+        this.createObject({ ...obj, keyWordForSave: this.keyword }),
+      );
     };
     img.src = item.urlToImage;
   }

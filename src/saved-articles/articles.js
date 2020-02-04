@@ -2,7 +2,9 @@ import '../pages/articles.css';
 
 import Header from '../js/components/Header';
 import { getProfile } from '../js/utilits/functions';
+
 import { profileOwner } from '../js/constants/constants';
+import { usersApi } from '../js/constants/api';
 
 //
 
@@ -71,7 +73,19 @@ const header = new Header(
     },
   ],
   getProfile(profileOwner),
-  { renderLoginHeader, renderNotLoginHeader },
+  { renderLoginHeader, renderNotLoginHeader }
 );
 
-if (!getProfile(profileOwner)) window.location.href = 'index.html';
+function main() {
+  usersApi
+    .getUserArticles(getProfile(profileOwner).key)
+    .then((articles) => {
+
+      
+    })
+    .catch((err) => alert(err));
+}
+
+if (getProfile(profileOwner)) {
+  main();
+} else window.location.href = 'index.html';
