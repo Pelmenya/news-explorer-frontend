@@ -85,10 +85,9 @@ function main() {
   usersApi
     .getUserArticles(getProfile(profileOwner).key)
     .then((articles) => {
-      const cardsParametrs = articles.myArticles.map((item) => {
-        return translateUsersApiParametrsToCardParametrs(item);
-      });
-      cardsList.viewCards(cardsParametrs);
+      cardsList.viewCards(
+        articles.myArticles.map((item) => translateUsersApiParametrsToCardParametrs(item)),
+      );
     })
     .catch((err) => alert(err));
 }

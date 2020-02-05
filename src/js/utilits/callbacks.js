@@ -66,7 +66,7 @@ function toDoOnClickTopRightBtn(item, method) {
         if (String(data.remove._id) === String(cardParametrs._id)) {
           if (cardParametrs.type === 'bookmark') return null;
           if (cardParametrs.type === 'trash') {
-            cardParametrs.parentNode.removeChild(cardParametrs.card);
+            cardParametrs.card.parentNode.removeChild(cardParametrs.card);
             return method;
           }
         }
@@ -82,29 +82,29 @@ function toDoOnClickCard(url) {
 }
 
 function addCardBookMark(item) {
-  const card = new Card(
+  const newCard = new Card(
     { ...item, type: 'bookmark' },
     {
       toDoOnClickTopRightBtn,
       toDoOnClickCard,
-    },
+    }
   );
-  card.create();
-  card.addEventListeners();
-  return card.cardParametrs.card;
+  newCard.create();
+  newCard.addEventListeners();
+  return newCard.cardParametrs.card;
 }
 
 function addCardTrash(item) {
-  const card = new Card(
+  const newCard = new Card(
     { ...item, type: 'trash' },
     {
       toDoOnClickTopRightBtn,
       toDoOnClickCard,
-    },
+    }
   );
-  card.create();
-  card.addEventListeners();
-  return card.cardParametrs.card;
+  newCard.create();
+  newCard.addEventListeners();
+  return newCard.cardParametrs.card;
 }
 
 export { renderLoginHeader, renderNotLoginHeader, addCardBookMark, addCardTrash };

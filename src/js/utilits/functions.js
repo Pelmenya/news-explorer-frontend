@@ -106,6 +106,7 @@ function translateCardParametrsToUserApiParametrs(cardParametrs) {
 
 function translateUsersApiParametrsToCardParametrs(userApiParametrs) {
   return {
+    _id: userApiParametrs._id,
     keyword: userApiParametrs.keyword,
     title: userApiParametrs.title,
     description: userApiParametrs.text,
