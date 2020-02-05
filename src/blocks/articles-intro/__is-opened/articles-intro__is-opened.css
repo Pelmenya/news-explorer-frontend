@@ -1,0 +1,11 @@
+.articles-intro.articles-intro__is-opened {
+  display: initial;
+}
+
+.articles-intro__is-opened {
+  display: initial;
+}
+
+.articles-intro__keywords.articles-intro__is-opened {
+  display: block;
+}

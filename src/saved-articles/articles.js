@@ -1,13 +1,15 @@
 import '../pages/articles.css';
 
 import Header from '../js/components/Header';
+import ArticlesIntro from '../js/components/ArticlesIntro';
 import { getProfile, translateUsersApiParametrsToCardParametrs } from '../js/utilits/functions';
 
-import { profileOwner } from '../js/constants/constants';
+import { profileOwner, NOT_CREATE_RESOURCE } from '../js/constants/constants';
 import { usersApi } from '../js/constants/api';
 import CardsList from '../js/components/CardsList';
 import { cardsListContainer } from '../js/constants/elements';
 import { addCardTrash } from '../js/utilits/callbacks';
+import Element from '../js/components/Element';
 
 //
 
@@ -79,15 +81,29 @@ const header = new Header(
   { renderLoginHeader, renderNotLoginHeader }
 );
 
+const articlesIntroContainer = new Element({
+  element: document.querySelector('.articles-intro'),
+  classOpened: 'articles-intro__is-opened',
+});
+
+const articlesIntro = new ArticlesIntro(articlesIntroContainer, usersApi);
+articlesIntro.create();
+articlesIntro.render();
+
 const cardsList = new CardsList(cardsListContainer, addCardTrash);
 
 function main() {
   usersApi
     .getUserArticles(getProfile(profileOwner).key)
     .then((articles) => {
-      cardsList.viewCards(
-        articles.myArticles.map((item) => translateUsersApiParametrsToCardParametrs(item)),
-      );
+      console.log(articles);
+      if (articles.message === NOT_CREATE_RESOURCE) {
+
+      } else {
+        cardsList.viewCards(
+          articles.myArticles.map((item) => translateUsersApiParametrsToCardParametrs(item))
+        );
+      }
     })
     .catch((err) => alert(err));
 }

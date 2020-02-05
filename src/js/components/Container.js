@@ -15,13 +15,10 @@ export default class Container {
 
   constructor(props) {
     this.isFull = false; // пустой контейнер
-
     this.container = props.container;
-
     this.classOpened = props.classOpened;
     // элементы, которые не должны быть видны при открытии контейнера
     if (props.element) this.element = props.element;
-
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
     this._setContent = this._setContent.bind(this);

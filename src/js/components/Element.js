@@ -2,7 +2,6 @@ export default class Element {
   constructor(props) {
     this.element = props.element;
     this.classOpened = props.classOpened;
-
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
   }
@@ -21,5 +20,13 @@ export default class Element {
 
   removeEventListeners(event, callBack) {
     this.element.removeEventListener(event, callBack);
+  }
+
+  querySelector(classesList) {
+    return this.element.querySelector(classesList);
+  }
+
+  setTextContent(content) {
+    this.element.textContent = content;
   }
 }
