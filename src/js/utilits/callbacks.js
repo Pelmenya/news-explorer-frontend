@@ -48,7 +48,7 @@ function renderLoginHeader() {
   renderLoginHeaderArticles();
   headerChangeSaveLink.open();
   headerSaveMobilLink.open();
-  headerAuthMobilBtn.classList.remove('header__button_is-opened');
+  headerAuthMobilBtn.close();
   headerAuthDesktopBtn.classList.remove('header__button_is-opened');
 }
 
@@ -56,7 +56,7 @@ function renderLoginHeader() {
 function renderNotLoginHeaderArticles() {
   headerLogoutDesktopBtn.close();
   headerLogoutMobilBtn.close();
-  headerChangeHeadLink.classList.add('header__change_is-opened');
+  headerChangeHeadLink.open();
 }
 
 /** CallBack отображения хёдера, если пользователь не залогинен. Главная страница */
@@ -64,7 +64,7 @@ function renderNotLoginHeader() {
   renderNotLoginHeaderArticles();
   headerChangeSaveLink.close();
   headerSaveMobilLink.close();
-  headerAuthMobilBtn.classList.add('header__button_is-opened');
+  headerAuthMobilBtn.open();
   headerAuthDesktopBtn.classList.add('header__button_is-opened');
 }
 

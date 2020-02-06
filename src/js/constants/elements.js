@@ -9,7 +9,11 @@ const cardsListBtn = new Element({
 const headerGamburgerLinesBtn = document.querySelector('.header .header__gamburger_lines');
 const headerGamburgerCrossBtn = document.querySelector('.header .header__gamburger_cross');
 const headerAuthDesktopBtn = document.querySelector('.header__button_auth_desktop');
-const headerAuthMobilBtn = document.querySelector('.header__button_auth_mobil');
+
+const headerAuthMobilBtn = new Element({
+  element: document.querySelector('.header__button_auth_mobil'),
+  classOpened: 'header__button_is-opened',
+});
 
 const headerLogoutDesktopBtn = new Element({
   element: document.querySelector('.header__button_logout_desktop'),
@@ -30,7 +34,10 @@ const headerLogoutBtnCaptionDesktop = document.querySelector('.header__button-ca
 const headerLogoutBtnCaptionMobil = document.querySelector('.header__button-caption_mobil');
 
 /** Ссылки */
-const headerChangeHeadLink = document.querySelector('.header__change_head');
+const headerChangeHeadLink = new Element({
+  element: document.querySelector('.header__change_head'),
+  classOpened: 'header__change_is-opened',
+});
 const headerChangeSaveLink = new Element({
   element: document.querySelector('.header__change_save'),
   classOpened: 'header__change_is-opened',
