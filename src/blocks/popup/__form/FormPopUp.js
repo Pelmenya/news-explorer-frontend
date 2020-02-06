@@ -3,7 +3,7 @@ import {
   ERROR_TEXT, ERROR_EMAIL, ERROR_PASSWORD, ERROR_REQUIRED_FIELD,
 } from '../../../js/constants/errors';
 
-export default class PopUpForm extends ElementsListeners {
+export default class FormPopUp extends ElementsListeners {
   // Защищенные методы
   // Добавление слушателей для inputs
   _initalInputsListeners() {
@@ -98,14 +98,11 @@ export default class PopUpForm extends ElementsListeners {
 
     this.popupForm.addEventListener('input', this._handlerInputForm);
     this.popupForm.addEventListener('submit', this.submitForm);
-    // Делаем при нажатии кнопки формы
-    this.handlerSubmit = handlerSubmit;
-  }
 
-  create() {
-    this.addListeners();
     this._formReset();
     this._initalInputsListeners();
+    // Делаем при нажатии кнопки формы
+    this.handlerSubmit = handlerSubmit;
   }
 
   submitForm(event) {

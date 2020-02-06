@@ -50,7 +50,7 @@ function main() {
                 getProfile(profileOwner);
                 localStorage.setItem(
                   profileOwner,
-                  JSON.stringify({ ...getProfile(profileOwner), user })
+                  JSON.stringify({ ...getProfile(profileOwner), user }),
                 );
                 getProfile(profileOwner);
               })

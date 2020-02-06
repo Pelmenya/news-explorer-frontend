@@ -17,7 +17,6 @@ import {
   searchNothingTemplate,
   cardsListElement,
   cardsListBtn,
-  userArticlesContainer,
 } from '../constants/elements';
 import { searchAct } from '../constants/containers';
 import { profileOwner, numberCardsInLine } from '../constants/constants';
@@ -68,13 +67,15 @@ function toDoOnClickTopRightBtn(item, method) {
     return usersApi
       .postArticle(
         translateCardParametrsToUserApiParametrs(cardParametrs),
-        getProfile(profileOwner).key
+        getProfile(profileOwner).key,
       )
       .then((card) => {
         if (card.data._id) return card.data._id;
         return Promise.reject(new Error(ERROR_SAVE_CARD));
       })
-      .catch(() => alert(ERROR_SAVE_CARD));
+      .catch(() => {
+        throw new Error(ERROR_SAVE_CARD);
+      });
   }
   if (method === 'DELETE') {
     return usersApi
@@ -90,7 +91,9 @@ function toDoOnClickTopRightBtn(item, method) {
         }
         return Promise.reject(new Error(ERROR_DELETE_CARD));
       })
-      .catch(() => alert(ERROR_DELETE_CARD));
+      .catch(() => {
+        throw new Error(ERROR_DELETE_CARD);
+      });
   }
   return method;
 }

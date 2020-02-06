@@ -1,7 +1,6 @@
 export default class ElementsListeners {
   constructor(props) {
     this.props = props;
-    this.addListeners();
   }
 
   addListeners(props = this.props) {

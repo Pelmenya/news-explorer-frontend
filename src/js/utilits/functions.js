@@ -9,7 +9,7 @@ function createElementDOM(
   classElement,
   textContent = '',
   styleElement = '',
-  datetime = ''
+  datetime = '',
 ) {
   const newElement = document.createElement(element);
   newElement.className = classElement;
@@ -39,10 +39,10 @@ function removeProfile(item) {
 function errorNewsServer(error = '') {
   if (searchAct.isFull) searchAct.close();
   searchAct.open(searchNothingTemplate.content.cloneNode(true), 'search-nothing');
-  document.querySelector('.search-action__search-nothing .search-action__title').textContent =
-    error.message;
+  document
+    .querySelector('.search-action__search-nothing .search-action__title').textContent = error.message;
   document.querySelector(
-    '.search-action__search-nothing .search-action__description'
+    '.search-action__search-nothing .search-action__description',
   ).textContent = ERROR_SERVER_NEWS_DESCRIPTION;
 }
 
