@@ -1,12 +1,12 @@
 import './pages/index.css';
 
 import PopUpForm from './blocks/popup/__form/PopUpForm';
-import SearchForm from './blocks/search/__form/SearchForm';
 
 import { profileOwner } from './js/constants/constants';
 import { usersApi } from './js/constants/api';
 import { popup } from './js/constants/containers';
 import header from './js/constants/header';
+import searchForm from './js/constants/searchForm';
 import {
   headerAuthDesktopBtn,
   headerAuthMobilBtn,
@@ -16,17 +16,14 @@ import {
   signInForm,
   signUpForm,
   signUpIsOkForm,
-  searchFormElement,
 } from './js/constants/elements';
 
 import { getProfile, removeProfile } from './js/utilits/functions';
-import { renderLoginHeader, renderNotLoginHeader, searchNews } from './js/utilits/callbacks';
+import { renderLoginHeader, renderNotLoginHeader } from './js/utilits/callbacks';
 
 function main() {
   header.create(renderLoginHeader, renderNotLoginHeader);
 
-  /** Объект формы поиска новостей */
-  const searchForm = new SearchForm(searchFormElement, searchNews);
   searchForm.create();
 
   // Регистрация
@@ -129,7 +126,6 @@ function main() {
       );
       popUpForm.create();
     }
-
     openFormSignUp();
   }
 
