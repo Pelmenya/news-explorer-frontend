@@ -44,9 +44,10 @@ export default class ArticlesIntro {
     });
   }
 
-  constructor(container, usersApi) {
+  constructor(container, usersApi, numberWordsToAnd = 2) {
     this.container = container;
     this.usersApi = usersApi;
+    this.numberWordsToAnd = numberWordsToAnd;
   }
 
   create() {
@@ -94,20 +95,21 @@ export default class ArticlesIntro {
               .name}, у Вас ${results.numberArticles} сохраненных статей`,
           );
         }
-
         let str = `${results.arrSort[0].keyword}`;
+        for (let i = 1; i < this.numberWordsToAnd; i += 1) {
+          if (results.arrSort[i]) str = `${str}, ${results.arrSort[i].keyword}`;
+        }
 
-        if (results.arrSort[1]) str = `${str}, ${results.arrSort[1].keyword}`;
-
-
-        if (results.arrSort.length === 3) {
+        if (results.arrSort.length === this.numberWordsToAnd + 1) {
           this.articlesIntroKeyWordAnd.open();
-          this.articlesIntroKeyWordEnd.setTextContent(results.arrSort[2].keyword);
+          this.articlesIntroKeyWordEnd
+            .setTextContent(results.arrSort[this.numberWordsToAnd].keyword);
           this.articlesIntroKeyWordEnd.open();
         }
-        if (results.arrSort.length > 3) {
+        if (results.arrSort.length > this.numberWordsToAnd + 1) {
           this.articlesIntroKeyWordAnd.open();
-          this.articlesIntroKeyWordEnd.setTextContent(`${results.arrSort.length - 2} другим`);
+          this.articlesIntroKeyWordEnd
+            .setTextContent(`${results.arrSort.length - this.numberWordsToAnd} другим`);
           this.articlesIntroKeyWordEnd.open();
         }
         this.articlesIntroKeyWordBegin.open();
