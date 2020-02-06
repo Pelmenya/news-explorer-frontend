@@ -6,7 +6,11 @@ const cardsListBtn = new Element({
   classOpened: 'cards-list__button_is-opened',
 });
 
-const headerGamburgerLinesBtn = document.querySelector('.header .header__gamburger_lines');
+const headerGamburgerLinesBtn = new Element({
+  element: document.querySelector('.header .header__gamburger_lines'),
+  classOpened: 'header__gamburger_is-opened',
+});
+
 const headerGamburgerCrossBtn = document.querySelector('.header .header__gamburger_cross');
 
 const headerAuthDesktopBtn = new Element({
@@ -34,6 +38,7 @@ const popUpCloseBtn = new Element({
   classOpened: 'popup__close_is-opened',
 });
 
+/** Надписи на кнопках */
 const headerLogoutBtnCaptionDesktop = document.querySelector('.header__button-caption_desktop');
 const headerLogoutBtnCaptionMobil = document.querySelector('.header__button-caption_mobil');
 
@@ -64,9 +69,7 @@ const userArticlesContainer = new Element({
   element: document.querySelector('.user-articles'),
   classOpened: 'search-results_is-opened',
 });
-
 const cardsListElement = document.querySelector('.cards-list');
-
 const articlesIntroContainer = new Element({
   element: document.querySelector('.articles-intro'),
   classOpened: 'articles-intro__is-opened',

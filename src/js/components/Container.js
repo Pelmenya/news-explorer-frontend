@@ -26,7 +26,7 @@ export default class Container {
   }
 
   open(content, nameNode) {
-    if (this.element) this.element.style.visibility = 'hidden';
+    if (this.element) this.element.close();
     this.content = content;
     this.nameNode = nameNode;
     this._setContent();
@@ -35,7 +35,7 @@ export default class Container {
   }
 
   close() {
-    if (this.element) this.element.style.visibility = 'visible';
+    if (this.element) this.element.open();
     this._clearContent();
     this.container.classList.remove(this.classOpened);
     this.isFull = false;
