@@ -1,5 +1,5 @@
-import { createElementDOM, getProfile, dataToStrRus } from '../utilits/functions';
-import { profileOwner } from '../constants/constants';
+import { createElementDOM, getProfile, dataToStrRus } from '../../js/utilits/functions';
+import { profileOwner } from '../../js/constants/constants';
 
 export default class Card {
   _toDoMouseMoveTopRightBtn() {
@@ -32,7 +32,7 @@ export default class Card {
               this.cardParametrs._id = _id;
             }
           })
-          .catch((err) => alert(err));
+          .catch((err) => err);
       } else {
         this.callBacks.toDoOnClickTopRightBtn(this.cardParametrs, 'POST')
           .then((_id) => {
@@ -41,7 +41,7 @@ export default class Card {
               this.cardParametrs._id = _id;
             }
           })
-          .catch((err) => alert(err));
+          .catch((err) => err);
       }
     }
   }

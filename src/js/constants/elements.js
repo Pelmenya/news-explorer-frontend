@@ -26,7 +26,12 @@ const headerMobilMenu = document.querySelector('.header__mobil-menu');
 /** Контейнеры */
 const popUpContainer = document.querySelector('.popup');
 const searchActionContainer = document.querySelector('.search-action');
-const cardsListContainer = document.querySelector('.cards-list');
+const cardsListElement = document.querySelector('.cards-list');
+
+const articlesIntroContainer = new Element({
+  element: document.querySelector('.articles-intro'),
+  classOpened: 'articles-intro__is-opened',
+});
 
 /** Формы */
 const signInForm = document.querySelector('.form-signin'); // <template>
@@ -43,7 +48,6 @@ const searchResultsAct = new Element({
   element: document.querySelector('.search-results'),
   classOpened: 'search-results_is-opened',
 });
-
 
 export {
   /** Кнопки */
@@ -65,7 +69,8 @@ export {
   /** Контейнеры */
   popUpContainer,
   searchActionContainer,
-  cardsListContainer,
+  cardsListElement,
+  articlesIntroContainer,
   /** Формы */
   signInForm,
   signUpForm,

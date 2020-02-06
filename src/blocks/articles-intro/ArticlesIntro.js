@@ -1,6 +1,6 @@
-import { getProfile, translateUsersApiParametrsToCardParametrs } from '../utilits/functions';
-import { profileOwner, NOT_CREATE_RESOURCE } from '../constants/constants';
-import Element from './Element';
+import { getProfile, translateUsersApiParametrsToCardParametrs } from '../../js/utilits/functions';
+import { profileOwner, NOT_CREATE_RESOURCE } from '../../js/constants/constants';
+import Element from '../../js/components/Element';
 
 export default class ArticlesIntro {
   _getArticles() {
@@ -12,7 +12,7 @@ export default class ArticlesIntro {
         }
         return articles.myArticles.map((item) => translateUsersApiParametrsToCardParametrs(item));
       })
-      .catch((err) => alert(err));
+      .catch((err) => err);
   }
 
   _sortArticles() {

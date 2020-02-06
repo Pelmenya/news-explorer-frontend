@@ -17,7 +17,7 @@ export default class UsersApi {
     objJSON.body = JSON.stringify(item);
     return fetch(this.baseUrl + this.signUpUrl, objJSON)
       .then((res) => res.json())
-      .catch((err) => alert(err));
+      .catch((err) => err);
   }
 
   postSignIn(item) {
@@ -28,7 +28,7 @@ export default class UsersApi {
 
     return fetch(this.baseUrl + this.signInUrl, objJSON)
       .then((res) => res.json())
-      .catch((err) => alert(err));
+      .catch((err) => err);
   }
 
   getUserMe(key) {
@@ -38,7 +38,7 @@ export default class UsersApi {
 
     return fetch(this.baseUrl + this.profileUrl, objJSON)
       .then((res) => res.json())
-      .catch((err) => alert(err));
+      .catch((err) => err);
   }
 
   getUserArticles(key) {
@@ -48,7 +48,7 @@ export default class UsersApi {
 
     return fetch(this.baseUrl + this.articlesUrl, objJSON)
       .then((res) => res.json())
-      .catch((err) => alert(err));
+      .catch((err) => err);
   }
 
   postArticle(item, key) {
@@ -60,7 +60,7 @@ export default class UsersApi {
 
     return fetch(this.baseUrl + this.articlesUrl, objJSON)
       .then((res) => res.json())
-      .catch((err) => alert(err));
+      .catch((err) => err);
   }
 
   deleteArticle(item, key) {
@@ -71,6 +71,6 @@ export default class UsersApi {
 
     return fetch(`${this.baseUrl}${this.articlesUrl}/${item}`, objJSON)
       .then((res) => res.json())
-      .catch((err) => alert(err));
+      .catch((err) => err);
   }
 }

@@ -2,20 +2,18 @@ import './pages/index.css';
 
 import FormPopUp from './js/components/FormPopUp';
 import FormSearchNews from './js/components/FormSearchNews';
-import CardsListControl from './js/components/CardListControl';
 
-import { profileOwner, numberCardsInLine } from './js/constants/constants';
+import { profileOwner } from './js/constants/constants';
 import { usersApi, newsApi } from './js/constants/api';
 import { popup, searchAct } from './js/constants/containers';
 import header from './js/constants/header';
 import { ERROR_SERVER_NEWS } from './js/constants/errors';
+import cardsListControl from './js/constants/cardsListControl';
 import {
-  cardsListBtn,
   headerAuthDesktopBtn,
   headerAuthMobilBtn,
   headerMobilMenu,
   popUpContainer,
-  cardsListContainer,
   signInForm,
   signUpForm,
   signUpIsOkForm,
@@ -26,17 +24,9 @@ import {
 } from './js/constants/elements';
 
 import { getProfile, removeProfile, errorNewsServer } from './js/utilits/functions';
-import { addCardBookMark } from './js/utilits/callbacks';
+import { renderLoginHeader, renderNotLoginHeader } from './js/utilits/callbacks';
 
 function main() {
-  /* Константы */
-  console.log(window.location.href);
-  const cardsListControl = new CardsListControl(
-    cardsListContainer,
-    addCardBookMark,
-    cardsListBtn,
-    numberCardsInLine,
-  );
   /** Callback для поиска новостей по ключевому слову */
   function searchNews(keyword) {
     searchResultsAct.close();
@@ -68,7 +58,10 @@ function main() {
   }
 
   /** Объект формы поиска новостей */
-  const searchFormObj = new FormSearchNews(searchForm, searchNews);
+  const formSearchNews = new FormSearchNews(searchForm, searchNews);
+
+  formSearchNews.create();
+  header.create(renderLoginHeader, renderNotLoginHeader);
 
   // Регистрация
   /** Callback открывает попап и клонирует в него форму Регистрация,
@@ -104,13 +97,13 @@ function main() {
           }
           return data.message;
         })
-        .catch((err) => alert(err));
+        .catch((err) => err);
     }
 
     function openFormSignIn() {
       popup.close();
       popup.open(signInForm.content.cloneNode(true), 'form-signin');
-      const formObj = new FormPopUp(
+      const formPoPup = new FormPopUp(
         [
           {
             element: document.querySelector('.popup .popup__transition'),
@@ -129,7 +122,7 @@ function main() {
     function openFormSignUpIsOk() {
       popup.close();
       popup.open(signUpIsOkForm.content.cloneNode(true), 'form-signup-is-ok');
-      const formObj = new FormPopUp(
+      const formPoPup = new FormPopUp(
         [
           {
             element: document.querySelector('.popup .popup__transition'),
@@ -150,12 +143,12 @@ function main() {
           }
           return data.message;
         })
-        .catch((err) => alert(err));
+        .catch((err) => err);
     }
 
     function openFormSignUp() {
       popup.open(signUpForm.content.cloneNode(true), 'form-signup');
-      const formObj = new FormPopUp(
+      const formPoPup = new FormPopUp(
         [
           {
             element: document.querySelector('.popup .popup__transition'),
@@ -172,6 +165,11 @@ function main() {
   }
 
   header.addListeners([
+    {
+      element: document.querySelector('.popup__close'),
+      event: 'click',
+      callBack: popup.close,
+    },
     {
       element: headerAuthDesktopBtn,
       event: 'click',

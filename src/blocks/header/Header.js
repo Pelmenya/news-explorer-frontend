@@ -1,12 +1,14 @@
-import ElementsListeners from './ElementsListeners';
+import ElementsListeners from '../../js/components/ElementsListeners';
 
 export default class Header extends ElementsListeners {
-  constructor(props, isLoggedIn, callBacks) {
+  constructor(props, isLoggedIn) {
     super(props);
-
     this.isLoggedIn = isLoggedIn;
-    this.renderLoginHeader = callBacks.renderLoginHeader;
-    this.renderNotLoginHeader = callBacks.renderNotLoginHeader;
+  }
+
+  create(renderLoginHeader, renderNotLoginHeader) {
+    this.renderLoginHeader = renderLoginHeader;
+    this.renderNotLoginHeader = renderNotLoginHeader;
     this.render(this.isLoggedIn);
   }
 

@@ -16,11 +16,12 @@ export default class FormSearchNews {
 
     this.submitForm = this.submitForm.bind(this);
     this.form.addEventListener('submit', this.submitForm);
-
-    this._formReset();
     this.handlerSubmit = handlerSubmit;
   }
 
+  create() {
+    this._formReset();
+  }
 
   submitForm(event) {
     if (this._getInfo()) {

@@ -1,5 +1,6 @@
-import Card from '../components/Card';
+import Card from '../../blocks/card/Card';
 // Константы
+import { usersApi } from '../constants/api';
 import {
   headerAuthDesktopBtn,
   headerAuthMobilBtn,
@@ -11,38 +12,46 @@ import {
   headerChangeSaveLink,
   headerSaveMobilLink,
 } from '../constants/elements';
-import { usersApi } from '../constants/api';
 import { profileOwner } from '../constants/constants';
 import { ERROR_DELETE_CARD, ERROR_SAVE_CARD } from '../constants/errors';
+import articlesIntro from '../constants/articlesIntro';
 
 // Функции
 import { getProfile, translateCardParametrsToUserApiParametrs } from './functions';
 
 // CallBacks
-/** CallBack отображения хёдера, если пользователь залогинен */
-function renderLoginHeader() {
-  headerLogoutDesktopBtn.classList.add('header__button_is-opened');
-  headerChangeSaveLink.classList.add('header__change_is-opened');
-  headerSaveMobilLink.classList.add('header__mobil-link_is-opened');
-  headerLogoutMobilBtn.classList.add('header__button_is-opened');
 
+/** CallBack отображения хёдера, если пользователь залогинен. Cтраница пользователя */
+function renderLoginHeaderArticles() {
+  headerLogoutDesktopBtn.classList.add('header__button_is-opened');
+  headerLogoutMobilBtn.classList.add('header__button_is-opened');
   headerLogoutBtnCaptionDesktop.textContent = getProfile(profileOwner).user.name;
   headerLogoutBtnCaptionMobil.textContent = getProfile(profileOwner).user.name;
+}
 
+/** CallBack отображения хёдера, если пользователь залогинен. Главная страница */
+function renderLoginHeader() {
+  renderLoginHeaderArticles();
+  headerChangeSaveLink.classList.add('header__change_is-opened');
+  headerSaveMobilLink.classList.add('header__mobil-link_is-opened');
   headerAuthMobilBtn.classList.remove('header__button_is-opened');
   headerAuthDesktopBtn.classList.remove('header__button_is-opened');
 }
 
-/** CallBack отображения хёдера, если пользователь не залогинен */
-function renderNotLoginHeader() {
+/** CallBack отображения хёдера, если пользователь не залогинен. Cтраница пользователя */
+function renderNotLoginHeaderArticles() {
   headerLogoutDesktopBtn.classList.remove('header__button_is-opened');
+  headerLogoutMobilBtn.classList.remove('header__button_is-opened');
+  headerChangeHeadLink.classList.add('header__change_is-opened');
+}
+
+/** CallBack отображения хёдера, если пользователь не залогинен. Главная страница */
+function renderNotLoginHeader() {
+  renderNotLoginHeaderArticles();
   headerChangeSaveLink.classList.remove('header__change_is-opened');
   headerSaveMobilLink.classList.remove('header__mobil-link_is-opened');
-  headerLogoutMobilBtn.classList.remove('header__button_is-opened');
-
   headerAuthMobilBtn.classList.add('header__button_is-opened');
   headerAuthDesktopBtn.classList.add('header__button_is-opened');
-  headerChangeHeadLink.classList.add('header__change_is-opened');
 }
 
 function toDoOnClickTopRightBtn(item, method) {
@@ -67,6 +76,7 @@ function toDoOnClickTopRightBtn(item, method) {
           if (cardParametrs.type === 'bookmark') return null;
           if (cardParametrs.type === 'trash') {
             cardParametrs.card.parentNode.removeChild(cardParametrs.card);
+            articlesIntro.render();
             return method;
           }
         }
@@ -107,4 +117,11 @@ function addCardTrash(item) {
   return newCard.cardParametrs.card;
 }
 
-export { renderLoginHeader, renderNotLoginHeader, addCardBookMark, addCardTrash };
+export {
+  renderLoginHeaderArticles,
+  renderNotLoginHeaderArticles,
+  renderLoginHeader,
+  renderNotLoginHeader,
+  addCardBookMark,
+  addCardTrash,
+};

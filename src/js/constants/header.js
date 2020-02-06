@@ -1,8 +1,6 @@
-import Header from '../components/Header';
+import Header from '../../blocks/header/Header';
 import { getProfile, removeProfile } from '../utilits/functions';
-import { renderLoginHeader, renderNotLoginHeader } from '../utilits/callbacks';
 import { profileOwner } from './constants';
-import { popup } from './containers';
 
 import {
   headerGamburgerLinesBtn,
@@ -18,11 +16,6 @@ import {
   * */
 const header = new Header(
   [
-    {
-      element: document.querySelector('.popup__close'),
-      event: 'click',
-      callBack: popup.close,
-    },
     {
       element: headerGamburgerLinesBtn,
       event: 'click',
@@ -55,7 +48,6 @@ const header = new Header(
     },
   ],
   getProfile(profileOwner),
-  { renderLoginHeader, renderNotLoginHeader },
 );
 
 export default header;
