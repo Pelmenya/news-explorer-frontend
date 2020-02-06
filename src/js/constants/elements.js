@@ -8,7 +8,11 @@ const cardsListBtn = new Element({
 
 const headerGamburgerLinesBtn = document.querySelector('.header .header__gamburger_lines');
 const headerGamburgerCrossBtn = document.querySelector('.header .header__gamburger_cross');
-const headerAuthDesktopBtn = document.querySelector('.header__button_auth_desktop');
+
+const headerAuthDesktopBtn = new Element({
+  element: document.querySelector('.header__button_auth_desktop'),
+  classOpened: 'header__button_is-opened',
+});
 
 const headerAuthMobilBtn = new Element({
   element: document.querySelector('.header__button_auth_mobil'),

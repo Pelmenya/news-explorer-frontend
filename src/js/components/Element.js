@@ -29,4 +29,8 @@ export default class Element {
   setTextContent(content) {
     this.element.textContent = content;
   }
+
+  blur() {
+    this.element.blur();
+  }
 }

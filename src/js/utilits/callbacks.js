@@ -49,7 +49,7 @@ function renderLoginHeader() {
   headerChangeSaveLink.open();
   headerSaveMobilLink.open();
   headerAuthMobilBtn.close();
-  headerAuthDesktopBtn.classList.remove('header__button_is-opened');
+  headerAuthDesktopBtn.close();
 }
 
 /** CallBack отображения хёдера. Cтраница пользователя */
@@ -65,7 +65,7 @@ function renderNotLoginHeader() {
   headerChangeSaveLink.close();
   headerSaveMobilLink.close();
   headerAuthMobilBtn.open();
-  headerAuthDesktopBtn.classList.add('header__button_is-opened');
+  headerAuthDesktopBtn.open();
 }
 
 function toDoOnClickTopRightBtn(item, method) {
