@@ -1,3 +1,5 @@
+import { normalizeKeyWord } from '../../../js/utilits/functions';
+
 export default class SearchNewsForm {
   // Защищенные методы
   // Сброс в начальное состояние формы
@@ -7,7 +9,7 @@ export default class SearchNewsForm {
 
   // Возвращает keyword из поля input
   _getInfo() {
-    return this.formInput.value;
+    return normalizeKeyWord(this.formInput.value);
   }
 
   constructor(form, handlerSubmit) {

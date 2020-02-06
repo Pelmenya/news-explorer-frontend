@@ -75,6 +75,12 @@ function dataToStrRus(str) {
   return `${day} ${objMonth[Number(month) - 1]}, ${year}`;
 }
 
+function normalizeKeyWord(keyword) {
+  const str = keyword.trim().toLowerCase().split('');
+  str[0] = str[0].toUpperCase();
+  return str.join('');
+}
+
 function translateCardParametrsToUserApiParametrs(cardParametrs) {
   const item = {
     keyword: String(cardParametrs.keyWordForSave),
@@ -124,6 +130,7 @@ export {
   removeProfile,
   errorNewsServer,
   dataToStrRus,
+  normalizeKeyWord,
   translateCardParametrsToUserApiParametrs,
   translateUsersApiParametrsToCardParametrs,
 };

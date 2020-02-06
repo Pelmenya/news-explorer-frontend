@@ -1,7 +1,5 @@
 import './pages/index.css';
 
-import PopUpForm from './blocks/popup/__form/PopUpForm';
-
 import { profileOwner } from './js/constants/constants';
 import { usersApi } from './js/constants/api';
 import { popup } from './js/constants/containers';
@@ -18,14 +16,13 @@ import {
   signUpIsOkForm,
 } from './js/constants/elements';
 
+import PopUpForm from './blocks/popup/__form/PopUpForm';
 import { getProfile, removeProfile } from './js/utilits/functions';
 import { renderLoginHeader, renderNotLoginHeader } from './js/utilits/callbacks';
 
 function main() {
   header.create(renderLoginHeader, renderNotLoginHeader);
-
   searchForm.create();
-
   // Регистрация
   /** Callback открывает попап и клонирует в него форму Регистрация,
    * назначает обработчик(и) события(й) перехода на форме и вешает CallBack
