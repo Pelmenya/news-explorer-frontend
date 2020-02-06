@@ -47,7 +47,7 @@ function renderLoginHeaderArticles() {
 function renderLoginHeader() {
   renderLoginHeaderArticles();
   headerChangeSaveLink.open();
-  headerSaveMobilLink.classList.add('header__mobil-link_is-opened');
+  headerSaveMobilLink.open();
   headerAuthMobilBtn.classList.remove('header__button_is-opened');
   headerAuthDesktopBtn.classList.remove('header__button_is-opened');
 }
@@ -63,7 +63,7 @@ function renderNotLoginHeaderArticles() {
 function renderNotLoginHeader() {
   renderNotLoginHeaderArticles();
   headerChangeSaveLink.close();
-  headerSaveMobilLink.classList.remove('header__mobil-link_is-opened');
+  headerSaveMobilLink.close();
   headerAuthMobilBtn.classList.add('header__button_is-opened');
   headerAuthDesktopBtn.classList.add('header__button_is-opened');
 }

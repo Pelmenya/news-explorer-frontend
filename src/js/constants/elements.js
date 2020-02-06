@@ -35,7 +35,10 @@ const headerChangeSaveLink = new Element({
   element: document.querySelector('.header__change_save'),
   classOpened: 'header__change_is-opened',
 });
-const headerSaveMobilLink = document.querySelector('.header__mobil-link_save');
+const headerSaveMobilLink = new Element({
+  element: document.querySelector('.header__mobil-link_save'),
+  classOpened: 'header__mobil-link_is-opened',
+});
 
 /** Header menu */
 const headerMobilMenu = new Element({
