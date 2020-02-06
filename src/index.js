@@ -4,11 +4,9 @@ import FormPopUp from './js/components/FormPopUp';
 import FormSearchNews from './js/components/FormSearchNews';
 
 import { profileOwner } from './js/constants/constants';
-import { usersApi, newsApi } from './js/constants/api';
-import { popup, searchAct } from './js/constants/containers';
+import { usersApi } from './js/constants/api';
+import { popup } from './js/constants/containers';
 import header from './js/constants/header';
-import { ERROR_SERVER_NEWS } from './js/constants/errors';
-import cardsListControl from './js/constants/cardsListControl';
 import {
   headerAuthDesktopBtn,
   headerAuthMobilBtn,
@@ -18,45 +16,12 @@ import {
   signUpForm,
   signUpIsOkForm,
   searchForm,
-  searchNewsTemplate,
-  searchNothingTemplate,
-  searchResultsAct,
 } from './js/constants/elements';
 
-import { getProfile, removeProfile, errorNewsServer } from './js/utilits/functions';
-import { renderLoginHeader, renderNotLoginHeader } from './js/utilits/callbacks';
+import { getProfile, removeProfile } from './js/utilits/functions';
+import { renderLoginHeader, renderNotLoginHeader, searchNews } from './js/utilits/callbacks';
 
 function main() {
-  /** Callback для поиска новостей по ключевому слову */
-  function searchNews(keyword) {
-    searchResultsAct.close();
-    if (searchAct.isFull) searchAct.close();
-    searchAct.open(searchNewsTemplate.content.cloneNode(true), 'search-news');
-    newsApi
-      .getNews(keyword)
-      .then((data) => {
-        if (data.status) {
-          if (String(data.status) === 'error') {
-            errorNewsServer();
-            return data;
-          }
-          if (String(data.totalResults) === '0') {
-            searchAct.close();
-            searchAct.open(searchNothingTemplate.content.cloneNode(true), 'search-nothing');
-            return data;
-          }
-          if (String(data.totalResults) !== '0') {
-            searchAct.close();
-            searchResultsAct.open();
-            cardsListControl.viewCards(data.articles, keyword);
-            return data;
-          }
-        }
-        return Promise.reject(new Error(ERROR_SERVER_NEWS));
-      })
-      .catch((err) => errorNewsServer(err));
-  }
-
   /** Объект формы поиска новостей */
   const formSearchNews = new FormSearchNews(searchForm, searchNews);
 

@@ -1,6 +1,7 @@
 import Card from '../../blocks/card/Card';
+import CardsListControl from '../../blocks/cards-list/CardListControl';
 // Константы
-import { usersApi } from '../constants/api';
+import { usersApi, newsApi } from '../constants/api';
 import {
   headerAuthDesktopBtn,
   headerAuthMobilBtn,
@@ -11,13 +12,19 @@ import {
   headerChangeHeadLink,
   headerChangeSaveLink,
   headerSaveMobilLink,
+  searchResultsAct,
+  searchNewsTemplate,
+  searchNothingTemplate,
+  cardsListElement,
+  cardsListBtn,
 } from '../constants/elements';
-import { profileOwner } from '../constants/constants';
-import { ERROR_DELETE_CARD, ERROR_SAVE_CARD } from '../constants/errors';
+import { searchAct } from '../constants/containers';
+import { profileOwner, numberCardsInLine } from '../constants/constants';
+import { ERROR_DELETE_CARD, ERROR_SAVE_CARD, ERROR_SERVER_NEWS } from '../constants/errors';
 import articlesIntro from '../constants/articlesIntro';
 
 // Функции
-import { getProfile, translateCardParametrsToUserApiParametrs } from './functions';
+import { getProfile, translateCardParametrsToUserApiParametrs, errorNewsServer } from './functions';
 
 // CallBacks
 
@@ -97,7 +104,7 @@ function addCardBookMark(item) {
     {
       toDoOnClickTopRightBtn,
       toDoOnClickCard,
-    }
+    },
   );
   newCard.create();
   newCard.addEventListeners();
@@ -110,11 +117,47 @@ function addCardTrash(item) {
     {
       toDoOnClickTopRightBtn,
       toDoOnClickCard,
-    }
+    },
   );
   newCard.create();
   newCard.addEventListeners();
   return newCard.cardParametrs.card;
+}
+
+/** Callback для поиска новостей по ключевому слову */
+function searchNews(keyword) {
+  searchResultsAct.close();
+  const cardsListControl = new CardsListControl(
+    cardsListElement,
+    addCardBookMark,
+    cardsListBtn,
+    numberCardsInLine,
+  );
+  if (searchAct.isFull) searchAct.close();
+  searchAct.open(searchNewsTemplate.content.cloneNode(true), 'search-news');
+  newsApi
+    .getNews(keyword)
+    .then((data) => {
+      if (data.status) {
+        if (String(data.status) === 'error') {
+          errorNewsServer();
+          return data;
+        }
+        if (String(data.totalResults) === '0') {
+          searchAct.close();
+          searchAct.open(searchNothingTemplate.content.cloneNode(true), 'search-nothing');
+          return data;
+        }
+        if (String(data.totalResults) !== '0') {
+          searchAct.close();
+          searchResultsAct.open();
+          cardsListControl.viewCards(data.articles, keyword);
+          return data;
+        }
+      }
+      return Promise.reject(new Error(ERROR_SERVER_NEWS));
+    })
+    .catch((err) => errorNewsServer(err));
 }
 
 export {
@@ -124,4 +167,5 @@ export {
   renderNotLoginHeader,
   addCardBookMark,
   addCardTrash,
+  searchNews,
 };
