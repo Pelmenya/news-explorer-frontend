@@ -1,7 +1,7 @@
 import './pages/index.css';
 
-import FormPopUp from './js/components/FormPopUp';
-import FormSearchNews from './js/components/FormSearchNews';
+import PopUpForm from './blocks/popup/__form/PopUpForm';
+import SearchForm from './blocks/search/__form/SearchForm';
 
 import { profileOwner } from './js/constants/constants';
 import { usersApi } from './js/constants/api';
@@ -15,18 +15,18 @@ import {
   signInForm,
   signUpForm,
   signUpIsOkForm,
-  searchForm,
+  searchFormElement,
 } from './js/constants/elements';
 
 import { getProfile, removeProfile } from './js/utilits/functions';
 import { renderLoginHeader, renderNotLoginHeader, searchNews } from './js/utilits/callbacks';
 
 function main() {
-  /** Объект формы поиска новостей */
-  const formSearchNews = new FormSearchNews(searchForm, searchNews);
-
-  formSearchNews.create();
   header.create(renderLoginHeader, renderNotLoginHeader);
+
+  /** Объект формы поиска новостей */
+  const searchForm = new SearchForm(searchFormElement, searchNews);
+  searchForm.create();
 
   // Регистрация
   /** Callback открывает попап и клонирует в него форму Регистрация,
@@ -68,7 +68,7 @@ function main() {
     function openFormSignIn() {
       popup.close();
       popup.open(signInForm.content.cloneNode(true), 'form-signin');
-      const formPoPup = new FormPopUp(
+      const popUpForm = new PopUpForm(
         [
           {
             element: document.querySelector('.popup .popup__transition'),
@@ -80,14 +80,15 @@ function main() {
           },
         ],
         popUpContainer,
-        signInUser
+        signInUser,
       );
+      popUpForm.create();
     }
 
     function openFormSignUpIsOk() {
       popup.close();
       popup.open(signUpIsOkForm.content.cloneNode(true), 'form-signup-is-ok');
-      const formPoPup = new FormPopUp(
+      const popUpForm = new PopUpForm(
         [
           {
             element: document.querySelector('.popup .popup__transition'),
@@ -95,8 +96,9 @@ function main() {
             callBack: openFormSignIn,
           },
         ],
-        popUpContainer
+        popUpContainer,
       );
+      popUpForm.create();
     }
 
     function signUpUser(item) {
@@ -113,7 +115,7 @@ function main() {
 
     function openFormSignUp() {
       popup.open(signUpForm.content.cloneNode(true), 'form-signup');
-      const formPoPup = new FormPopUp(
+      const popUpForm = new PopUpForm(
         [
           {
             element: document.querySelector('.popup .popup__transition'),
@@ -122,8 +124,9 @@ function main() {
           },
         ],
         popUpContainer,
-        signUpUser
+        signUpUser,
       );
+      popUpForm.create();
     }
 
     openFormSignUp();

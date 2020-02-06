@@ -26,6 +26,11 @@ const headerMobilMenu = document.querySelector('.header__mobil-menu');
 /** Контейнеры */
 const popUpContainer = document.querySelector('.popup');
 const searchActionContainer = document.querySelector('.search-action');
+const userArticlesContainer = new Element({
+  element: document.querySelector('.user-articles'),
+  classOpened: 'search-results_is-opened',
+});
+
 const cardsListElement = document.querySelector('.cards-list');
 
 const articlesIntroContainer = new Element({
@@ -37,7 +42,7 @@ const articlesIntroContainer = new Element({
 const signInForm = document.querySelector('.form-signin'); // <template>
 const signUpForm = document.querySelector('.form-signup'); // <template>
 const signUpIsOkForm = document.querySelector('.form-signup-is-ok'); // <template>
-const searchForm = document.querySelector('.search__form');
+const searchFormElement = document.querySelector('.search__form');
 
 /* Action */
 const searchNewsTemplate = document.querySelector('.search-news'); // лоадер при поиске новостей
@@ -71,11 +76,12 @@ export {
   searchActionContainer,
   cardsListElement,
   articlesIntroContainer,
+  userArticlesContainer,
   /** Формы */
   signInForm,
   signUpForm,
   signUpIsOkForm,
-  searchForm,
+  searchFormElement,
   /* Action */
   searchNewsTemplate,
   searchNothingTemplate,

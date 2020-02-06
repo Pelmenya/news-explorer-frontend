@@ -17,6 +17,7 @@ import {
   searchNothingTemplate,
   cardsListElement,
   cardsListBtn,
+  userArticlesContainer,
 } from '../constants/elements';
 import { searchAct } from '../constants/containers';
 import { profileOwner, numberCardsInLine } from '../constants/constants';

@@ -1,4 +1,4 @@
-export default class FormSearchNews {
+export default class SearchNewsForm {
   // Защищенные методы
   // Сброс в начальное состояние формы
   _formReset() {

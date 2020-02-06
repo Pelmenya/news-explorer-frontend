@@ -100,7 +100,6 @@ function translateCardParametrsToUserApiParametrs(cardParametrs) {
   } else {
     item.image = BAD_URL_FOR_USER_LINKS;
   }
-
   return item;
 }
 

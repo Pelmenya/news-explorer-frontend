@@ -1,9 +1,9 @@
-import ElementsListeners from './ElementsListeners';
+import ElementsListeners from '../../../js/components/ElementsListeners';
 import {
   ERROR_TEXT, ERROR_EMAIL, ERROR_PASSWORD, ERROR_REQUIRED_FIELD,
-} from '../constants/errors';
+} from '../../../js/constants/errors';
 
-export default class FormPopUp extends ElementsListeners {
+export default class PopUpForm extends ElementsListeners {
   // Защищенные методы
   // Добавление слушателей для inputs
   _initalInputsListeners() {
@@ -98,11 +98,13 @@ export default class FormPopUp extends ElementsListeners {
 
     this.popupForm.addEventListener('input', this._handlerInputForm);
     this.popupForm.addEventListener('submit', this.submitForm);
-
-    this._formReset();
-    this._initalInputsListeners();
     // Делаем при нажатии кнопки формы
     this.handlerSubmit = handlerSubmit;
+  }
+
+  create() {
+    this._formReset();
+    this._initalInputsListeners();
   }
 
   submitForm(event) {
