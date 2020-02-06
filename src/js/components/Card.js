@@ -79,7 +79,7 @@ export default class Card {
         'div',
         'card__pic',
         '',
-        `background-image: url(${this.cardParametrs.urlToImage});`
+        `background-image: url(${this.cardParametrs.urlToImage});`,
       );
       articleCard.appendChild(articleCardPic);
     } else {
@@ -89,13 +89,13 @@ export default class Card {
 
     if (this.cardParametrs.keyword) {
       articleCardPic.appendChild(
-        createElementDOM('div', 'card__item card__keyword', `${this.cardParametrs.keyword}`)
+        createElementDOM('div', 'card__item card__keyword', `${this.cardParametrs.keyword}`),
       );
     }
 
     this.buttonTopRight = createElementDOM(
       'div',
-      `card__item card__icon card__icon_${this.cardParametrs.type}`
+      `card__item card__icon card__icon_${this.cardParametrs.type}`,
     );
     articleCardPic.appendChild(this.buttonTopRight);
 
@@ -109,25 +109,25 @@ export default class Card {
         'card__data',
         `${dataToStrRus(this.cardParametrs.publishedAt.slice(0, 10))}`,
         '',
-        `${this.cardParametrs.publishedAt.slice(0, 10)}`
-      )
+        `${this.cardParametrs.publishedAt.slice(0, 10)}`,
+      ),
     );
 
     const articleCardDescriptionWraper = createElementDOM('div', 'card__description-wraper');
 
     const articleCardDescriptionContainer = createElementDOM('div', 'card__description-container');
     articleCardDescriptionContainer.appendChild(
-      createElementDOM('h2', 'card__title', `${this.cardParametrs.title}`)
+      createElementDOM('h2', 'card__title', `${this.cardParametrs.title}`),
     );
     articleCardDescriptionContainer.appendChild(
-      createElementDOM('p', 'card__info', `${this.cardParametrs.description}`)
+      createElementDOM('p', 'card__info', `${this.cardParametrs.description}`),
     );
     articleCardDescriptionWraper.appendChild(articleCardDescriptionContainer);
     articleCardDescription.appendChild(articleCardDescriptionWraper);
     articleCard.appendChild(articleCardDescription);
     articleCard.appendChild(articleCardDescription);
     articleCard.appendChild(
-      createElementDOM('h3', 'card__source', `${this.cardParametrs.source.name}`)
+      createElementDOM('h3', 'card__source', `${this.cardParametrs.source.name}`),
     );
     this.cardParametrs.card = articleCard;
     this.elements = [

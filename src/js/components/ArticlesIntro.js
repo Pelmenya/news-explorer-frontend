@@ -54,18 +54,14 @@ export default class ArticlesIntro {
       element: this.container.querySelector('.articles-intro__sub-title'),
       classOpened: 'articles-intro__is-opened',
     });
-
     this.articlesIntroKeyWords = new Element({
       element: this.container.querySelector('.articles-intro__keywords'),
       classOpened: 'articles-intro__is-opened',
     });
-
     this.articlesIntroKeyWordBegin = new Element({
       element: this.container.querySelector('.articles-intro__keyword_begin'),
       classOpened: 'articles-intro__is-opened',
     });
-
-    console.log(this.articlesIntroKeyWordBegin);
     this.articlesIntroKeyWordBegin.open();
     this.articlesIntroKeyWordAnd = new Element({
       element: this.container.querySelector('.articles-intro__keyword-and'),
@@ -79,31 +75,35 @@ export default class ArticlesIntro {
 
   render() {
     this._sortArticles().then((results) => {
-      console.log(results);
       if (results) {
         if (
           String(results.numberArticles).split('')[
             String(results.numberArticles).split('').length - 1
-          ] === '1' &&
-          String(results.numberArticles).split('')[
+          ] === '1'
+          && String(results.numberArticles).split('')[
             String(results.numberArticles).split('').length - 2
           ] !== '1'
         ) {
           this.articlesIntroSubTitle.setTextContent(
             `${getProfile(profileOwner).user
-              .name}, у Вас ${results.numberArticles} сохраненная статья`
+              .name}, у Вас ${results.numberArticles} сохраненная статья`,
           );
         } else {
           this.articlesIntroSubTitle.setTextContent(
             `${getProfile(profileOwner).user
-              .name}, у Вас ${results.numberArticles} сохраненных статей`
+              .name}, у Вас ${results.numberArticles} сохраненных статей`,
           );
         }
-        let str = `${results.arrSort[0].keyword}, `;
-        if (results.arrSort[1]) str = str.concat(results.arrSort[1].keyword);
+
+        let str = `${results.arrSort[0].keyword}`;
+
+        if (results.arrSort[1]) str = `${str}, ${results.arrSort[1].keyword}`;
+
+
         if (results.arrSort.length === 3) {
           this.articlesIntroKeyWordAnd.open();
-          this.articlesIntroKeyWordEnd.setTextContent(results.arrSort[3].keyword);
+          this.articlesIntroKeyWordEnd.setTextContent(results.arrSort[2].keyword);
+          this.articlesIntroKeyWordEnd.open();
         }
         if (results.arrSort.length > 3) {
           this.articlesIntroKeyWordAnd.open();
@@ -112,11 +112,10 @@ export default class ArticlesIntro {
         }
         this.articlesIntroKeyWordBegin.open();
         this.articlesIntroKeyWordBegin.setTextContent(str);
-        console.log(str);
         this.articlesIntroKeyWords.open();
       } else {
         this.articlesIntroSubTitle.setTextContent(
-          `${getProfile(profileOwner).user.name}, у Вас еще нет сохраненных статей`
+          `${getProfile(profileOwner).user.name}, у Вас еще нет сохраненных статей`,
         );
         this.articlesIntroKeyWords.open();
         this.articlesIntroKeyWords.setTextContent('');
