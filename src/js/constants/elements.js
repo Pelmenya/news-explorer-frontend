@@ -31,7 +31,10 @@ const headerLogoutBtnCaptionMobil = document.querySelector('.header__button-capt
 
 /** Ссылки */
 const headerChangeHeadLink = document.querySelector('.header__change_head');
-const headerChangeSaveLink = document.querySelector('.header__change_save');
+const headerChangeSaveLink = new Element({
+  element: document.querySelector('.header__change_save'),
+  classOpened: 'header__change_is-opened',
+});
 const headerSaveMobilLink = document.querySelector('.header__mobil-link_save');
 
 /** Header menu */

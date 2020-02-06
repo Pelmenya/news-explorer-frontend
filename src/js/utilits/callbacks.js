@@ -25,7 +25,9 @@ import { ERROR_DELETE_CARD, ERROR_SAVE_CARD, ERROR_SERVER_NEWS } from '../consta
 import articlesIntro from '../constants/articlesIntro';
 
 // Функции
-import { getProfile, translateCardParametrsToUserApiParametrs, errorNewsServer, removeProfile } from './functions';
+import {
+  getProfile, translateCardParametrsToUserApiParametrs, errorNewsServer, removeProfile,
+} from './functions';
 
 // CallBacks
 function logoutHandlerClick() {
@@ -33,7 +35,7 @@ function logoutHandlerClick() {
   window.location.href = 'index.html';
 }
 
-/** CallBack отображения хёдера, если пользователь залогинен. Cтраница пользователя */
+/** CallBack отображения хёдера. Cтраница пользователя */
 function renderLoginHeaderArticles() {
   headerLogoutDesktopBtn.open();
   headerLogoutMobilBtn.open();
@@ -44,13 +46,13 @@ function renderLoginHeaderArticles() {
 /** CallBack отображения хёдера, если пользователь залогинен. Главная страница */
 function renderLoginHeader() {
   renderLoginHeaderArticles();
-  headerChangeSaveLink.classList.add('header__change_is-opened');
+  headerChangeSaveLink.open();
   headerSaveMobilLink.classList.add('header__mobil-link_is-opened');
   headerAuthMobilBtn.classList.remove('header__button_is-opened');
   headerAuthDesktopBtn.classList.remove('header__button_is-opened');
 }
 
-/** CallBack отображения хёдера, если пользователь не залогинен. Cтраница пользователя */
+/** CallBack отображения хёдера. Cтраница пользователя */
 function renderNotLoginHeaderArticles() {
   headerLogoutDesktopBtn.close();
   headerLogoutMobilBtn.close();
@@ -60,7 +62,7 @@ function renderNotLoginHeaderArticles() {
 /** CallBack отображения хёдера, если пользователь не залогинен. Главная страница */
 function renderNotLoginHeader() {
   renderNotLoginHeaderArticles();
-  headerChangeSaveLink.classList.remove('header__change_is-opened');
+  headerChangeSaveLink.close();
   headerSaveMobilLink.classList.remove('header__mobil-link_is-opened');
   headerAuthMobilBtn.classList.add('header__button_is-opened');
   headerAuthDesktopBtn.classList.add('header__button_is-opened');
@@ -72,7 +74,7 @@ function toDoOnClickTopRightBtn(item, method) {
     return usersApi
       .postArticle(
         translateCardParametrsToUserApiParametrs(cardParametrs),
-        getProfile(profileOwner).key
+        getProfile(profileOwner).key,
       )
       .then((card) => {
         if (card.data._id) return card.data._id;
@@ -113,7 +115,7 @@ function addCardBookMark(item) {
     {
       toDoOnClickTopRightBtn,
       toDoOnClickCard,
-    }
+    },
   );
   newCard.create();
   newCard.addEventListeners();
@@ -126,7 +128,7 @@ function addCardTrash(item) {
     {
       toDoOnClickTopRightBtn,
       toDoOnClickCard,
-    }
+    },
   );
   newCard.create();
   newCard.addEventListeners();
@@ -140,7 +142,7 @@ function searchNews(keyword) {
     cardsListElement,
     addCardBookMark,
     cardsListBtn,
-    numberCardsInLine
+    numberCardsInLine,
   );
   if (searchAct.isFull) searchAct.close();
   searchAct.open(searchNewsTemplate.content.cloneNode(true), 'search-news');

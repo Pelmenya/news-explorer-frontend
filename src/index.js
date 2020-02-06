@@ -51,7 +51,7 @@ function main() {
                 getProfile(profileOwner);
                 localStorage.setItem(
                   profileOwner,
-                  JSON.stringify({ ...getProfile(profileOwner), user })
+                  JSON.stringify({ ...getProfile(profileOwner), user }),
                 );
                 getProfile(profileOwner);
               })
@@ -81,7 +81,7 @@ function main() {
           },
         ],
         popUpContainer,
-        signInUser
+        signInUser,
       );
       popUpForm.create();
     }
@@ -97,7 +97,7 @@ function main() {
             callBack: openFormSignIn,
           },
         ],
-        popUpContainer
+        popUpContainer,
       );
       popUpForm.create();
     }
@@ -125,7 +125,7 @@ function main() {
           },
         ],
         popUpContainer,
-        signUpUser
+        signUpUser,
       );
       popUpForm.create();
     }

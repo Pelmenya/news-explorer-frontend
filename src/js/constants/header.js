@@ -1,7 +1,7 @@
 import Header from '../../blocks/header/Header';
 import { profileOwner } from './constants';
 
-import { getProfile, removeProfile } from '../utilits/functions';
+import { getProfile } from '../utilits/functions';
 import { logoutHandlerClick } from '../utilits/callbacks';
 
 import {
@@ -39,7 +39,7 @@ const header = new Header(
       callBack: logoutHandlerClick,
     },
   ],
-  getProfile(profileOwner)
+  getProfile(profileOwner),
 );
 
 export default header;
