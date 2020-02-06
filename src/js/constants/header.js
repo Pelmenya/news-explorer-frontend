@@ -1,6 +1,8 @@
 import Header from '../../blocks/header/Header';
-import { getProfile, removeProfile } from '../utilits/functions';
 import { profileOwner } from './constants';
+
+import { getProfile, removeProfile } from '../utilits/functions';
+import { logoutHandlerClick } from '../utilits/callbacks';
 
 import {
   headerGamburgerLinesBtn,
@@ -19,35 +21,25 @@ const header = new Header(
     {
       element: headerGamburgerLinesBtn,
       event: 'click',
-      callBack: () => {
-        headerMobilMenu.classList.add('header__mobil-menu_is-opened');
-      },
+      callBack: headerMobilMenu.open,
     },
     {
       element: headerGamburgerCrossBtn,
       event: 'click',
-      callBack: () => {
-        headerMobilMenu.classList.remove('header__mobil-menu_is-opened');
-      },
+      callBack: headerMobilMenu.close,
     },
     {
       element: headerLogoutDesktopBtn,
       event: 'click',
-      callBack: () => {
-        removeProfile(profileOwner);
-        window.location.href = 'index.html';
-      },
+      callBack: logoutHandlerClick,
     },
     {
       element: headerLogoutMobilBtn,
       event: 'click',
-      callBack: () => {
-        removeProfile(profileOwner);
-        window.location.href = 'index.html';
-      },
+      callBack: logoutHandlerClick,
     },
   ],
-  getProfile(profileOwner),
+  getProfile(profileOwner)
 );
 
 export default header;

@@ -10,8 +10,22 @@ const headerGamburgerLinesBtn = document.querySelector('.header .header__gamburg
 const headerGamburgerCrossBtn = document.querySelector('.header .header__gamburger_cross');
 const headerAuthDesktopBtn = document.querySelector('.header__button_auth_desktop');
 const headerAuthMobilBtn = document.querySelector('.header__button_auth_mobil');
-const headerLogoutDesktopBtn = document.querySelector('.header__button_logout_desktop');
-const headerLogoutMobilBtn = document.querySelector('.header__button_logout_mobil');
+
+const headerLogoutDesktopBtn = new Element({
+  element: document.querySelector('.header__button_logout_desktop'),
+  classOpened: 'header__button_is-opened',
+});
+
+const headerLogoutMobilBtn = new Element({
+  element: document.querySelector('.header__button_logout_mobil'),
+  classOpened: 'header__button_is-opened',
+});
+
+const popUpCloseBtn = new Element({
+  element: document.querySelector('.popup__close'),
+  classOpened: 'popup__close_is-opened',
+});
+
 const headerLogoutBtnCaptionDesktop = document.querySelector('.header__button-caption_desktop');
 const headerLogoutBtnCaptionMobil = document.querySelector('.header__button-caption_mobil');
 
@@ -21,7 +35,10 @@ const headerChangeSaveLink = document.querySelector('.header__change_save');
 const headerSaveMobilLink = document.querySelector('.header__mobil-link_save');
 
 /** Header menu */
-const headerMobilMenu = document.querySelector('.header__mobil-menu');
+const headerMobilMenu = new Element({
+  element: document.querySelector('.header__mobil-menu'),
+  classOpened: 'header__mobil-menu_is-opened',
+});
 
 /** Контейнеры */
 const popUpContainer = document.querySelector('.popup');
@@ -65,6 +82,7 @@ export {
   headerLogoutMobilBtn,
   headerLogoutBtnCaptionDesktop,
   headerLogoutBtnCaptionMobil,
+  popUpCloseBtn,
   /** Ссылки */
   headerChangeHeadLink,
   headerChangeSaveLink,

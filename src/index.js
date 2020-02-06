@@ -11,6 +11,7 @@ import {
   headerAuthDesktopBtn,
   headerAuthMobilBtn,
   headerMobilMenu,
+  popUpCloseBtn,
   popUpContainer,
   signInForm,
   signUpForm,
@@ -50,7 +51,7 @@ function main() {
                 getProfile(profileOwner);
                 localStorage.setItem(
                   profileOwner,
-                  JSON.stringify({ ...getProfile(profileOwner), user }),
+                  JSON.stringify({ ...getProfile(profileOwner), user })
                 );
                 getProfile(profileOwner);
               })
@@ -80,7 +81,7 @@ function main() {
           },
         ],
         popUpContainer,
-        signInUser,
+        signInUser
       );
       popUpForm.create();
     }
@@ -96,7 +97,7 @@ function main() {
             callBack: openFormSignIn,
           },
         ],
-        popUpContainer,
+        popUpContainer
       );
       popUpForm.create();
     }
@@ -124,7 +125,7 @@ function main() {
           },
         ],
         popUpContainer,
-        signUpUser,
+        signUpUser
       );
       popUpForm.create();
     }
@@ -133,11 +134,7 @@ function main() {
   }
 
   header.addListeners([
-    {
-      element: document.querySelector('.popup__close'),
-      event: 'click',
-      callBack: popup.close,
-    },
+    { element: popUpCloseBtn, event: 'click', callBack: popup.close },
     {
       element: headerAuthDesktopBtn,
       event: 'click',
@@ -151,7 +148,7 @@ function main() {
       element: headerAuthMobilBtn,
       event: 'click',
       callBack: () => {
-        headerMobilMenu.classList.remove('header__mobil-menu_is-opened');
+        headerMobilMenu.close();
         authUser();
       },
     },

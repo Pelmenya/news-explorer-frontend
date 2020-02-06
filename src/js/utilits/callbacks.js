@@ -18,20 +18,25 @@ import {
   cardsListElement,
   cardsListBtn,
 } from '../constants/elements';
+
 import { searchAct } from '../constants/containers';
 import { profileOwner, numberCardsInLine } from '../constants/constants';
 import { ERROR_DELETE_CARD, ERROR_SAVE_CARD, ERROR_SERVER_NEWS } from '../constants/errors';
 import articlesIntro from '../constants/articlesIntro';
 
 // Функции
-import { getProfile, translateCardParametrsToUserApiParametrs, errorNewsServer } from './functions';
+import { getProfile, translateCardParametrsToUserApiParametrs, errorNewsServer, removeProfile } from './functions';
 
 // CallBacks
+function logoutHandlerClick() {
+  removeProfile(profileOwner);
+  window.location.href = 'index.html';
+}
 
 /** CallBack отображения хёдера, если пользователь залогинен. Cтраница пользователя */
 function renderLoginHeaderArticles() {
-  headerLogoutDesktopBtn.classList.add('header__button_is-opened');
-  headerLogoutMobilBtn.classList.add('header__button_is-opened');
+  headerLogoutDesktopBtn.open();
+  headerLogoutMobilBtn.open();
   headerLogoutBtnCaptionDesktop.textContent = getProfile(profileOwner).user.name;
   headerLogoutBtnCaptionMobil.textContent = getProfile(profileOwner).user.name;
 }
@@ -47,8 +52,8 @@ function renderLoginHeader() {
 
 /** CallBack отображения хёдера, если пользователь не залогинен. Cтраница пользователя */
 function renderNotLoginHeaderArticles() {
-  headerLogoutDesktopBtn.classList.remove('header__button_is-opened');
-  headerLogoutMobilBtn.classList.remove('header__button_is-opened');
+  headerLogoutDesktopBtn.close();
+  headerLogoutMobilBtn.close();
   headerChangeHeadLink.classList.add('header__change_is-opened');
 }
 
@@ -67,7 +72,7 @@ function toDoOnClickTopRightBtn(item, method) {
     return usersApi
       .postArticle(
         translateCardParametrsToUserApiParametrs(cardParametrs),
-        getProfile(profileOwner).key,
+        getProfile(profileOwner).key
       )
       .then((card) => {
         if (card.data._id) return card.data._id;
@@ -108,7 +113,7 @@ function addCardBookMark(item) {
     {
       toDoOnClickTopRightBtn,
       toDoOnClickCard,
-    },
+    }
   );
   newCard.create();
   newCard.addEventListeners();
@@ -121,7 +126,7 @@ function addCardTrash(item) {
     {
       toDoOnClickTopRightBtn,
       toDoOnClickCard,
-    },
+    }
   );
   newCard.create();
   newCard.addEventListeners();
@@ -135,7 +140,7 @@ function searchNews(keyword) {
     cardsListElement,
     addCardBookMark,
     cardsListBtn,
-    numberCardsInLine,
+    numberCardsInLine
   );
   if (searchAct.isFull) searchAct.close();
   searchAct.open(searchNewsTemplate.content.cloneNode(true), 'search-news');
@@ -165,6 +170,7 @@ function searchNews(keyword) {
 }
 
 export {
+  logoutHandlerClick,
   renderLoginHeaderArticles,
   renderNotLoginHeaderArticles,
   renderLoginHeader,
