@@ -1,5 +1,5 @@
 import { searchActionContainer } from './elements';
-import SeachAction from '../../components/SeachAction';
+import SeachAction from '../../../blocks/search-action/SeachAction';
 
 /** Объект контейнера для отображения всех действий при поиске новостей */
 const searchAction = new SeachAction({

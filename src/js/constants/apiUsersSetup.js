@@ -1,5 +1,4 @@
-const serverUrl = 'http://localhost:3000';
-// const serverUrl = 'https://api.news-service.pro';
+const serverUrl = 'https://api.news-service.pro';
 const signInUrl = '/signin';
 const signUpUrl = '/signup';
 const profileUrl = '/users/me';
