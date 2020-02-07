@@ -18,7 +18,7 @@ import {
 
 import PopUpForm from './blocks/popup/__form/PopUpForm';
 import { getProfile, removeProfile } from './js/utilits/functions';
-import { renderLoginHeader, renderNotLoginHeader } from './js/utilits/callbacks';
+import { renderLoginHeader, renderNotLoginHeader } from './js/utilits/callbacks/header';
 
 function main() {
   header.create(renderLoginHeader, renderNotLoginHeader);
