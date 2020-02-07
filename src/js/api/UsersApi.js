@@ -1,3 +1,5 @@
+import { ERRROR_NOT_CONNECT_USER_SERVER } from '../constants/errors';
+
 export default class UsersApi {
   constructor(urls, headers, bearer) {
     this.baseUrl = urls.serverUrl;
@@ -26,9 +28,12 @@ export default class UsersApi {
     objJSON.headers = this.headers;
     objJSON.body = JSON.stringify(item);
 
-    return fetch(this.baseUrl + this.signInUrl, objJSON)
-      .then((res) => res.json())
-      .catch((err) => err);
+    return fetch(this.baseUrl + this.signInUrl, objJSON).then((res) => res.json()).catch((err) => {
+      if (err.message === 'Failed to fetch') {
+        return new Error(ERRROR_NOT_CONNECT_USER_SERVER);
+      }
+      return err;
+    });
   }
 
   getUserMe(key) {
@@ -36,9 +41,12 @@ export default class UsersApi {
     objJSON.headers = this.headers;
     objJSON.headers.authorization = this.bearer + key;
 
-    return fetch(this.baseUrl + this.profileUrl, objJSON)
-      .then((res) => res.json())
-      .catch((err) => err);
+    return fetch(this.baseUrl + this.profileUrl, objJSON).then((res) => res.json()).catch((err) => {
+      if (err.message === 'Failed to fetch') {
+        return new Error(ERRROR_NOT_CONNECT_USER_SERVER);
+      }
+      return err;
+    });
   }
 
   getUserArticles(key) {
@@ -48,7 +56,12 @@ export default class UsersApi {
 
     return fetch(this.baseUrl + this.articlesUrl, objJSON)
       .then((res) => res.json())
-      .catch((err) => err);
+      .catch((err) => {
+        if (err.message === 'Failed to fetch') {
+          return new Error(ERRROR_NOT_CONNECT_USER_SERVER);
+        }
+        return err;
+      });
   }
 
   postArticle(item, key) {
@@ -60,7 +73,12 @@ export default class UsersApi {
 
     return fetch(this.baseUrl + this.articlesUrl, objJSON)
       .then((res) => res.json())
-      .catch((err) => err);
+      .catch((err) => {
+        if (err.message === 'Failed to fetch') {
+          return new Error(ERRROR_NOT_CONNECT_USER_SERVER);
+        }
+        return err;
+      });
   }
 
   deleteArticle(item, key) {
@@ -71,6 +89,11 @@ export default class UsersApi {
 
     return fetch(`${this.baseUrl}${this.articlesUrl}/${item}`, objJSON)
       .then((res) => res.json())
-      .catch((err) => err);
+      .catch((err) => {
+        if (err.message === 'Failed to fetch') {
+          return new Error(ERRROR_NOT_CONNECT_USER_SERVER);
+        }
+        return err;
+      });
   }
 }

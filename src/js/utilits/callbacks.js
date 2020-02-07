@@ -1,7 +1,5 @@
-import Card from '../../blocks/card/Card';
-import CardsListControl from '../../blocks/cards-list/CardListControl';
 // Константы
-import { usersApi, newsApi } from '../constants/api';
+import { usersApi, newsApi } from '../constants/objects/api';
 import {
   headerAuthDesktopBtn,
   headerAuthMobilBtn,
@@ -17,16 +15,20 @@ import {
   searchNothingTemplate,
   cardsListElement,
   cardsListBtn,
-} from '../constants/elements';
+} from '../constants/objects/elements';
 
-import { searchAct } from '../constants/containers';
+import { searchAct } from '../constants/objects/containers';
 import { profileOwner, numberCardsInLine } from '../constants/constants';
 import { ERROR_DELETE_CARD, ERROR_SAVE_CARD, ERROR_SERVER_NEWS } from '../constants/errors';
-import articlesIntro from '../constants/articlesIntro';
+import articlesIntro from '../constants/objects/articlesIntro';
+
+// Классы
+import Card from '../../blocks/card/Card';
+import CardsListControl from '../../blocks/cards-list/CardListControl';
 
 // Функции
 import {
-  getProfile, translateCardParametrsToUserApiParametrs, errorNewsServer, removeProfile,
+  getProfile, translateCardParametrsToUserApiParametrs, errorServer, removeProfile,
 } from './functions';
 
 // CallBacks
@@ -151,7 +153,7 @@ function searchNews(keyword) {
     .then((data) => {
       if (data.status) {
         if (String(data.status) === 'error') {
-          errorNewsServer();
+          errorServer();
           return data;
         }
         if (String(data.totalResults) === '0') {
@@ -168,7 +170,7 @@ function searchNews(keyword) {
       }
       return Promise.reject(new Error(ERROR_SERVER_NEWS));
     })
-    .catch((err) => errorNewsServer(err));
+    .catch((err) => errorServer(err));
 }
 
 export {

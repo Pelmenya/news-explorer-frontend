@@ -1,9 +1,4 @@
-import Header from '../../blocks/header/Header';
-import { profileOwner } from './constants';
-
-import { getProfile } from '../utilits/functions';
-import { logoutHandlerClick } from '../utilits/callbacks';
-
+import { profileOwner } from '../constants';
 import {
   headerGamburgerLinesBtn,
   headerGamburgerCrossBtn,
@@ -11,6 +6,11 @@ import {
   headerLogoutMobilBtn,
   headerMobilMenu,
 } from './elements';
+
+import Header from '../../../blocks/header/Header';
+import { getProfile } from '../../utilits/functions';
+import { logoutHandlerClick } from '../../utilits/callbacks';
+
 
 /** Объект хёдера, в основном управляет всей логикой приложения.
   * Инициализирует начальную страницу.

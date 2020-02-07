@@ -1,10 +1,10 @@
 import './pages/index.css';
 
 import { profileOwner } from './js/constants/constants';
-import { usersApi } from './js/constants/api';
-import { popup } from './js/constants/containers';
-import header from './js/constants/header';
-import searchForm from './js/constants/searchForm';
+import { usersApi } from './js/constants/objects/api';
+import { popup } from './js/constants/objects/containers';
+import header from './js/constants/objects/header';
+import searchForm from './js/constants/objects/searchForm';
 import {
   headerAuthDesktopBtn,
   headerAuthMobilBtn,
@@ -14,7 +14,7 @@ import {
   signInForm,
   signUpForm,
   signUpIsOkForm,
-} from './js/constants/elements';
+} from './js/constants/objects/elements';
 
 import PopUpForm from './blocks/popup/__form/PopUpForm';
 import { getProfile, removeProfile } from './js/utilits/functions';

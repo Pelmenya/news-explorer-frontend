@@ -1,9 +1,10 @@
-import Container from '../components/Container';
 import {
   popUpContainer,
   headerGamburgerLinesBtn,
   searchActionContainer,
 } from './elements';
+
+import Container from '../../components/Container';
 
 /* Объекты контейнеров */
 /** Объект контейнера для отображения форм аутентификации */

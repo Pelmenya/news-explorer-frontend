@@ -1,5 +1,5 @@
-import { searchNothingTemplate } from '../constants/elements';
-import { searchAct } from '../constants/containers';
+import { searchNothingTemplate } from '../constants/objects/elements';
+import { searchAct } from '../constants/objects/containers';
 import { ERROR_SERVER_NEWS_DESCRIPTION } from '../constants/errors';
 import { BAD_URL_FOR_USER_LINKS } from '../constants/constants';
 
@@ -35,8 +35,8 @@ function removeProfile(item) {
   localStorage.removeItem(item);
 }
 
-/** Функция для отображения ошибки с сервера News */
-function errorNewsServer(error = '') {
+/** Функция для отображения ошибки с сервера News и Users */
+function errorServer(error = '') {
   if (searchAct.isFull) searchAct.close();
   searchAct.open(searchNothingTemplate.content.cloneNode(true), 'search-nothing');
   document
@@ -128,7 +128,7 @@ export {
   createElementDOM,
   getProfile,
   removeProfile,
-  errorNewsServer,
+  errorServer,
   dataToStrRus,
   normalizeKeyWord,
   translateCardParametrsToUserApiParametrs,

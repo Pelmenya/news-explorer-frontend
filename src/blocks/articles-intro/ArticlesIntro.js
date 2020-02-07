@@ -1,6 +1,16 @@
-import { getProfile, translateUsersApiParametrsToCardParametrs } from '../../js/utilits/functions';
-import { profileOwner, NOT_CREATE_RESOURCE } from '../../js/constants/constants';
+import {
+  profileOwner,
+  NOT_CREATE_RESOURCE,
+  SAVED_ARTICLE,
+  SAVED_ARTICLES,
+  OTHER,
+  NOT_ARTICLES,
+  YOU,
+} from '../../js/constants/constants';
+
 import Element from '../../js/components/Element';
+
+import { getProfile, translateUsersApiParametrsToCardParametrs } from '../../js/utilits/functions';
 
 export default class ArticlesIntro {
   _getArticles() {
@@ -80,19 +90,18 @@ export default class ArticlesIntro {
         if (
           String(results.numberArticles).split('')[
             String(results.numberArticles).split('').length - 1
-          ] === '1'
-          && String(results.numberArticles).split('')[
+          ] === '1' &&
+          String(results.numberArticles).split('')[
             String(results.numberArticles).split('').length - 2
           ] !== '1'
         ) {
           this.articlesIntroSubTitle.setTextContent(
-            `${getProfile(profileOwner).user
-              .name}, у Вас ${results.numberArticles} сохраненная статья`,
+            `${getProfile(profileOwner).user.name}${YOU} ${results.numberArticles} ${SAVED_ARTICLE}`
           );
         } else {
           this.articlesIntroSubTitle.setTextContent(
             `${getProfile(profileOwner).user
-              .name}, у Вас ${results.numberArticles} сохраненных статей`,
+              .name}${YOU} ${results.numberArticles} ${SAVED_ARTICLES}`
           );
         }
         let str = `${results.arrSort[0].keyword}`;
@@ -102,14 +111,16 @@ export default class ArticlesIntro {
 
         if (results.arrSort.length === this.numberWordsToAnd + 1) {
           this.articlesIntroKeyWordAnd.open();
-          this.articlesIntroKeyWordEnd
-            .setTextContent(results.arrSort[this.numberWordsToAnd].keyword);
+          this.articlesIntroKeyWordEnd.setTextContent(
+            results.arrSort[this.numberWordsToAnd].keyword
+          );
           this.articlesIntroKeyWordEnd.open();
         }
         if (results.arrSort.length > this.numberWordsToAnd + 1) {
           this.articlesIntroKeyWordAnd.open();
-          this.articlesIntroKeyWordEnd
-            .setTextContent(`${results.arrSort.length - this.numberWordsToAnd} другим`);
+          this.articlesIntroKeyWordEnd.setTextContent(
+            `${results.arrSort.length - this.numberWordsToAnd} ${OTHER}`
+          );
           this.articlesIntroKeyWordEnd.open();
         }
         this.articlesIntroKeyWordBegin.open();
@@ -117,7 +128,7 @@ export default class ArticlesIntro {
         this.articlesIntroKeyWords.open();
       } else {
         this.articlesIntroSubTitle.setTextContent(
-          `${getProfile(profileOwner).user.name}, у Вас еще нет сохраненных статей`,
+          `${getProfile(profileOwner).user.name}${NOT_ARTICLES}`
         );
         this.articlesIntroKeyWords.open();
         this.articlesIntroKeyWords.setTextContent('');

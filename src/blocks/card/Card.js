@@ -1,5 +1,11 @@
-import { createElementDOM, getProfile, dataToStrRus } from '../../js/utilits/functions';
 import { profileOwner } from '../../js/constants/constants';
+import { ERRROR_NOT_CONNECT_USER_SERVER } from '../../js/constants/errors';
+import {
+  createElementDOM,
+  getProfile,
+  dataToStrRus,
+  errorServer,
+} from '../../js/utilits/functions';
 
 export default class Card {
   _toDoMouseMoveTopRightBtn() {
@@ -25,23 +31,25 @@ export default class Card {
   _toDoOnClickTopRightBtn() {
     if (getProfile(profileOwner)) {
       if (this.cardParametrs._id) {
-        this.callBacks.toDoOnClickTopRightBtn(this.cardParametrs, 'DELETE')
+        this.callBacks
+          .toDoOnClickTopRightBtn(this.cardParametrs, 'DELETE')
           .then((_id) => {
             if (_id === null) {
               this.buttonTopRight.classList.remove(`card__icon_${this.cardParametrs.type}-marked`);
               this.cardParametrs._id = _id;
             }
           })
-          .catch((err) => err);
+          .catch(() => errorServer({ message: ERRROR_NOT_CONNECT_USER_SERVER }));
       } else {
-        this.callBacks.toDoOnClickTopRightBtn(this.cardParametrs, 'POST')
+        this.callBacks
+          .toDoOnClickTopRightBtn(this.cardParametrs, 'POST')
           .then((_id) => {
             if (_id) {
               this.buttonTopRight.classList.add(`card__icon_${this.cardParametrs.type}-marked`);
               this.cardParametrs._id = _id;
             }
           })
-          .catch((err) => err);
+          .catch(() => errorServer({ message: ERRROR_NOT_CONNECT_USER_SERVER }));
       }
     }
   }

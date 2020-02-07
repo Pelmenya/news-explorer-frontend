@@ -1,4 +1,4 @@
-import Element from '../components/Element';
+import Element from '../../components/Element';
 
 /** Кнопки */
 const cardsListBtn = new Element({
