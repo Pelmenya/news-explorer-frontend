@@ -1,4 +1,5 @@
 import { profileOwner } from '../../constants/constants';
+import { userArticlesContainer } from '../../constants/objects/elements';
 import { ERROR_DELETE_CARD, ERROR_SAVE_CARD } from '../../constants/errors';
 import { usersApi } from '../../constants/objects/api';
 import articlesIntro from '../../constants/objects/articlesIntro';
@@ -30,6 +31,14 @@ function toDoOnClickTopRightBtn(item, method) {
           if (cardParametrs.type === 'trash') {
             cardParametrs.card.parentNode.removeChild(cardParametrs.card);
             articlesIntro.render();
+            usersApi
+              .getUserArticles(getProfile(profileOwner).key)
+              .then((articles) => {
+                if (!articles.myArticles) {
+                  userArticlesContainer.close();
+                }
+              })
+              .catch((err) => err);
             return method;
           }
         }

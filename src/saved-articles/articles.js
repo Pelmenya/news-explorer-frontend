@@ -5,7 +5,6 @@ import { usersApi } from '../js/constants/objects/api';
 import { userArticlesContainer } from '../js/constants/objects/elements';
 import header from '../js/constants/objects/header';
 import cardsList from '../js/constants/objects/cardsList';
-
 import articlesIntro from '../js/constants/objects/articlesIntro';
 
 import { getProfile, translateUsersApiParametrsToCardParametrs } from '../js/utilits/functions';
