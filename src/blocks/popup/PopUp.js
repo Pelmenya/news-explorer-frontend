@@ -1,4 +1,4 @@
-import SeachAction from '../../js/components/SeachAction';
+import SeachAction from '../search-action/SeachAction';
 
 export default class PopUp extends SeachAction {
   constructor(props) {
