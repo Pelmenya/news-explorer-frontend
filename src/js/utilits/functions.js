@@ -1,5 +1,5 @@
 import { searchNothingTemplate } from '../constants/objects/elements';
-import { searchAct } from '../constants/objects/containers';
+import searchAction from '../constants/objects/seachAction';
 import { ERROR_SERVER_NEWS_DESCRIPTION } from '../constants/errors';
 import { BAD_URL_FOR_USER_LINKS } from '../constants/constants';
 
@@ -37,8 +37,8 @@ function removeProfile(item) {
 
 /** Функция для отображения ошибки с сервера News и Users */
 function errorServer(error = '') {
-  if (searchAct.isFull) searchAct.close();
-  searchAct.open(searchNothingTemplate.content.cloneNode(true), 'search-nothing');
+  if (searchAction.isFull) searchAction.close();
+  searchAction.open(searchNothingTemplate.content.cloneNode(true), 'search-nothing');
   document
     .querySelector('.search-action__search-nothing .search-action__title').textContent = error.message;
   document.querySelector(

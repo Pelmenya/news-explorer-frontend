@@ -7,7 +7,6 @@ import {
   NOT_ARTICLES,
   YOU,
 } from '../../js/constants/constants';
-
 import Element from '../../js/components/Element';
 
 import { getProfile, translateUsersApiParametrsToCardParametrs } from '../../js/utilits/functions';
@@ -90,18 +89,18 @@ export default class ArticlesIntro {
         if (
           String(results.numberArticles).split('')[
             String(results.numberArticles).split('').length - 1
-          ] === '1' &&
-          String(results.numberArticles).split('')[
+          ] === '1'
+          && String(results.numberArticles).split('')[
             String(results.numberArticles).split('').length - 2
           ] !== '1'
         ) {
           this.articlesIntroSubTitle.setTextContent(
-            `${getProfile(profileOwner).user.name}${YOU} ${results.numberArticles} ${SAVED_ARTICLE}`
+            `${getProfile(profileOwner).user.name}${YOU} ${results.numberArticles} ${SAVED_ARTICLE}`,
           );
         } else {
           this.articlesIntroSubTitle.setTextContent(
             `${getProfile(profileOwner).user
-              .name}${YOU} ${results.numberArticles} ${SAVED_ARTICLES}`
+              .name}${YOU} ${results.numberArticles} ${SAVED_ARTICLES}`,
           );
         }
         let str = `${results.arrSort[0].keyword}`;
@@ -112,14 +111,14 @@ export default class ArticlesIntro {
         if (results.arrSort.length === this.numberWordsToAnd + 1) {
           this.articlesIntroKeyWordAnd.open();
           this.articlesIntroKeyWordEnd.setTextContent(
-            results.arrSort[this.numberWordsToAnd].keyword
+            results.arrSort[this.numberWordsToAnd].keyword,
           );
           this.articlesIntroKeyWordEnd.open();
         }
         if (results.arrSort.length > this.numberWordsToAnd + 1) {
           this.articlesIntroKeyWordAnd.open();
           this.articlesIntroKeyWordEnd.setTextContent(
-            `${results.arrSort.length - this.numberWordsToAnd} ${OTHER}`
+            `${results.arrSort.length - this.numberWordsToAnd} ${OTHER}`,
           );
           this.articlesIntroKeyWordEnd.open();
         }
@@ -128,7 +127,7 @@ export default class ArticlesIntro {
         this.articlesIntroKeyWords.open();
       } else {
         this.articlesIntroSubTitle.setTextContent(
-          `${getProfile(profileOwner).user.name}${NOT_ARTICLES}`
+          `${getProfile(profileOwner).user.name}${NOT_ARTICLES}`,
         );
         this.articlesIntroKeyWords.open();
         this.articlesIntroKeyWords.setTextContent('');

@@ -1,4 +1,5 @@
-export default class Container {
+
+export default class SeachAction {
   _setContent() {
     this.container
       .querySelector(`.${this.container.classList[0]}__content`)

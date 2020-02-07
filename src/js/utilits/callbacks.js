@@ -17,7 +17,7 @@ import {
   cardsListBtn,
 } from '../constants/objects/elements';
 
-import { searchAct } from '../constants/objects/containers';
+import searchAction from '../constants/objects/seachAction';
 import { profileOwner, numberCardsInLine } from '../constants/constants';
 import { ERROR_DELETE_CARD, ERROR_SAVE_CARD, ERROR_SERVER_NEWS } from '../constants/errors';
 import articlesIntro from '../constants/objects/articlesIntro';
@@ -28,7 +28,10 @@ import CardsListControl from '../../blocks/cards-list/CardListControl';
 
 // Функции
 import {
-  getProfile, translateCardParametrsToUserApiParametrs, errorServer, removeProfile,
+  getProfile,
+  translateCardParametrsToUserApiParametrs,
+  errorServer,
+  removeProfile,
 } from './functions';
 
 // CallBacks
@@ -146,8 +149,8 @@ function searchNews(keyword) {
     cardsListBtn,
     numberCardsInLine,
   );
-  if (searchAct.isFull) searchAct.close();
-  searchAct.open(searchNewsTemplate.content.cloneNode(true), 'search-news');
+  if (searchAction.isFull) searchAction.close();
+  searchAction.open(searchNewsTemplate.content.cloneNode(true), 'search-news');
   newsApi
     .getNews(keyword)
     .then((data) => {
@@ -157,12 +160,12 @@ function searchNews(keyword) {
           return data;
         }
         if (String(data.totalResults) === '0') {
-          searchAct.close();
-          searchAct.open(searchNothingTemplate.content.cloneNode(true), 'search-nothing');
+          searchAction.close();
+          searchAction.open(searchNothingTemplate.content.cloneNode(true), 'search-nothing');
           return data;
         }
         if (String(data.totalResults) !== '0') {
-          searchAct.close();
+          searchAction.close();
           searchResultsAct.open();
           cardsListControl.viewCards(data.articles, keyword);
           return data;

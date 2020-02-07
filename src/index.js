@@ -2,7 +2,7 @@ import './pages/index.css';
 
 import { profileOwner } from './js/constants/constants';
 import { usersApi } from './js/constants/objects/api';
-import { popup } from './js/constants/objects/containers';
+import popUp from './js/constants/objects/popUp';
 import header from './js/constants/objects/header';
 import searchForm from './js/constants/objects/searchForm';
 import {
@@ -51,7 +51,7 @@ function main() {
               })
               .then(() => {
                 header.render(getProfile(profileOwner));
-                popup.close();
+                popUp.close();
               })
               .catch((err) => err);
           }
@@ -61,15 +61,16 @@ function main() {
     }
 
     function openFormSignIn() {
-      popup.close();
-      popup.open(signInForm.content.cloneNode(true), 'form-signin');
+      popUp.close();
+      popUp.open(signInForm.content.cloneNode(true), 'form-signin');
+      popUp.addEventsListeners();
       const popUpForm = new PopUpForm(
         [
           {
             element: document.querySelector('.popup .popup__transition'),
             event: 'click',
             callBack: () => {
-              popup.close();
+              popUp.close();
               authUser();
             },
           },
@@ -81,8 +82,9 @@ function main() {
     }
 
     function openFormSignUpIsOk() {
-      popup.close();
-      popup.open(signUpIsOkForm.content.cloneNode(true), 'form-signup-is-ok');
+      popUp.close();
+      popUp.open(signUpIsOkForm.content.cloneNode(true), 'form-signup-is-ok');
+      popUp.addEventsListeners();
       const popUpForm = new PopUpForm(
         [
           {
@@ -109,7 +111,8 @@ function main() {
     }
 
     function openFormSignUp() {
-      popup.open(signUpForm.content.cloneNode(true), 'form-signup');
+      popUp.open(signUpForm.content.cloneNode(true), 'form-signup');
+      popUp.addEventsListeners();
       const popUpForm = new PopUpForm(
         [
           {
@@ -127,7 +130,7 @@ function main() {
   }
 
   header.addListeners([
-    { element: popUpCloseBtn, event: 'click', callBack: popup.close },
+    { element: popUpCloseBtn, event: 'click', callBack: popUp.close },
     {
       element: headerAuthDesktopBtn,
       event: 'click',
