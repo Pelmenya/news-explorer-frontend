@@ -1,6 +1,6 @@
 import { normalizeKeyWord } from '../../../js/utilits/functions';
 
-export default class SearchNewsForm {
+export default class SearchForm {
   // Защищенные методы
   // Сброс в начальное состояние формы
   _formReset() {
