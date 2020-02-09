@@ -9,7 +9,7 @@ import {
 
 import Header from '../../../blocks/header/Header';
 import { getProfile } from '../../utilits/functions';
-import logoutHandlerClick from '../../utilits/callbacks';
+import { logoutHandlerClick } from '../../utilits/callbacks/header';
 
 /** Объект хёдера, в основном управляет всей логикой приложения.
   * Инициализирует начальную страницу.

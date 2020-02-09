@@ -10,7 +10,7 @@ import {
   headerChangeSaveLink,
   headerSaveMobilLink,
 } from '../../constants/objects/elements';
-import { getProfile } from '../functions';
+import { getProfile, removeProfile } from '../functions';
 
 /** CallBack отображения хёдера. Cтраница пользователя */
 function renderLoginHeaderArticles() {
@@ -45,9 +45,16 @@ function renderNotLoginHeader() {
   headerAuthDesktopBtn.open();
 }
 
+/** CallBack выхода из авторизованного режима хёдера */
+function logoutHandlerClick() {
+  removeProfile(profileOwner);
+  window.location.href = 'index.html';
+}
+
 export {
   renderLoginHeader,
   renderLoginHeaderArticles,
   renderNotLoginHeader,
   renderNotLoginHeaderArticles,
+  logoutHandlerClick,
 };

@@ -12,6 +12,18 @@ export default class SearchNewsForm {
     return normalizeKeyWord(this.formInput.value);
   }
 
+  _disabledForm() {
+    Object.keys(this.form.elements).forEach((item) => {
+      this.form.elements[item].disabled = true;
+    });
+  }
+
+  _enabledForm() {
+    Object.keys(this.form.elements).forEach((item) => {
+      this.form.elements[item].disabled = false;
+    });
+  }
+
   constructor(form, handlerSubmit) {
     this.form = form;
     this.formInput = this.form.querySelector('.search__keywords');
@@ -26,10 +38,12 @@ export default class SearchNewsForm {
   }
 
   submitForm(event) {
+    this._disabledForm();
     if (this._getInfo()) {
       this.handlerSubmit(this._getInfo());
-      this._formReset();
     }
+    this._enabledForm();
+
     event.preventDefault();
   }
 }
