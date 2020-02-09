@@ -8,12 +8,12 @@ export default class PopUp extends SeachAction {
   }
 
   addEventsListeners() {
-    this.container.addEventListener('click', this.closeClick);
+    this.container.addEventListener('mousedown', this.closeClick);
     window.addEventListener('keydown', this.closeKeyDown);
   }
 
   removeEventsListeners() {
-    this.container.removeEventListener('click', this.closeClick);
+    this.container.removeEventListener('mousedown', this.closeClick);
     window.removeEventListener('keydown', this.closeKeyDown);
   }
 

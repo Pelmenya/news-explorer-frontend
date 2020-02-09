@@ -1,6 +1,9 @@
 import ElementsListeners from '../../../js/components/ElementsListeners';
 import {
-  ERROR_TEXT, ERROR_EMAIL, ERROR_PASSWORD, ERROR_REQUIRED_FIELD,
+  ERROR_TEXT,
+  ERROR_EMAIL,
+  ERROR_PASSWORD,
+  ERROR_REQUIRED_FIELD,
 } from '../../../js/constants/errors';
 
 export default class PopUpForm extends ElementsListeners {
@@ -77,6 +80,18 @@ export default class PopUpForm extends ElementsListeners {
     this.popupForm.querySelector('.popup__error_server').textContent = serverErr;
   }
 
+  _disabledForm() {
+    Object.keys(this.popupForm.elements).forEach((item) => {
+      this.popupForm.elements[item].disabled = true;
+    });
+  }
+
+  _enabledForm() {
+    Object.keys(this.popupForm.elements).forEach((item) => {
+      this.popupForm.elements[item].disabled = false;
+    });
+  }
+
   constructor(props, popup, handlerSubmit = null) {
     super(props);
 
@@ -109,9 +124,12 @@ export default class PopUpForm extends ElementsListeners {
   }
 
   submitForm(event) {
+    this._disabledForm();
     this.handlerSubmit(this._getInfo())
       .then((serverErr) => this._setServerError(serverErr))
       .catch((err) => err);
+    this._enabledForm();
+
     event.preventDefault();
   }
 }
