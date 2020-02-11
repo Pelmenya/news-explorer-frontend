@@ -18,7 +18,7 @@
       <div class="page-top__glass">
         <header class="header header__shadow-white">
           <div class="header__logo">News Explorer</div>
-          <button class="header__gamburger header__gamburger_lines"></button>
+          <button class="header__gamburger header__gamburger_lines header__gamburger_is-opened"></button>
             <nav class="header__mobil-menu">
               <div class="header__mobil-container">
                 <div class="header header__shadow-white">
@@ -71,63 +71,15 @@
       </div>
     </div>
     <section class="search-action">
-      <h2 class="title search-action__title search-action__title_is-close">Поиск новостей</h2>
-      <div class="search-action__loader"></div>
-      <p class="search-action__description">Идет поиск новостей...</p>
-    </section>
-    <section class="search-results">
-      <h2 class="title search-results__title">Результаты поиска</h2>
-      <div class="cards-list">
-        <div class="card">
-          <div class="card__pic card__pic_01">
-            <div class="card__item card__icon card__icon_bookmark card__icon_bookmark_logout"></div>
-            <div class="card__item card__hint card__hint_logout"></div>
-          </div>
-          <article class="card__description">
-            <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
-            <h2 class="card__title">Национальное достояние – парки</h2>
-            <p class="card__info">
-              В 2016 году Америка отмечала важный юбилей: сто лет назад
-              здесь начала складываться система национальных парков – охраняемых территорий,
-              где и сегодня каждый может приобщиться к природе.
-            </p>
-          </article>
-          <h3 class="card__source">ЛЕНТА.РУ</h3>
-        </div>
-        <div class="card">
-          <div class="card__pic card__pic_02">
-            <div class="card__item card__icon card__icon_bookmark"></div>
-            <div class="card__item card__hint"></div>
-          </div>
-          <article class="card__description">
-            <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
-            <h2 class="card__title">Лесные огоньки: история одной фотографии</h2>
-            <p class="card__info">
-              Фотограф отвлеклась от освещения суровой политической реальности Мексики,
-              чтобы запечатлеть ускользающую красоту одного из местных чудес природы.
-            </p>
-          </article>
-          <h3 class="card__source">МЕДУЗА</h3>
-        </div>
-        <div class="card">
-          <div class="card__pic card__pic_03">
-            <div class="card__item card__icon card__icon_bookmark-marked"></div>
-            <div class="card__item card__hint"></div>
-          </div>
-          <article class="card__description">
-            <time class="card__data" datetime="2019-08-02">2 августа, 2019</time>
-            <h2 class="card__title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h2>
-            <p class="card__info">
-              Знаменитый фотограф снимает первозданные леса России,
-              чтобы рассказать о необходимости их сохранения. В этот раз он отправился
-              в Двинско-Пинежскую тайгу, где...
-            </p>
-          </article>
-          <h3 class="card__source">РИА</h3>
-        </div>
+      <div class="search-action__content">
+        <h2 class="title search-action__title search-action__title_is-close">Поиск новостей</h2>
       </div>
-      <button class="button button__color-shem-white">Показать еще</button>
     </section>
+    <div class="search-results">
+      <h2 class="title search-results__title">Результаты поиска</h2>
+      <div class="cards-list"></div>
+      <button class="button button__color-shem-white cards-list__button">Показать еще</button>
+    </div>
     <section class="author">
       <picture>
         <source media="(max-width: 400px)" srcset="<%=require('./images/avatar400.png')%>"/>
@@ -143,11 +95,6 @@
            чему вы тут научились, и чем можете помочь потенциальным заказчикам.
         </p>
       </div>
-    </section>
-    <section class="search-action">
-      <div class="search-action__pic"></div>
-      <h2 class="title search-action__title">Ничего не найдено</h2>
-      <p class="search-action__description">К сожалению по вашему запросу ничего не найдено.</p>
     </section>
     <footer class="footer">
       <div class="footer__container">
@@ -166,7 +113,7 @@
     </footer>
     <div class="popup">
       <div class="popup__content">
-        <img src="<%=require('./images/close.svg')%>" alt="Кнопка закрытия формы" class="popup__close">
+        <img src="<%=require('./images/close.svg')%>" alt="Кнопка закрытия формы" class="popup__close popup__close_is-opened">
       </div>
     </div>
     <template class="popup form-signup-is-ok">
@@ -210,6 +157,19 @@
         <button class="button button__color-shem-blue button__popup">Войти</button>
         <button type="button" class="popup__transition popup__transition_signin"><span class="popup__insert">или </span>Зарегистрироваться</button>
       </form>
+    </template>
+    <template class ="search-action search-news">
+      <div class = "search-action__content search-action__search-news">
+        <div class="search-action__loader"></div>
+        <p class="search-action__description">Идет поиск новостей...</p>
+      </div>
+    </template>
+    <template class="search-action search-nothing">
+      <div class = "search-action__content search-action__search-nothing">
+        <div class="search-action__pic"></div>
+        <h2 class="title search-action__title">Ничего не найдено</h2>
+        <p class="search-action__description">К сожалению по вашему запросу ничего не найдено.</p>
+      </div>
     </template>
   </div>
     <script src="<%=htmlWebpackPlugin.files.chunks.index.entry%>"></script>

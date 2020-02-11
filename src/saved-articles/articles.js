@@ -1,86 +1,42 @@
 import '../pages/articles.css';
 
-import Header from '../js/components/Header';
+import { profileOwner, NOT_CREATE_RESOURCE, NOT_ARTICLES } from '../js/constants/constants';
+import { usersApi } from '../js/constants/objects/api';
+import { userArticlesContainer } from '../js/constants/objects/elements';
+import header from '../js/constants/objects/header';
+import cardsList from '../js/constants/objects/cardsList';
+import articlesIntro from '../js/constants/objects/articlesIntro';
 
-//
-const profileOwner = 'profileOwner';
-const loginProfile = JSON.parse(localStorage.getItem(profileOwner));
-
+import { getProfile, translateUsersApiParametrsToCardParametrs } from '../js/utilits/functions';
+import {
+  renderLoginHeaderArticles,
+  renderNotLoginHeaderArticles,
+} from '../js/utilits/callbacks/header';
 
 function main() {
-  /* Константы */
+  header.create(renderLoginHeaderArticles, renderNotLoginHeaderArticles);
+  articlesIntro.create();
+  articlesIntro.render();
 
-  // const serverUrl = 'http://localhost:3000';
-
-
-  /* Кнопки */
-
-  const headerGamburgerLinesBtn = document.querySelector('.header .header__gamburger_lines');
-  const headerGamburgerCrossBtn = document.querySelector('.header .header__gamburger_cross');
-  const headerLogoutDesktopBtn = document.querySelector('.header__button_logout_desktop');
-  const headerLogoutMobilBtn = document.querySelector('.header__button_logout_mobil');
-  const headerLogoutBtnCaptionDesktop = document.querySelector('.header__button-caption_desktop');
-  const headerLogoutBtnCaptionMobil = document.querySelector('.header__button-caption_mobil');
-
-  /* Ссылки */
-  const headerChangeHeadLink = document.querySelector('.header__change_head');
-
-  /* Header menu */
-  const headerMobilMenu = document.querySelector('.header__mobil-menu');
-  function renderLoginHeader() {
-    headerLogoutDesktopBtn.classList.add('header__button_is-opened');
-    headerLogoutMobilBtn.classList.add('header__button_is-opened');
-
-    headerLogoutBtnCaptionDesktop.textContent = loginProfile.user.name;
-    headerLogoutBtnCaptionMobil.textContent = loginProfile.user.name;
-  }
-
-  function renderNotLoginHeader() {
-    headerLogoutDesktopBtn.classList.remove('header__button_is-opened');
-    headerLogoutMobilBtn.classList.remove('header__button_is-opened');
-    headerChangeHeadLink.classList.add('header__change_is-opened');
-  }
-
-  const header = new Header(
-    [
-      {
-        button: headerGamburgerLinesBtn,
-        event: 'click',
-        callBack: () => {
-          headerMobilMenu.classList.add('header__mobil-menu_is-opened');
-        },
-      },
-      {
-        button: headerGamburgerCrossBtn,
-        event: 'click',
-        callBack: () => {
-          headerMobilMenu.classList.remove('header__mobil-menu_is-opened');
-        },
-      },
-      {
-        button: headerLogoutDesktopBtn,
-        event: 'click',
-        callBack: () => {
-          localStorage.removeItem(profileOwner);
-          window.location.href = 'index.html';
-          renderNotLoginHeader();
-        },
-      },
-      {
-        button: headerLogoutMobilBtn,
-        event: 'click',
-        callBack: () => {
-          localStorage.removeItem(profileOwner);
-          window.location.href = 'index.html';
-          renderNotLoginHeader();
-        },
-      },
-    ],
-    loginProfile,
-    { renderLoginHeader, renderNotLoginHeader },
-  );
+  usersApi
+    .getUserArticles(getProfile(profileOwner).key)
+    .then((articles) => {
+      userArticlesContainer.close();
+      if (articles.message === NOT_CREATE_RESOURCE) {
+        throw Error(`${getProfile(profileOwner).user.name}${NOT_ARTICLES}`);
+      } else if (articles.myArticles) {
+        userArticlesContainer.open();
+        cardsList.viewCards(
+          articles.myArticles.map((item) => translateUsersApiParametrsToCardParametrs(item)),
+        );
+      } else throw new Error(articles.message);
+    })
+    .catch((err) => {
+      document.querySelector('.articles-intro__sub-title').textContent = err.message;
+      userArticlesContainer.close();
+    });
 }
 
-if (loginProfile) {
+if (getProfile(profileOwner)) {
   main();
 } else window.location.href = 'index.html';

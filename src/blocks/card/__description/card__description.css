@@ -6,7 +6,7 @@
   position: relative;
 }
 
-@media screen and (max-width: 1264px) {
+@media screen and (max-width: 900px) {
   .card__description {
     width: calc(100% - 32px);
     height: 222px;

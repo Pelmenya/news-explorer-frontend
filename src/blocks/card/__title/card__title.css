@@ -4,15 +4,23 @@
   font-weight: normal;
   font-size: 26px;
   line-height: 30px;
+  max-height: 90px;
   color: #1a1b22;
+  overflow: hidden;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
   margin-top: 12px;
   margin-bottom: 0px;
 }
 
-@media screen and (max-width: 1264px) {
+@media screen and (max-width: 900px) {
   .card__title {
     font-size: 22px;
     line-height: 24px;
+    max-height: 96px;
   }
 }
 

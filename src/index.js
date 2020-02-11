@@ -1,145 +1,57 @@
 import './pages/index.css';
 
-import Form from './js/components/Form';
-import Popup from './js/components/Popup';
-import Header from './js/components/Header';
-import UserApi from './js/api/UserApi';
+import { profileOwner } from './js/constants/constants';
+import { usersApi } from './js/constants/objects/api';
+import popUp from './js/constants/objects/popUp';
+import header from './js/constants/objects/header';
+import searchForm from './js/constants/objects/searchForm';
+import {
+  headerAuthDesktopBtn,
+  headerAuthMobilBtn,
+  headerMobilMenu,
+  popUpCloseBtn,
+  popUpContainer,
+  signInForm,
+  signUpForm,
+  signUpIsOkForm,
+} from './js/constants/objects/elements';
+
+import PopUpForm from './blocks/popup/__form/PopUpForm';
+import { getProfile, removeProfile } from './js/utilits/functions';
+import { renderLoginHeader, renderNotLoginHeader } from './js/utilits/callbacks/header';
 
 function main() {
-  /* Константы */
-  const profileOwner = 'profileOwner';
-  // const serverUrl = 'http://localhost:3000';
-
-  const serverUrl = 'https://api.news-service.pro';
-
-  //
-  let loginProfile = JSON.parse(localStorage.getItem(profileOwner));
-
-  /* Кнопки */
-
-  const headerGamburgerLinesBtn = document.querySelector('.header .header__gamburger_lines');
-  const headerGamburgerCrossBtn = document.querySelector('.header .header__gamburger_cross');
-  const headerAuthDesktopBtn = document.querySelector('.header__button_auth_desktop');
-  const headerAuthMobilBtn = document.querySelector('.header__button_auth_mobil');
-  const headerLogoutDesktopBtn = document.querySelector('.header__button_logout_desktop');
-  const headerLogoutMobilBtn = document.querySelector('.header__button_logout_mobil');
-  const headerLogoutBtnCaptionDesktop = document.querySelector('.header__button-caption_desktop');
-  const headerLogoutBtnCaptionMobil = document.querySelector('.header__button-caption_mobil');
-
-  /* Ссылки */
-  const headerChangeHeadLink = document.querySelector('.header__change_head');
-  const headerChangeSaveLink = document.querySelector('.header__change_save');
-  const headerSaveMobilLink = document.querySelector('.header__mobil-link_save');
-
-  /* Header menu */
-  const headerMobilMenu = document.querySelector('.header__mobil-menu');
-
-  /* Popup */
-  const popUpContainer = document.querySelector('.popup');
-
-  /* Формы */
-  const signInForm = document.querySelector('.form-signin');
-  const signUpForm = document.querySelector('.form-signup');
-  const signUpIsOkForm = document.querySelector('.form-signup-is-ok');
-
-  /* Объекты */
-
-  const popup = new Popup(popUpContainer, headerGamburgerLinesBtn);
-
-  const userApi = new UserApi(serverUrl, {
-    'Content-Type': 'application/json; charset=UTF-8',
-  });
-
-  function renderLoginHeader() {
-    headerLogoutDesktopBtn.classList.add('header__button_is-opened');
-    headerChangeSaveLink.classList.add('header__change_is-opened');
-    headerSaveMobilLink.classList.add('header__mobil-link_is-opened');
-    headerLogoutMobilBtn.classList.add('header__button_is-opened');
-
-    headerLogoutBtnCaptionDesktop.textContent = loginProfile.user.name;
-    headerLogoutBtnCaptionMobil.textContent = loginProfile.user.name;
-
-    headerAuthMobilBtn.classList.remove('header__button_is-opened');
-    headerAuthDesktopBtn.classList.remove('header__button_is-opened');
-  }
-
-  function renderNotLoginHeader() {
-    headerLogoutDesktopBtn.classList.remove('header__button_is-opened');
-    headerChangeSaveLink.classList.remove('header__change_is-opened');
-    headerSaveMobilLink.classList.remove('header__mobil-link_is-opened');
-    headerLogoutMobilBtn.classList.remove('header__button_is-opened');
-
-    headerAuthMobilBtn.classList.add('header__button_is-opened');
-    headerAuthDesktopBtn.classList.add('header__button_is-opened');
-    headerChangeHeadLink.classList.add('header__change_is-opened');
-  }
-
-  const header = new Header(
-    [
-      {
-        button: headerGamburgerLinesBtn,
-        event: 'click',
-        callBack: () => {
-          headerMobilMenu.classList.add('header__mobil-menu_is-opened');
-        },
-      },
-      {
-        button: headerGamburgerCrossBtn,
-        event: 'click',
-        callBack: () => {
-          headerMobilMenu.classList.remove('header__mobil-menu_is-opened');
-        },
-      },
-      {
-        button: headerLogoutDesktopBtn,
-        event: 'click',
-        callBack: () => {
-          localStorage.removeItem(profileOwner);
-          renderNotLoginHeader();
-        },
-      },
-      {
-        button: headerLogoutMobilBtn,
-        event: 'click',
-        callBack: () => {
-          localStorage.removeItem(profileOwner);
-          renderNotLoginHeader();
-        },
-      },
-    ],
-    loginProfile,
-    { renderLoginHeader, renderNotLoginHeader },
-  );
-  // Callbacks
+  header.create(renderLoginHeader, renderNotLoginHeader);
+  searchForm.create();
   // Регистрация
   /** Callback открывает попап и клонирует в него форму Регистрация,
    * назначает обработчик(и) события(й) перехода на форме и вешает CallBack
    * на главную кнопку. Итак рекурсивно запускает переход из Вход-Регистрация-Вход
-   * и т.д.
+   * и т.д. Сценарий аутентификации.
+   * CallBack
   */
   function authUser() {
-    //
-    localStorage.removeItem(profileOwner);
+    removeProfile(profileOwner);
     function signInUser(item) {
-      return userApi
+      return usersApi
         .postSignIn(item)
         .then((data) => {
           // Здесь и записываем localStorage
           if (data.key) {
             localStorage.setItem(profileOwner, JSON.stringify({ key: data.key }));
-            return userApi
+            return usersApi
               .getUserMe(data.key)
               .then((user) => {
-                JSON.parse(localStorage.getItem(profileOwner));
+                getProfile(profileOwner);
                 localStorage.setItem(
                   profileOwner,
-                  JSON.stringify({ ...JSON.parse(localStorage.getItem(profileOwner)), user }),
+                  JSON.stringify({ ...getProfile(profileOwner), user }),
                 );
-                loginProfile = JSON.parse(localStorage.getItem(profileOwner));
+                getProfile(profileOwner);
               })
               .then(() => {
-                header.render(loginProfile);
-                popup.close();
+                header.render(getProfile(profileOwner));
+                popUp.close();
               })
               .catch((err) => err);
           }
@@ -149,15 +61,16 @@ function main() {
     }
 
     function openFormSignIn() {
-      popup.close();
-      popup.open(signInForm.content.cloneNode(true), 'form-signin');
-      const formObj = new Form(
+      popUp.close();
+      popUp.open(signInForm.content.cloneNode(true), 'form-signin');
+      popUp.addEventsListeners();
+      const popUpForm = new PopUpForm(
         [
           {
-            button: document.querySelector('.popup .popup__transition'),
+            element: document.querySelector('.popup .popup__transition'),
             event: 'click',
             callBack: () => {
-              popup.close();
+              popUp.close();
               authUser();
             },
           },
@@ -165,25 +78,28 @@ function main() {
         popUpContainer,
         signInUser,
       );
+      popUpForm.create();
     }
 
     function openFormSignUpIsOk() {
-      popup.close();
-      popup.open(signUpIsOkForm.content.cloneNode(true), 'form-signup-is-ok');
-      const formObj = new Form(
+      popUp.close();
+      popUp.open(signUpIsOkForm.content.cloneNode(true), 'form-signup-is-ok');
+      popUp.addEventsListeners();
+      const popUpForm = new PopUpForm(
         [
           {
-            button: document.querySelector('.popup .popup__transition'),
+            element: document.querySelector('.popup .popup__transition'),
             event: 'click',
             callBack: openFormSignIn,
           },
         ],
         popUpContainer,
       );
+      popUpForm.create();
     }
 
     function signUpUser(item) {
-      return userApi
+      return usersApi
         .postSignUp(item)
         .then((data) => {
           if (data._id) {
@@ -195,11 +111,12 @@ function main() {
     }
 
     function openFormSignUp() {
-      popup.open(signUpForm.content.cloneNode(true), 'form-signup');
-      const formObj = new Form(
+      popUp.open(signUpForm.content.cloneNode(true), 'form-signup');
+      popUp.addEventsListeners();
+      const popUpForm = new PopUpForm(
         [
           {
-            button: document.querySelector('.popup .popup__transition'),
+            element: document.querySelector('.popup .popup__transition'),
             event: 'click',
             callBack: openFormSignIn,
           },
@@ -207,14 +124,15 @@ function main() {
         popUpContainer,
         signUpUser,
       );
+      popUpForm.create();
     }
-
     openFormSignUp();
   }
 
   header.addListeners([
+    { element: popUpCloseBtn, event: 'click', callBack: popUp.close },
     {
-      button: headerAuthDesktopBtn,
+      element: headerAuthDesktopBtn,
       event: 'click',
       callBack: () => {
         // если не снять фокус, клонирует форму несколько раз при нажатии Enter
@@ -223,10 +141,10 @@ function main() {
       },
     },
     {
-      button: headerAuthMobilBtn,
+      element: headerAuthMobilBtn,
       event: 'click',
       callBack: () => {
-        headerMobilMenu.classList.remove('header__mobil-menu_is-opened');
+        headerMobilMenu.close();
         authUser();
       },
     },

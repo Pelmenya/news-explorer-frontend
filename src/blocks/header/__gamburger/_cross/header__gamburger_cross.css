@@ -1,3 +1,9 @@
 .header__gamburger_cross {
   background-image: url(../../../../images/cross.svg);
 }
+
+@media screen and (max-width: 480px) {
+  .header__gamburger_cross {
+    display: block;
+  }
+}

@@ -11,10 +11,13 @@
 @import url(./__icon/card__icon.css);
 @import url(./__icon/_bookmark/card__icon_bookmark.css);
 @import url(./__icon/_bookmark-marked/card__icon_bookmark-marked.css);
-@import url(./__hint/_logout/card__hint_logout.css);
+@import url(./__hint/_bookmark/card__hint_bookmark.css);
+@import url(./__hint/_bookmark/card__hint_bookmark_logout.css);
 @import url(./__hint/_trash/card__hint_trash.css);
 @import url(./__icon/_bookmark/card__icon_bookmark_logout.css);
 @import url(./__icon/_trash/card__icon_trash.css);
+@import url(./__description-wraper/card__description-wraper.css);
+@import url(./__description-container/card__description-container.css);
 
 .card {
   position: relative;
@@ -30,7 +33,7 @@
 }
 
 
-@media screen and (max-width: 1264px) {
+@media screen and (max-width: 900px) {
   .card {
     width: 224px;
     height: 420px;

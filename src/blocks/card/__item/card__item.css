@@ -11,8 +11,14 @@
   align-items: center;
 }
 
-@media screen and (max-width: 1264px) {
+@media screen and (max-width: 900px) {
   .card__item {
     top: 8px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card__item {
+    top: 16px;
   }
 }

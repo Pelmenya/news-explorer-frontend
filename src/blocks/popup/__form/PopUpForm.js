@@ -1,6 +1,12 @@
-import ButtonsListeners from './ButtonsListeners';
+import ElementsListeners from '../../../js/components/ElementsListeners';
+import {
+  ERROR_TEXT,
+  ERROR_EMAIL,
+  ERROR_PASSWORD,
+  ERROR_REQUIRED_FIELD,
+} from '../../../js/constants/errors';
 
-export default class Form extends ButtonsListeners {
+export default class PopUpForm extends ElementsListeners {
   // Защищенные методы
   // Добавление слушателей для inputs
   _initalInputsListeners() {
@@ -20,7 +26,7 @@ export default class Form extends ButtonsListeners {
   _validInput(input, errorLabel, ERROR_DESCRIPTION) {
     this.input = input;
     if (this.input.value.length === 0) {
-      document.querySelector(errorLabel).textContent = 'Это обязательное поле';
+      document.querySelector(errorLabel).textContent = ERROR_REQUIRED_FIELD;
     } else if (!this.input.checkValidity()) {
       document.querySelector(errorLabel).textContent = ERROR_DESCRIPTION;
     } else {
@@ -57,7 +63,6 @@ export default class Form extends ButtonsListeners {
   _formReset() {
     this.popupForm.reset();
     this._clearErrorLabel();
-    this.popupForm.querySelector('.button__popup').setAttribute('disabled', true);
   }
 
   // Возвращает объект из полей input
@@ -75,16 +80,28 @@ export default class Form extends ButtonsListeners {
     this.popupForm.querySelector('.popup__error_server').textContent = serverErr;
   }
 
-  constructor(props = [], popup, handlerSubmit = null) {
+  _disabledForm() {
+    Object.keys(this.popupForm.elements).forEach((item) => {
+      this.popupForm.elements[item].disabled = true;
+    });
+  }
+
+  _enabledForm() {
+    Object.keys(this.popupForm.elements).forEach((item) => {
+      this.popupForm.elements[item].disabled = false;
+    });
+  }
+
+  constructor(props, popup, handlerSubmit = null) {
     super(props);
 
     this.popup = popup;
     this.handlerSubmit = handlerSubmit;
 
     // текст ошибок в input
-    this.ERROR_TEXT = 'Должно быть от 2 до 30 символов';
-    this.ERROR_EMAIL = 'Неправильный формат email';
-    this.ERROR_PASSWORD = 'Неправильный пароль. Должен быть не меньше 6 символов';
+    this.ERROR_TEXT = ERROR_TEXT;
+    this.ERROR_EMAIL = ERROR_EMAIL;
+    this.ERROR_PASSWORD = ERROR_PASSWORD;
 
     // форма попапа
     this.popupForm = this.popup.querySelector('.popup__form');
@@ -96,18 +113,23 @@ export default class Form extends ButtonsListeners {
 
     this.popupForm.addEventListener('input', this._handlerInputForm);
     this.popupForm.addEventListener('submit', this.submitForm);
-
-    this._formReset();
-    this._initalInputsListeners();
     // Делаем при нажатии кнопки формы
     this.handlerSubmit = handlerSubmit;
   }
 
+  create() {
+    this.addListeners();
+    this._formReset();
+    this._initalInputsListeners();
+  }
+
   submitForm(event) {
+    this._disabledForm();
     this.handlerSubmit(this._getInfo())
       .then((serverErr) => this._setServerError(serverErr))
-      .catch((err) => alert(err));
-    this._formReset();
+      .catch((err) => err);
+    this._enabledForm();
+
     event.preventDefault();
   }
 }

@@ -1,0 +1,5 @@
+@media screen and (max-width: 480px) {
+  .header__gamburger_is-opened {
+    display: block;
+  }
+}

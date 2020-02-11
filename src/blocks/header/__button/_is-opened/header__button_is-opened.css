@@ -1,6 +1,11 @@
 .header__button_is-opened {
   display: flex;
 }
+
+.header__button_is-opened.header__button_auth_desktop {
+  display: block;
+}
+
 .header__button_is-opened.header__button_auth_mobil {
   display: block;
 }

@@ -1,0 +1,7 @@
+.card__hint_bookmark_logout {
+  display: flex;
+}
+
+.card__hint_bookmark_logout::before{
+  content:"Войдите, чтобы сохранять статьи";
+}

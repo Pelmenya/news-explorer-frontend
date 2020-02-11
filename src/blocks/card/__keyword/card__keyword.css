@@ -5,11 +5,17 @@
   left: 24px;
 }
 
-@media screen and (max-width: 1264px) {
+@media screen and (max-width: 900px) {
   .card__keyword {
     left: 8px;
     font-size: 14px;
     padding-left: 15px;
     padding-right: 15px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card__keyword {
+    left: 16px;
   }
 }

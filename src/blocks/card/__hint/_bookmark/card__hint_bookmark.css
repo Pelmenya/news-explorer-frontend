@@ -1,0 +1,12 @@
+.card__hint_bookmark {
+  font-size: 10px;
+  line-height: 12px;
+  padding-left: 13px;
+  padding-right: 13px;
+  display: flex;
+}
+
+
+.card__hint_bookmark::before{
+  content:"Нажмите, чтобы сохранить или удалить статью";
+}

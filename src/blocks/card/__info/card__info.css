@@ -5,14 +5,26 @@
   color: #1a1b22;
   margin-top: 16px;
   margin-bottom: 0px;
+  max-height: 130px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
 }
 
-@media screen and (max-width: 1264px) {
+@media screen and (max-width: 900px) {
   .card__info {
-    font-size: 16px;
-    line-height: 22x;
+    -webkit-line-clamp: 4;
+    max-height: 88px;
+    line-height: 20x;
     margin-top: 10px;
-    height: 88px;
-    overflow: hidden;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .card__info {
+    -webkit-line-clamp: 3;
+    max-height: 66px;
+  }
+}
+

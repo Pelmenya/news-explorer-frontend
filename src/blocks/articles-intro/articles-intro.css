@@ -1,9 +1,12 @@
 @import url(./__keyword/articles-intro__keyword.css);
+@import url(./__keyword-and/articles-intro__keyword-and.css);
 @import url(./__keywords/articles-intro__keywords.css);
 @import url(./__sub-title/articles-intro__sub-title.css);
 @import url(./__title/articles-intro__title.css);
+@import url(./__is-opened/articles-intro__is-opened.css);
 
 .articles-intro {
+  display: none;
   width: calc(100% - 208px);
 }
 
