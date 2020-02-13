@@ -125,11 +125,15 @@ export default class PopUpForm extends ElementsListeners {
 
   submitForm(event) {
     this._disabledForm();
-    this.handlerSubmit(this._getInfo())
-      .then((serverErr) => this._setServerError(serverErr))
-      .catch((err) => err);
-    this._enabledForm();
-
     event.preventDefault();
+    this.handlerSubmit(this._getInfo())
+      .then((serverErr) => {
+        this._enabledForm();
+        this._setServerError(serverErr);
+      })
+      .catch((serverErr) => {
+        this._enabledForm();
+        this._setServerError(serverErr);
+      });
   }
 }

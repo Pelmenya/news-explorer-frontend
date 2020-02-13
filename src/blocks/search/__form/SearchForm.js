@@ -1,4 +1,4 @@
-import { normalizeKeyWord } from '../../../js/utilits/functions';
+import { normalizeKeyWord, errorServer } from '../../../js/utilits/functions';
 
 export default class SearchForm {
   // Защищенные методы
@@ -40,10 +40,15 @@ export default class SearchForm {
   submitForm(event) {
     this._disabledForm();
     if (this._getInfo()) {
-      this.handlerSubmit(this._getInfo());
+      this.handlerSubmit(this._getInfo())
+        .then(() => {
+          this._enabledForm();
+        })
+        .catch((err) => {
+          errorServer(err);
+          this._enabledForm();
+        });
+      event.preventDefault();
     }
-    this._enabledForm();
-
-    event.preventDefault();
   }
 }

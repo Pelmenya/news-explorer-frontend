@@ -1,4 +1,4 @@
-import { ERROR_SERVER_NEWS } from '../../constants/errors';
+import { ERROR_SERVER_NEWS, ERRROR_NOT_CONNECT_NEWS_SERVER } from '../../constants/errors';
 import {
   searchNewsTemplate,
   searchNothingTemplate,
@@ -14,7 +14,7 @@ function searchNews(keyword) {
   searchResultsAct.close();
   if (searchAction.isFull) searchAction.close();
   searchAction.open(searchNewsTemplate.content.cloneNode(true), 'search-news');
-  newsApi
+  return newsApi
     .getNews(keyword)
     .then((data) => {
       if (data.status) {
@@ -36,7 +36,12 @@ function searchNews(keyword) {
       }
       return Promise.reject(new Error(ERROR_SERVER_NEWS));
     })
-    .catch((err) => errorServer(err));
+    .catch((err) => {
+      if (err.message === 'Failed to fetch') {
+        return errorServer(new Error(ERRROR_NOT_CONNECT_NEWS_SERVER));
+      }
+      return errorServer(err);
+    });
 }
 
 export default searchNews;

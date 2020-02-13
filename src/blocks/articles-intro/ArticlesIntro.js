@@ -53,6 +53,11 @@ export default class ArticlesIntro {
     });
   }
 
+  _closeSomeWords() {
+    this.articlesIntroKeyWordAnd.close();
+    this.articlesIntroKeyWordEnd.close();
+  }
+
   constructor(container, usersApi, numberWordsToAnd = 2) {
     this.container = container;
     this.usersApi = usersApi;
@@ -84,6 +89,7 @@ export default class ArticlesIntro {
   }
 
   render() {
+    this._closeSomeWords();
     this._sortArticles().then((results) => {
       if (results) {
         if (

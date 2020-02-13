@@ -17,9 +17,12 @@ export default class UsersApi {
     objJSON.method = 'POST';
     objJSON.headers = this.headers;
     objJSON.body = JSON.stringify(item);
-    return fetch(this.baseUrl + this.signUpUrl, objJSON)
-      .then((res) => res.json())
-      .catch((err) => err);
+    return fetch(this.baseUrl + this.signUpUrl, objJSON).then((res) => res.json()).catch((err) => {
+      if (err.message === 'Failed to fetch') {
+        return new Error(ERRROR_NOT_CONNECT_USER_SERVER);
+      }
+      return err;
+    });
   }
 
   postSignIn(item) {

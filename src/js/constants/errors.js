@@ -1,6 +1,7 @@
 // Ошибки при запросе на api News
 const ERROR_SERVER_NEWS_DESCRIPTION = '«Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз»';
 const ERROR_SERVER_NEWS = 'Возникла ошибка при обращении на сервер!';
+const ERRROR_NOT_CONNECT_NEWS_SERVER = 'Нет соединения с сервером новостей';
 
 // Ошибки при запросе на api Users
 const ERROR_SAVE_CARD = 'К сожалению не удалось сохранить карточку. Скорее всего параметры не проходят валидацию или нет соединения с пользовательским сервером';
@@ -23,4 +24,5 @@ export {
   ERROR_DELETE_CARD,
   ERROR_SAVE_CARD,
   ERRROR_NOT_CONNECT_USER_SERVER,
+  ERRROR_NOT_CONNECT_NEWS_SERVER,
 };
