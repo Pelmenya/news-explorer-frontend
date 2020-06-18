@@ -16,6 +16,7 @@ export default class NewsApi {
     const urlReq = `${this.serverUrl}?q=${keyWord}&pageSize=${this.pageSize}&from=${this
       .from}&to=${this.to}&apiKey=${this.apiKey}`;
     const req = new Request(urlReq);
+    console.log(req);
     return fetch(req).then((res) => res.json());
   }
 }

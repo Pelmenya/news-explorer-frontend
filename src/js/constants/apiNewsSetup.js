@@ -1,6 +1,6 @@
-const serverUrlNews = 'https://newsapi.org/v2/everything';
-const apiKeyNews = '51e915dcdcf546cca9ee006fbba7d401';
-const pageSizeNews = 100;
+const serverUrlNews = 'https://praktikum.tk/news/v2/everything';
+const apiKeyNews = '45a6a26cce284a36ba341837300b2c6b';
+const pageSizeNews = 50;
 const numberOfDays = 7;
 
 export {
