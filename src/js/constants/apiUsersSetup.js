@@ -1,4 +1,4 @@
-const serverUrl = 'https://api.news-service.pro';
+const serverUrl = 'https://api.396697-pelmenya.tmweb.ru';
 const signInUrl = '/signin';
 const signUpUrl = '/signup';
 const profileUrl = '/users/me';
