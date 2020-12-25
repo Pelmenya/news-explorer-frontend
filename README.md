@@ -1,7 +1,6 @@
 # Дипломный проект "Разработка сервиса NewsExplorer"
   ## Фронт-энд часть
- * https://news-service.pro 
- * https://www.news-service.pro 
+ * http://396697-pelmenya.tmweb.ru
  * https://pelmenya.github.io/news-explorer-frontend
   
   Проект представляет собой сервис, в котором можно найти новости по запросу и сохранить их в личном кабинете.
